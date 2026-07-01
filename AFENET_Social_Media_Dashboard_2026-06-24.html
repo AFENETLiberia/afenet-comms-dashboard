@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFENET Communications Intelligence — 24 June 2026</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --muted:#5b6678; --line:#e4e8f0;
+  --tw:#1da1f2; --fb:#4267b2; --ln:#0a66c2; --ig:#e1306c; --teal:#00b389; --purple:#6d4fe5; --indigo:#4f46e5;
+  --green:#16a34a; --amber:#d97706; --red:#dc2626;
+  --shadow:0 2px 10px rgba(26,34,51,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+a{color:var(--ln);text-decoration:none}
+a:hover{text-decoration:underline}
+/* Hero */
+.hero{position:relative;overflow:hidden;border-radius:18px;padding:34px 30px;color:#fff;
+  background:radial-gradient(900px 300px at 85% -20%,rgba(0,200,140,.45),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f);
+  box-shadow:var(--shadow)}
+.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
+.hero p{margin:0;color:#cfe0f5;font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.pill i{font-size:15px}
+.sec{margin-top:30px}
+.sec h2{font-size:17px;margin:0 0 14px;display:flex;align-items:center;gap:9px}
+.sec h2 .bar{width:5px;height:20px;border-radius:3px;background:var(--ln)}
+/* KPI grid */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{position:relative;overflow:hidden;border-radius:14px;padding:16px;color:#fff;box-shadow:var(--shadow)}
+.kpi .orb{position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.16)}
+.kpi i{font-size:20px;opacity:.95}
+.kpi .lbl{font-size:12px;opacity:.92;margin-top:6px}
+.kpi .num{font-size:26px;font-weight:800;line-height:1.1;margin-top:2px}
+.kpi .note{font-size:11px;opacity:.85;margin-top:3px}
+.k1{background:linear-gradient(135deg,#1da1f2,#0d7fd1)}
+.k2{background:linear-gradient(135deg,#0a66c2,#073d77)}
+.k3{background:linear-gradient(135deg,#4267b2,#2c477f)}
+.k4{background:linear-gradient(135deg,#e1306c,#f77737)}
+.k5{background:linear-gradient(135deg,#0d3a2a,#0a5040)}
+.k6{background:linear-gradient(135deg,#1a1040,#2a1a60)}
+.k7{background:linear-gradient(135deg,#7a3ea3,#54287a)}
+.k8{background:linear-gradient(135deg,#b45309,#d97706)}
+/* generic cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.web{border-top:4px solid var(--teal)}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:18px}
+.sub h4{margin:0 0 8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.big{font-size:22px;font-weight:800}
+.chip{display:inline-block;font-size:11px;background:#eef2f9;color:var(--muted);border-radius:6px;padding:2px 7px;margin-left:6px}
+.chip-new{display:inline-block;font-size:11px;background:#dcfce7;color:#166534;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-warn{display:inline-block;font-size:11px;background:#fef9e7;color:#92400e;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-red{display:inline-block;font-size:11px;background:#fdeaea;color:#b91c1c;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+ol.stories{margin:0;padding-left:18px}
+ol.stories li{margin-bottom:7px;font-size:13px}
+.align li{list-style:none;font-size:13px;margin-bottom:6px;display:flex;gap:7px;align-items:flex-start}
+.align{padding:0;margin:0}
+.yes{color:var(--green);font-weight:800}
+.no{color:var(--red);font-weight:800}
+/* platforms */
+.plats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.plat{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.plat .top{height:5px}
+.plat .body{padding:15px}
+.plat h3{margin:0 0 2px;font-size:14px;display:flex;align-items:center;gap:7px}
+.plat .handle{font-size:12px;color:var(--muted);margin-bottom:10px}
+.row{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-top:1px dashed var(--line)}
+.row span:last-child{font-weight:700}
+.badge{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:#eef2f9;color:var(--ink)}
+/* top posts */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:relative}
+.rank{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px}
+.gold{background:#d4af37}.silver{background:#9aa3ad}.bronze{background:#b87333}
+.post .txt{font-size:13px;margin:10px 0}
+.post .meta{font-size:11px;color:var(--muted)}
+.post .stats{display:flex;gap:14px;margin-top:8px;font-size:12.5px;font-weight:700}
+.tag-top{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#fff7e6;color:#b45309;border:1px solid #f0d9a8;border-radius:999px;padding:2px 8px}
+/* stakeholders */
+.stk{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:13px}
+.stk:first-child{border-top:none}
+.av{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+.stk .d{flex:1}
+.t-green{background:#e7f6ec;color:var(--green);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
+.t-amber{background:#fdf0e1;color:var(--amber);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
+.t-red{background:#fdeaea;color:var(--red);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
+/* sentiment */
+.sentbar{display:flex;height:30px;border-radius:8px;overflow:hidden;font-size:12px;font-weight:700;color:#fff}
+.sentbar div{display:flex;align-items:center;justify-content:center}
+.callout{margin-top:12px;background:#fff7ed;border:1px solid #f3d8b3;border-radius:10px;padding:12px;font-size:13px;color:#7c4a13}
+/* watchlist */
+.watch{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wl{background:var(--card);border:1px solid var(--line);border-left-width:5px;border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.wl.hi{border-left-color:var(--red)}.wl.me{border-left-color:var(--amber)}.wl.lo{border-left-color:var(--green)}
+.wl .p{font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;color:#fff}
+.p.hi{background:var(--red)}.p.me{background:var(--amber)}.p.lo{background:var(--green)}
+.wl h4{margin:8px 0 5px;font-size:13.5px}
+.wl p{margin:0;font-size:12.5px;color:var(--muted)}
+/* actions */
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.act{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.an{width:28px;height:28px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.an.r{background:var(--red)}.an.a{background:var(--amber)}
+.act h4{margin:0 0 4px;font-size:13.5px}
+.act p{margin:0;font-size:12.5px;color:var(--muted)}
+.urg{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-top:5px;display:inline-block}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.chartbox{position:relative;height:260px}
+footer{margin-top:34px;padding:18px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+/* dual-alert banner */
+.banner{background:linear-gradient(90deg,#7f1d1d,#991b1b);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;margin-top:0;font-size:13.5px}
+.banner i{font-size:22px;flex-shrink:0;margin-top:2px}
+.banner strong{font-size:15px}
+.banner-item{margin-bottom:6px}
+.banner-item:last-child{margin-bottom:0}
+/* Login gate */
+#gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(900px 400px at 70% 10%,rgba(0,200,140,.25),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f)}
+.gatebox{background:#fff;border-radius:16px;padding:34px 30px;width:340px;max-width:90vw;box-shadow:0 14px 50px rgba(0,0,0,.35);text-align:center}
+.gatebox .logo{width:52px;height:52px;border-radius:14px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;background:linear-gradient(135deg,#0f2547,#1d4e8f)}
+.gatebox h2{margin:0 0 4px;font-size:17px;color:var(--ink)}
+.gatebox p{margin:0 0 18px;font-size:12.5px;color:var(--muted)}
+.gatebox input{width:100%;padding:11px 13px;margin-bottom:11px;border:1px solid var(--line);border-radius:9px;font-size:14px;background:#f8fafd}
+.gatebox input:focus{outline:2px solid #1d4e8f33;border-color:#1d4e8f}
+.gatebox button{width:100%;padding:11px;border:none;border-radius:9px;background:linear-gradient(120deg,#0f2547,#1d4e8f);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+.gatebox button:hover{filter:brightness(1.15)}
+#gateErr{display:none;color:var(--red);font-size:12px;margin-top:10px;font-weight:600}
+#dash{display:none}
+.refresh-btn{display:inline-flex;align-items:center;gap:7px;margin-top:16px;padding:8px 16px;border:none;border-radius:999px;
+  background:#00c88c;color:#06281d;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.refresh-btn:hover{filter:brightness(1.08)}
+.logout-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;margin-left:10px;padding:8px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:transparent;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer}
+@media(max-width:860px){.kpis,.plats{grid-template-columns:repeat(2,1fr)}.cols3,.cols2,.posts,.watch,.acts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Login gate -->
+<div id="gate">
+  <div class="gatebox">
+    <div class="logo"><i class="ti ti-shield-lock"></i></div>
+    <h2>AFENET Comms Intelligence</h2>
+    <p>Restricted dashboard — sign in to continue</p>
+    <form id="gateForm">
+      <input type="text" id="gateUser" placeholder="Username" autocomplete="username" required>
+      <input type="password" id="gatePass" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit">Sign in</button>
+    </form>
+    <div id="gateErr">Incorrect username or password.</div>
+  </div>
+</div>
+
+<div id="dash">
+<div class="wrap">
+
+  <!-- Dual-alert banner -->
+  <div class="banner">
+    <i class="ti ti-alert-octagon"></i>
+    <div>
+      <strong>🚨 TWO CRITICAL GAPS — 24 June 2026</strong>
+      <div class="banner-item" style="margin-top:8px">① <strong>48+ HRS POST-WEBINAR SILENCE:</strong> "Financing the Shift" (Jun 22) still has ZERO LinkedIn post, website article, or recording link — the 48-hour engagement window has now expired. Publish TODAY or lose the professional audience entirely.</div>
+      <div class="banner-item">② <strong>DRUG ABUSE DAY IN 2 DAYS (Jun 26):</strong> International Day Against Drug Abuse &amp; Illicit Trafficking listed on afenet.net — zero promotional content published. Post promotional content NOW to maintain thematic credibility.</div>
+    </div>
+  </div>
+
+  <div class="hero" style="margin-top:14px">
+    <h1>AFENET Communications Intelligence</h1>
+    <p>Daily report · 24 June 2026 · Dominant theme: <strong>Ebola Response (ACoDD DRC/Uganda) + Lab Systems (QCMV²) + Post-Webinar Gap [48+ hrs]</strong></p>
+    <div class="pills">
+      <span class="pill" style="background:rgba(29,161,242,.3)"><i class="ti ti-brand-twitter"></i>@AFENETAfrica</span>
+      <span class="pill" style="background:rgba(66,103,178,.3)"><i class="ti ti-brand-facebook"></i>AFENETafrica</span>
+      <span class="pill" style="background:rgba(225,48,108,.3)"><i class="ti ti-brand-instagram"></i>@afenetafrica_official</span>
+      <span class="pill" style="background:rgba(10,102,194,.3)"><i class="ti ti-brand-linkedin"></i>African Field Epidemiology Network</span>
+      <span class="pill" style="background:rgba(0,200,140,.32)"><i class="ti ti-world"></i>afenet.net</span>
+    </div>
+    <button class="refresh-btn" onclick="location.replace(location.pathname+'?t='+Date.now())"><i class="ti ti-refresh"></i> Refresh — load latest update</button>
+    <button class="logout-btn" onclick="sessionStorage.removeItem('afenet_auth');location.reload()"><i class="ti ti-logout"></i> Sign out</button>
+  </div>
+
+  <!-- KPIs -->
+  <div class="sec">
+    <h2><span class="bar"></span>KPI Summary</h2>
+    <div class="kpis">
+      <div class="kpi k1"><div class="orb"></div><i class="ti ti-brand-twitter"></i><div class="lbl">Twitter followers</div><div class="num">3,310</div><div class="note">Following 9,679 · +2 since Jun 23 · new QCMV² Lab tweet Jun 23 (0L, 0RT)</div></div>
+      <div class="kpi k2"><div class="orb"></div><i class="ti ti-brand-linkedin"></i><div class="lbl">LinkedIn followers</div><div class="num">10,066</div><div class="note">Primary donor/professional audience · ZERO posts 48+ hrs post-webinar 🚨</div></div>
+      <div class="kpi k3"><div class="orb"></div><i class="ti ti-heart"></i><div class="lbl">Likes (7 days)</div><div class="num">~33</div><div class="note">ACoDD Ituri (21 Jun) now 9 likes (+1 overnight) — top performer</div></div>
+      <div class="kpi k4"><div class="orb"></div><i class="ti ti-repeat"></i><div class="lbl">Retweets (7 days)</div><div class="num">~7</div><div class="note">Ituri 1RT · Webinar Starting 1RT · Kofi Annan 1RT · QCMV² 0RT</div></div>
+      <div class="kpi k5"><div class="orb"></div><i class="ti ti-news"></i><div class="lbl">Website news (14 days)</div><div class="num">6</div><div class="note">Last update Jun 18 — 6 days ago · no post-webinar article · no new content</div></div>
+      <div class="kpi k6"><div class="orb"></div><i class="ti ti-calendar-event"></i><div class="lbl">Upcoming events</div><div class="num">4</div><div class="note">Drug Abuse Day Jun 26 (2 days!) · SAFETP Jun 30 (6 days) · CPHIA Nov · ESCAIDE Nov</div></div>
+      <div class="kpi k7"><div class="orb"></div><i class="ti ti-message-2"></i><div class="lbl">Tweets (7 days)</div><div class="num">~12</div><div class="note">Jun 17–24 · QCMV² Lab course promo added Jun 23 · field content dominates</div></div>
+      <div class="kpi k8"><div class="orb"></div><i class="ti ti-mood-smile"></i><div class="lbl">Sentiment</div><div class="num">68%</div><div class="note">positive · external risk: Ebola PHEIC + 48hr post-webinar silence + Drug Abuse Day</div></div>
+    </div>
+  </div>
+
+  <!-- Website Analysis -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--teal)"></span>Website — afenet.net</h2>
+    <div class="card web">
+      <div class="cols3">
+        <div class="sub">
+          <h4><i class="ti ti-clock"></i> Content freshness</h4>
+          <div class="big" style="color:var(--red)">6 days</div>
+          <div style="font-size:12.5px;color:var(--muted)">Last articles published <strong>18 Jun 2026</strong>. 6 articles in the past 14 days. No content published Jun 19–24. The "Financing the Shift" webinar (Jun 22) has produced no website article and no recording link — 48+ hours later.</div>
+          <div style="margin-top:10px;font-size:11.5px;background:#fdeaea;border-radius:8px;padding:8px;color:#b91c1c"><i class="ti ti-alert-circle"></i> Drug Abuse Day Jun 26 (2 days) needs promotional post NOW. SAFETP 2027 deadline Jun 30 (6 days). Post-webinar article and recording still absent.</div>
+        </div>
+        <div class="sub">
+          <h4><i class="ti ti-list"></i> Recent stories (14 days)</h4>
+          <ol class="stories">
+            <li>Dr. Antara — Emerging Health Leaders keynote <span class="chip">18 Jun</span><span class="chip-new">AMPLIFIED</span></li>
+            <li>DRC FETP Intermediate Cohort 6 — Workshop 4 Op. Research <span class="chip">18 Jun</span><span class="chip-red">UNAMPLIFIED 6d ⚠</span></li>
+            <li>Somalia FETP Cohort 7 — 25 graduates <span class="chip">16 Jun</span><span class="chip-new">AMPLIFIED</span></li>
+            <li>Ebola ACS Facility Review, Kampala <span class="chip">16 Jun</span><span class="chip-new">AMPLIFIED</span></li>
+            <li>Mozambique FETP Mentors — One Health, 6 provinces <span class="chip">16 Jun</span><span class="chip-red">UNAMPLIFIED 8d ⚠</span></li>
+            <li>DRC FETP 10th Anniversary — 667 graduates <span class="chip">16 Jun</span><span class="chip-red">UNAMPLIFIED 8d 🚨</span></li>
+          </ol>
+        </div>
+        <div class="sub">
+          <h4><i class="ti ti-arrows-shuffle"></i> Content–social alignment</h4>
+          <ul class="align">
+            <li><span class="yes">✓</span> Dr. Antara Kofi Annan (18 Jun) — amplified Jun 17–18 tweets</li>
+            <li><span class="no">✗</span> DRC FETP Intermediate Cohort 6 (18 Jun) — no post (6 days)</li>
+            <li><span class="yes">✓</span> Somalia Cohort 7 (16 Jun) — amplified via tweet</li>
+            <li><span class="yes">✓</span> Ebola Kampala ACS (16 Jun) — same-day tweet ✓</li>
+            <li><span class="no">✗</span> Mozambique FETP Mentors (16 Jun) — unamplified (8 days)</li>
+            <li><span class="no">✗</span> DRC FETP 10th Anniversary (16 Jun) — 8 days, major milestone SILENT 🚨</li>
+          </ul>
+          <div style="font-size:11.5px;color:var(--red);margin-top:6px"><i class="ti ti-x"></i> 3 of 6 articles (50%) unamplified — DRC milestone 8 days silent during active Ebola PHEIC.</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px">
+        <strong>Site health:</strong> Event URL slugs remain mismatched (CPHIA: <code>/breast-cancer-awareness</code>; Drug Abuse Day: <code>/9th-international-conference</code>; ESCAIDE: <code>/one-health-summit-lyon</code>). "Financing the Shift" (Jun 22) still absent from events calendar — no recording URL. Footer "© All right reserved 2023" unchanged. SAFETP 2027 deadline June 30 — <strong>6 days remaining</strong>. Drug Abuse Day Jun 26 — <strong>2 days remaining, no promotional post</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- Platforms -->
+  <div class="sec">
+    <h2><span class="bar"></span>Platform Breakdown</h2>
+    <div class="plats">
+      <div class="plat"><div class="top" style="background:var(--tw)"></div><div class="body">
+        <h3><i class="ti ti-brand-twitter" style="color:var(--tw)"></i> Twitter / X</h3>
+        <div class="handle">@AFENETAfrica</div>
+        <div class="row"><span>Followers</span><span>3,310 (Following 9,679)</span></div>
+        <div class="row"><span>7-day cadence</span><span>~12 tweets Jun 17–24</span></div>
+        <div class="row"><span>New (23 Jun)</span><span>QCMV² Lab course: 0 likes, 0 RT</span></div>
+        <div class="row"><span>Best post (21 Jun)</span><span>ACoDD Ituri: 9 likes, 1 RT</span></div>
+        <span class="badge" style="background:#f0fdf4;color:#166534">Active — field dispatches outperform ✓</span>
+      </div></div>
+      <div class="plat"><div class="top" style="background:var(--ln)"></div><div class="body">
+        <h3><i class="ti ti-brand-linkedin" style="color:var(--ln)"></i> LinkedIn</h3>
+        <div class="handle">African Field Epidemiology Network</div>
+        <div class="row"><span>Followers</span><span>~10,066</span></div>
+        <div class="row"><span>Posts this week</span><span>None confirmed visible</span></div>
+        <div class="row"><span>Post-webinar summary</span><span>ZERO posts — 48+ hrs post-event 🚨</span></div>
+        <span class="badge" style="background:#fdeaea;color:var(--red)">Critical Gap — 48-hr window expired 🚨</span>
+      </div></div>
+      <div class="plat"><div class="top" style="background:var(--fb)"></div><div class="body">
+        <h3><i class="ti ti-brand-facebook" style="color:var(--fb)"></i> Facebook</h3>
+        <div class="handle">@AFENETafrica</div>
+        <div class="row"><span>Main page</span><span>N/A (gated)</span></div>
+        <div class="row"><span>Nigeria chapter</span><span>Active Jun 13–17 (MDA Yobe)</span></div>
+        <div class="row"><span>Post-webinar content</span><span>Zero posts visible ⚠</span></div>
+        <span class="badge">Opaque / underserved</span>
+      </div></div>
+      <div class="plat"><div class="top" style="background:var(--ig)"></div><div class="body">
+        <h3><i class="ti ti-brand-instagram" style="color:var(--ig)"></i> Instagram</h3>
+        <div class="handle">@afenetafrica_official</div>
+        <div class="row"><span>Followers</span><span>N/A (gated)</span></div>
+        <div class="row"><span>Field visuals</span><span>Ituri/Lomami photos on Twitter only</span></div>
+        <div class="row"><span>Activity</span><span>Not publicly visible</span></div>
+        <span class="badge" style="background:#fdeaea;color:var(--red)">Dormant — visual content gap</span>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Engagement chart + top posts -->
+  <div class="sec">
+    <h2><span class="bar"></span>Engagement Analysis</h2>
+    <div class="cols2">
+      <div class="card">
+        <div class="chartbox"><canvas id="engChart"></canvas></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px">
+
+        <div class="post">
+          <span class="tag-top">Top performer</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="rank gold">1</div>
+            <div style="font-size:11.5px;color:var(--muted)">Twitter · 21 Jun 2026</div>
+          </div>
+          <div class="txt">"📍 Bunia | 20 June 2026 — The AFENET Corps of Disease Detectives (ACoDD), deployed to support the Ebola Virus Disease (EVD) response in Ituri Province, participated in an operational briefing aimed at strengthening coordination of surveillance activities, alert investigations..."</div>
+          <div class="stats"><span><i class="ti ti-heart" style="color:var(--red)"></i> 9</span><span><i class="ti ti-repeat" style="color:var(--tw)"></i> 1</span></div>
+          <div class="meta" style="margin-top:6px">Ground-level field dispatch with geographic specificity (Bunia/Ituri), 4 field photos, direct connection to the Ebola PHEIC. +1 like since Jun 23 — still accumulating. Real-time operational content vastly outperforms institutional announcements.</div>
+        </div>
+
+        <div class="post">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="rank silver">2</div>
+            <div style="font-size:11.5px;color:var(--muted)">Twitter · 21 Jun 2026</div>
+          </div>
+          <div class="txt">"The immunization campaign being undertaken by ACoDD teams in Lomami Province, DRC continues to make progress as internal household monitoring teams work to identify and reach children who were missed during vaccination activities. 📍 Kabinda..."</div>
+          <div class="stats"><span><i class="ti ti-heart" style="color:var(--red)"></i> 4</span><span><i class="ti ti-repeat" style="color:var(--tw)"></i> 0</span></div>
+          <div class="meta" style="margin-top:6px">4 vivid field photos showing household-level work, concrete metric framing, strong visual storytelling. Field imagery consistently outperforms graphics.</div>
+        </div>
+
+        <div class="post">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="rank bronze">3</div>
+            <div style="font-size:11.5px;color:var(--muted)">Twitter · 22 Jun 2026</div>
+          </div>
+          <div class="txt">"🚨 Starting...Join now! Don't miss this timely conversation on the future of health financing in Africa. 🎤 Expert panel 🌍 Critical insights 💡 Practical solutions 🔗 Register/Join here: 👉 https://bit.ly/AFENET_Webinar"</div>
+          <div class="stats"><span><i class="ti ti-heart" style="color:var(--red)"></i> 2</span><span><i class="ti ti-repeat" style="color:var(--tw)"></i> 1</span></div>
+          <div class="meta" style="margin-top:6px">Real-time urgency hook ("Starting...Join now!") generated 1 RT — organic sharing from attendees. Outperformed pre-event reminder tweets. Post-event content would amplify this further.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Stakeholders -->
+  <div class="sec">
+    <h2><span class="bar"></span>Stakeholder Mentions</h2>
+    <div class="card">
+      <div class="stk"><div class="av" style="background:var(--ln)"><i class="ti ti-building-bank"></i></div><div class="d"><strong>African Development Bank (Dr. Josephine Gakii Gatua)</strong><br><span style="font-size:12px;color:var(--muted)">Speaker at "Financing the Shift" webinar (Jun 22). Zero LinkedIn or Twitter post-event content 48+ hours later. Tagging AfDB in a LinkedIn post-event summary could trigger institutional re-share to AfDB's 400k+ LinkedIn following — window is closing.</span></div><span class="t-amber">Gap — no post-event amplification</span></div>
+      <div class="stk"><div class="av" style="background:#7c3aed"><i class="ti ti-globe"></i></div><div class="d"><strong>UNODC / United Nations</strong><br><span style="font-size:12px;color:var(--muted)">International Day Against Drug Abuse &amp; Illicit Trafficking (Jun 26 — 2 days away) is listed on afenet.net. Zero promotional posts visible on any platform. A drug abuse day post citing AFENET's surveillance mandate takes 5 minutes and demonstrates thematic breadth.</span></div><span class="t-red">Gap — 2 days, no promo</span></div>
+      <div class="stk"><div class="av" style="background:#8b5cf6"><i class="ti ti-award"></i></div><div class="d"><strong>Kofi Annan Foundation (5th Cohort Fellows)</strong><br><span style="font-size:12px;color:var(--muted)">Dr. Antara graduation keynote (Jun 18 article, Jun 17–18 tweets). High-prestige global health leadership institution with strong LinkedIn presence. Amplified; cross-promotion opportunity with AfDB speaker post still available.</span></div><span class="t-green">Leadership</span></div>
+      <div class="stk"><div class="av" style="background:var(--tw)"><i class="ti ti-building-hospital"></i></div><div class="d"><strong>Somalia National Institute of Health / Dr. Hussein Abukar Mohiadin</strong><br><span style="font-size:12px;color:var(--muted)">FETP Cohort 7 graduation — 25 graduates (Jun 16 article + tweet). Strong bilateral programme milestone. Tagging NIH Director in a follow-up LinkedIn post remains an open amplification opportunity.</span></div><span class="t-green">Joint Ops</span></div>
+      <div class="stk"><div class="av" style="background:var(--teal)"><i class="ti ti-building-community"></i></div><div class="d"><strong>Uganda MoH / UNIPH / ACoDD</strong><br><span style="font-size:12px;color:var(--muted)">ACoDD deployed in Ituri EVD response (Jun 21 tweet: 9 likes — top performer, still accumulating). Ebola ACS Kampala facility records review (Jun 16 article + tweet). Active operational communications — highest-performing content category.</span></div><span class="t-green">Active Ops</span></div>
+      <div class="stk"><div class="av" style="background:#dc2626"><i class="ti ti-biohazard"></i></div><div class="d"><strong>DRC MoH / INSP-DRC / ACoDD</strong><br><span style="font-size:12px;color:var(--muted)">ACoDD Lomami vaccination (Jun 21: 4 likes); DRC FETP 10th Anniversary (667 grads, Jun 16) — now 8 days unamplified 🚨; Workshop 4 (Jun 18) — 6 days unamplified. Critical narrative gap during active Ebola PHEIC.</span></div><span class="t-red">Major Gap</span></div>
+      <div class="stk"><div class="av" style="background:var(--indigo)"><i class="ti ti-microscope"></i></div><div class="d"><strong>U.S. CDC</strong><br><span style="font-size:12px;color:var(--muted)">DRC Workshop 4 (CDC-funded, Jun 18 article) — 6 days unamplified. Donor-visibility gap for a key funder. Two unamplified articles with CDC as implementing partner represent missed donor stewardship.</span></div><span class="t-amber">Gap</span></div>
+      <div class="stk"><div class="av" style="background:#b45309"><i class="ti ti-world"></i></div><div class="d"><strong>Africa CDC / WHO</strong><br><span style="font-size:12px;color:var(--muted)">AFENET ACoDD deployed in Ituri Ebola response (Bundibugyo strain, 1,000+ cases DRC/Uganda as of Jun 23 — PHEIC declared May 2026). AFENET not credited in Africa CDC's or WHO's public PHEIC communications. Major attribution gap.</span></div><span class="t-red">Visibility Gap</span></div>
+    </div>
+  </div>
+
+  <!-- Sentiment -->
+  <div class="sec">
+    <h2><span class="bar"></span>Sentiment Snapshot</h2>
+    <div class="card">
+      <div class="sentbar">
+        <div style="width:68%;background:var(--green)">68% Positive</div>
+        <div style="width:25%;background:#94a3b8">25% Neutral</div>
+        <div style="width:7%;background:var(--red)">7%</div>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--muted);flex-wrap:wrap">
+        <span><strong style="color:var(--green)">Positive (68%):</strong> ACoDD Ituri and Lomami field dispatches (top-performing content); new QCMV² Lab quality course launch; Somalia FETP Cohort 7 graduation; Kofi Annan Fellows keynote; institutional partnerships</span>
+        <span><strong style="color:#64748b">Neutral (25%):</strong> Training workshop reports, operational briefings, SAFETP/Drug Abuse Day event listings, ESCAIDE/CPHIA announcements</span>
+        <span><strong style="color:var(--red)">External risk (7%):</strong> Ebola PHEIC misinformation ecosystem (1,000+ DRC/Uganda cases); 48+ hour post-webinar silence; Drug Abuse Day in 2 days with no promo content; AFENET attribution gap in PHEIC communications</span>
+      </div>
+      <div class="callout"><strong><i class="ti ti-alert-triangle"></i> Dual External Risk:</strong> (1) The 2026 Ebola epidemic (Bundibugyo strain, DRC/Uganda — 1,000+ confirmed cases as of Jun 23, PHEIC declared May 2026) has an active misinformation ecosystem. AFENET's ACoDD is on the ground in Ituri but under-attributed in official PHEIC communications. (2) The "Financing the Shift" webinar (Jun 22) — AFENET's most policy-relevant event of 2026 — has produced zero LinkedIn or website follow-up 48+ hours post-event. The standard engagement window has expired. Publishing now captures the small remaining long tail but the moment of peak reach has passed.</div>
+    </div>
+  </div>
+
+  <!-- Issues Watchlist -->
+  <div class="sec">
+    <h2><span class="bar"></span>Issues Watchlist</h2>
+    <div class="watch">
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>Post-Webinar Silence: 48+ Hours — LinkedIn and Website Still Dark</h4><p>The "Financing the Shift" webinar (Jun 22, 2 PM EAT) has now passed the 48-hour post-event engagement window with zero LinkedIn posts, no website article, and no recording link on afenet.net. LinkedIn (10,066 professional/donor followers) remains the key unreached channel. Publishing now captures the remaining long tail but the optimal window has expired — do not allow this to extend to 72 hours.</p></div>
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>International Day Against Drug Abuse: 2 Days Away, Zero Promotional Content</h4><p>June 26 (2 days) is the International Day Against Drug Abuse and Illicit Trafficking — already listed on afenet.net. Zero promotional tweets or LinkedIn posts visible. A single post citing AFENET's substance use surveillance mandate in Africa meets the moment and demonstrates thematic breadth beyond communicable disease. This is a low-effort, high-visibility opportunity.</p></div>
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>DRC FETP 10th Anniversary — 8 Days Unamplified During Active Ebola PHEIC</h4><p>The Jun 16 article documenting 667 field epidemiologists trained across 27 cohorts in DRC has now been silent for 8 days. With ACoDD teams confirmed active in Ituri (9-like top performer), the "capacity meets crisis" narrative pairing is still compelling — but relevance is eroding daily. Posting today remains the last practical window to capture this story's impact.</p></div>
+      <div class="wl me"><span class="p me">MEDIUM</span><h4>SAFETP 2027 Deadline: 6 Days Left — No Countdown Push</h4><p>South African FETP 2027 application closes June 30 (6 days). No promotional tweet or LinkedIn post visible. A countdown tweet ("6 days left: SAFETP 2027 closes Jun 30 — MSc Field Epidemiology at NICD South Africa. Apply: [link] #FETP #PublicHealth") takes 5 minutes and directly serves AFENET's workforce development mandate.</p></div>
+      <div class="wl me"><span class="p me">MEDIUM</span><h4>QCMV² Lab Course Promo Underperforming (0 Likes, 0 RTs)</h4><p>The Jun 23 QCMV² course tweet has zero engagement. Lab quality content needs better framing tied to the Ebola response narrative ("The labs supporting Ituri's Ebola response run on strong QC systems — QCMV² trains labs across Africa to build that foundation"). Cross-posting to LinkedIn would reach the larger professional lab audience.</p></div>
+      <div class="wl lo"><span class="p lo">LOW</span><h4>CMS Errors, Slug Mismatches, and Outdated Footer Persist</h4><p>All three near-term event URL slugs remain mismatched (CPHIA: /breast-cancer-awareness; Drug Abuse Day: /9th-international-conference; ESCAIDE: /one-health-summit-lyon). Footer reads "© All right reserved 2023" (typo + outdated year). Post-webinar event page absent. A standing CMS cleanup ticket is needed.</p></div>
+    </div>
+  </div>
+
+  <!-- Action Plan -->
+  <div class="sec">
+    <h2><span class="bar"></span>24–48 Hour Action Plan</h2>
+    <div class="acts">
+      <div class="act">
+        <div class="an r">1</div>
+        <div>
+          <h4>LinkedIn Post-Webinar Summary (48-hr Window Expired — Last Chance)</h4>
+          <p>Publish a LinkedIn article (300–500 words): 3 key takeaways from "Financing the Shift," one quote from Dr. Josephine Gakii Gatua (AfDB), link to recording ("coming soon" is acceptable). Tag AfDB, WHO AFRO, Africa CDC, Kofi Annan Foundation. The 48-hour window has passed — publish before noon EAT to capture the remaining long tail.</p>
+          <span class="urg">Today · CRITICAL · Before Noon EAT</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an r">2</div>
+        <div>
+          <h4>Drug Abuse Day Content — 2 Days Away</h4>
+          <p>Post NOW: "June 26 is the International Day Against Drug Abuse &amp; Illicit Trafficking. AFENET's surveillance networks across Africa track substance use trends alongside communicable disease — because health security means addressing all threats. [link] #DrugAbuseDay2026 #PublicHealth #AFENET." Mirror on LinkedIn and Facebook.</p>
+          <span class="urg">Today · Urgent</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an r">3</div>
+        <div>
+          <h4>DRC FETP 10th Anniversary + ACoDD "Capacity in Action" Tweet</h4>
+          <p>Post: "10 years. 27 cohorts. 667 field epidemiologists. DRC's FETP just marked its 10th anniversary — and those graduates are answering the Ebola call in Ituri right now. [article link] #AFENET #DRC #Ebola." Tag INSP-DRC, DRC MoH, U.S. CDC. Pairs the highest-engagement content (Ituri dispatch: 9L) with the most overdue story.</p>
+          <span class="urg">Today · Morning EAT</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an r">4</div>
+        <div>
+          <h4>Reframe QCMV² Tweet for Ebola Context</h4>
+          <p>Post follow-up: "The labs supporting the Ebola response in Ituri run on quality systems. AFENET's QCMV² course trains lab professionals across Africa to build that foundation. Register: [link] #ISO15189 #PublicHealthLabs #Ebola." Cross-post to LinkedIn where the lab professional audience is larger. Ties underperforming lab content to the highest-priority story.</p>
+          <span class="urg">Today</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an a">5</div>
+        <div>
+          <h4>SAFETP 2027 Countdown Push (6 Days Left)</h4>
+          <p>Tweet and LinkedIn: "6 days left — SAFETP 2027 applications close June 30. Two-year MSc Field Epidemiology residency at NICD, South Africa. Apply: [link] #FETP #PublicHealth #Africa." Tag NICD South Africa for amplification. Takes 5 minutes; serves AFENET's workforce development mandate directly.</p>
+          <span class="urg">Tomorrow</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an a">6</div>
+        <div>
+          <h4>Publish Website Post-Webinar Article + Clear Article Backlog + CMS Fix</h4>
+          <p>Write and publish post-webinar news article on afenet.net with recording link. Queue tweets for Mozambique FETP Mentors (Jun 16 — 8 days unamplified) and DRC Workshop 4 (Jun 18). Fix three event URL slug mismatches. Update footer to "© 2026". Add post-webinar event page with "Watch recording" link.</p>
+          <span class="urg">48 hrs · Comms + Web Team</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <strong>Sources:</strong>
+    <a href="https://afenet.net/">afenet.net</a> ·
+    <a href="https://afenet.net/news/">/news</a> ·
+    <a href="https://afenet.net/events/">/events</a> ·
+    <a href="https://twitter.com/AFENETAfrica">@AFENETAfrica</a> ·
+    <a href="https://www.linkedin.com/company/african-field-epidemiology-network-for-a-healthier-continent">LinkedIn</a> ·
+    <a href="https://www.facebook.com/AFENETAfrica/">Facebook</a> ·
+    <a href="https://www.who.int/emergencies/situations/ebola-outbreak---drc-2026">WHO Ebola DRC 2026</a> ·
+    <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01101-3/fulltext">Lancet — Ebola PHEIC 2026</a> ·
+    <a href="https://www.who.int/news/item/05-06-2026-africa-cdc-and-who-launch-joint-continental-ebola-response-plan">Africa CDC–WHO Ebola Continental Plan</a><br>
+    <em>Methodology: Public web crawl of owned channels + embedded Twitter feed on afenet.net. Login-gated metrics (Facebook, Instagram, LinkedIn engagement detail) marked N/A. Generated 24 June 2026 · Automated scheduled run.</em>
+  </footer>
+
+</div>
+</div><!-- /#dash -->
+
+<script>
+// ── Access gate (client-side; deters casual access — not server-grade security) ──
+(function(){
+  function djb2(s){let x=5381;for(let i=0;i<s.length;i++){x=(((x<<5)+x)+s.charCodeAt(i))>>>0;}return x.toString(16);}
+  const U='f19270d8', P='35ddfaae'; // hashed credentials
+  const gate=document.getElementById('gate'), dash=document.getElementById('dash');
+  function unlock(){gate.style.display='none';dash.style.display='block';window.dispatchEvent(new Event('dash-visible'));}
+  if(sessionStorage.getItem('afenet_auth')==='1'){unlock();}
+  document.getElementById('gateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const u=document.getElementById('gateUser').value.trim(), p=document.getElementById('gatePass').value;
+    if(djb2(u)===U && djb2(p)===P){sessionStorage.setItem('afenet_auth','1');unlock();}
+    else{document.getElementById('gateErr').style.display='block';}
+  });
+})();
+
+let chartsBuilt=false;
+function buildCharts(){
+  if(chartsBuilt || document.getElementById('dash').style.display!=='block') return;
+  chartsBuilt=true;
+  new Chart(document.getElementById('engChart'), {
+    type:'bar',
+    data:{
+      labels:['Kofi Annan Fellows (17 Jun)','Webinar promo 🎙 (18 Jun)','Speaker Spotlight AfDB (19 Jun)','Dr. Antara keynote (19 Jun)','Webinar reminder Mon (20 Jun)','ACoDD Ituri EVD 📍Bunia (21 Jun)','ACoDD Lomami vaccination (21 Jun)','Webinar Today! (22 Jun)','Webinar Starting 🚨 (22 Jun)','QCMV² Lab course (23 Jun)'],
+      datasets:[
+        {label:'Likes',data:[6,4,3,3,0,9,4,2,2,0],backgroundColor:'#00b389'},
+        {label:'Retweets',data:[1,3,0,1,0,1,0,0,1,0],backgroundColor:'#1da1f2'}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{ticks:{font:{size:9},maxRotation:45,minRotation:0}},y:{beginAtZero:true,ticks:{precision:0}}},
+      plugins:{legend:{position:'top'},title:{display:true,text:'Tweet engagement Jun 17–24 · ACoDD Ituri EVD briefing top performer (9L, 1RT) · QCMV² Lab (23 Jun) 0 engagement ⚠'}}}
+  });
+}
+window.addEventListener('load', buildCharts);
+window.addEventListener('dash-visible', buildCharts);
+</script>
+</body>
+</html>
