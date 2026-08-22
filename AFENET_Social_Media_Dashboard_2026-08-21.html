@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFENET Communications Intelligence — 21 August 2026</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --muted:#5b6678; --line:#e4e8f0;
+  --tw:#1da1f2; --fb:#4267b2; --ln:#0a66c2; --ig:#e1306c; --teal:#00b389; --purple:#6d4fe5; --indigo:#4f46e5;
+  --green:#16a34a; --amber:#d97706; --red:#dc2626;
+  --shadow:0 2px 10px rgba(26,34,51,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+a{color:var(--ln);text-decoration:none}
+a:hover{text-decoration:underline}
+.hero{position:relative;overflow:hidden;border-radius:18px;padding:34px 30px;color:#fff;
+  background:radial-gradient(900px 300px at 85% -20%,rgba(0,200,140,.45),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f);
+  box-shadow:var(--shadow)}
+.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
+.hero p{margin:0;color:#cfe0f5;font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.pill i{font-size:15px}
+.sec{margin-top:30px}
+.sec h2{font-size:17px;margin:0 0 14px;display:flex;align-items:center;gap:9px}
+.sec h2 .bar{width:5px;height:20px;border-radius:3px;background:var(--ln)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{position:relative;overflow:hidden;border-radius:14px;padding:16px;color:#fff;box-shadow:var(--shadow)}
+.kpi .orb{position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.16)}
+.kpi i{font-size:20px;opacity:.95}
+.kpi .lbl{font-size:12px;opacity:.92;margin-top:6px}
+.kpi .num{font-size:26px;font-weight:800;line-height:1.1;margin-top:2px}
+.kpi .note{font-size:11px;opacity:.85;margin-top:3px}
+.k1{background:linear-gradient(135deg,#1da1f2,#0d7fd1)}
+.k2{background:linear-gradient(135deg,#0a66c2,#073d77)}
+.k3{background:linear-gradient(135deg,#b91c1c,#7f1d1d)}
+.k4{background:linear-gradient(135deg,#e1306c,#f77737)}
+.k5{background:linear-gradient(135deg,#0d3a2a,#0a5040)}
+.k6{background:linear-gradient(135deg,#1a1040,#2a1a60)}
+.k7{background:linear-gradient(135deg,#15803d,#16a34a)}
+.k8{background:linear-gradient(135deg,#7a3ea3,#54287a)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.web{border-top:4px solid var(--teal)}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:18px}
+.sub h4{margin:0 0 8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.big{font-size:22px;font-weight:800}
+.chip{display:inline-block;font-size:11px;background:#eef2f9;color:var(--muted);border-radius:6px;padding:2px 7px;margin-left:6px}
+.chip-new{display:inline-block;font-size:11px;background:#dcfce7;color:#166534;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-warn{display:inline-block;font-size:11px;background:#fef9e7;color:#92400e;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-red{display:inline-block;font-size:11px;background:#fdeaea;color:#b91c1c;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-green{display:inline-block;font-size:11px;background:#dcfce7;color:#166534;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+ol.stories{margin:0;padding-left:18px}
+ol.stories li{margin-bottom:7px;font-size:13px}
+.align li{list-style:none;font-size:13px;margin-bottom:6px;display:flex;gap:7px;align-items:flex-start}
+.align{padding:0;margin:0}
+.yes{color:var(--green);font-weight:800}
+.no{color:var(--red);font-weight:800}
+.mid{color:var(--amber);font-weight:800}
+.plats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.plat{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.plat .top{height:5px}
+.plat .body{padding:15px}
+.plat h3{margin:0 0 2px;font-size:14px;display:flex;align-items:center;gap:7px}
+.plat .handle{font-size:12px;color:var(--muted);margin-bottom:10px}
+.row{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-top:1px dashed var(--line);gap:10px}
+.row span:last-child{font-weight:700;text-align:right}
+.badge{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:#eef2f9;color:var(--ink)}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:relative}
+.rank{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px}
+.gold{background:#d4af37}.silver{background:#9aa3ad}.bronze{background:#b87333}
+.post .txt{font-size:13px;margin:10px 0}
+.post .meta{font-size:11px;color:var(--muted)}
+.post .stats{display:flex;gap:14px;margin-top:8px;font-size:12.5px;font-weight:700}
+.tag-top{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#fff7e6;color:#b45309;border:1px solid #f0d9a8;border-radius:999px;padding:2px 8px}
+.tag-dup{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#fdeaea;color:#b91c1c;border:1px solid #f5c2c2;border-radius:999px;padding:2px 8px}
+.tag-win{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#dcfce7;color:#166534;border:1px solid #a7f3d0;border-radius:999px;padding:2px 8px}
+.stk{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:13px}
+.stk:first-child{border-top:none}
+.av{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+.stk .d{flex:1}
+.t-green{background:#e7f6ec;color:var(--green);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-amber{background:#fdf0e1;color:var(--amber);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-red{background:#fdeaea;color:var(--red);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-blue{background:#e7f0fd;color:var(--ln);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.sentbar{display:flex;height:30px;border-radius:8px;overflow:hidden;font-size:12px;font-weight:700;color:#fff}
+.sentbar div{display:flex;align-items:center;justify-content:center}
+.callout{margin-top:12px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:12px;font-size:13px;color:#065f46}
+.watch{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wl{background:var(--card);border:1px solid var(--line);border-left-width:5px;border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.wl.hi{border-left-color:var(--red)}.wl.me{border-left-color:var(--amber)}.wl.lo{border-left-color:var(--green)}
+.wl .p{font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;color:#fff}
+.p.hi{background:var(--red)}.p.me{background:var(--amber)}.p.lo{background:var(--green)}
+.wl h4{margin:8px 0 5px;font-size:13.5px}
+.wl p{margin:0;font-size:12.5px;color:var(--muted)}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.act{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.an{width:28px;height:28px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.an.r{background:var(--red)}.an.a{background:var(--amber)}
+.act h4{margin:0 0 4px;font-size:13.5px}
+.act p{margin:0;font-size:12.5px;color:var(--muted)}
+.urg{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-top:5px;display:inline-block}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.chartbox{position:relative;height:280px}
+footer{margin-top:34px;padding:18px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.banner{background:linear-gradient(90deg,#7f1d1d,#dc2626);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;margin-top:0;font-size:13.5px}
+.banner i{font-size:22px;flex-shrink:0;margin-top:2px}
+.banner strong{font-size:15px}
+.banner-item{margin-bottom:6px}
+.banner-item:last-child{margin-bottom:0}
+.winbanner{background:linear-gradient(90deg,#065f46,#16a34a);color:#fff;border-radius:12px;padding:13px 18px;display:flex;align-items:flex-start;gap:12px;margin-top:12px;font-size:13.5px}
+.winbanner i{font-size:22px;flex-shrink:0;margin-top:2px}
+#gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(900px 400px at 70% 10%,rgba(0,200,140,.25),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f)}
+.gatebox{background:#fff;border-radius:16px;padding:34px 30px;width:340px;max-width:90vw;box-shadow:0 14px 50px rgba(0,0,0,.35);text-align:center}
+.gatebox .logo{width:52px;height:52px;border-radius:14px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;background:linear-gradient(135deg,#0f2547,#1d4e8f)}
+.gatebox h2{margin:0 0 4px;font-size:17px;color:var(--ink)}
+.gatebox p{margin:0 0 18px;font-size:12.5px;color:var(--muted)}
+.gatebox input{width:100%;padding:11px 13px;margin-bottom:11px;border:1px solid var(--line);border-radius:9px;font-size:14px;background:#f8fafd}
+.gatebox input:focus{outline:2px solid #1d4e8f33;border-color:#1d4e8f}
+.gatebox button{width:100%;padding:11px;border:none;border-radius:9px;background:linear-gradient(120deg,#0f2547,#1d4e8f);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+.gatebox button:hover{filter:brightness(1.15)}
+#gateErr{display:none;color:var(--red);font-size:12px;margin-top:10px;font-weight:600}
+#dash{display:none}
+.refresh-btn{display:inline-flex;align-items:center;gap:7px;margin-top:16px;padding:8px 16px;border:none;border-radius:999px;
+  background:#00c88c;color:#06281d;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.refresh-btn:hover{filter:brightness(1.08)}
+.logout-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;margin-left:10px;padding:8px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:transparent;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer}
+@media(max-width:860px){.kpis,.plats{grid-template-columns:repeat(2,1fr)}.cols3,.cols2,.posts,.watch,.acts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Login gate -->
+<div id="gate">
+  <div class="gatebox">
+    <div class="logo"><i class="ti ti-shield-lock"></i></div>
+    <h2>AFENET Comms Intelligence</h2>
+    <p>Restricted dashboard — sign in to continue</p>
+    <form id="gateForm">
+      <input type="text" id="gateUser" placeholder="Username" autocomplete="username" required>
+      <input type="password" id="gatePass" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit">Sign in</button>
+    </form>
+    <div id="gateErr">Incorrect username or password.</div>
+  </div>
+</div>
+
+<div id="dash">
+<div class="wrap">
+
+  <!-- Status banner -->
+  <div class="banner">
+    <i class="ti ti-alert-triangle"></i>
+    <div>
+      <strong>🔴 DRC LAB STORY — DAY 5 · A GOOD POST EARNED ZERO · EMPTY POST STILL LIVE — 21 August 2026</strong>
+      <div class="banner-item" style="margin-top:8px">① <strong>DAY FIVE, TWO IGNORED ACTION ITEMS:</strong> the DRC viral-haemorrhagic-fever laboratory-preparedness article has been unamplified since 17 August. It was Action #1 on 17 Aug <em>and</em> Action #1 on 20 Aug. The account has published <strong>seven times</strong> since.</div>
+      <div class="banner-item">② <strong>ZERO ENGAGEMENT ON THE BEST POST OF THE WEEK:</strong> the polio After-Action Review post (Oromia · U.S. CDC · Oromia RHB · 4 images) sits at <strong>0 likes / 1 RT after ~15 hours</strong>. When well-made content earns nothing, the problem has moved from craft to <strong>distribution</strong>.</div>
+      <div class="banner-item">③ <strong>THE EMPTY POST IS STILL PUBLISHED:</strong> recommended for deletion yesterday, still live today — now four days old, and <em>still</em> outranking every written field report in the window.</div>
+      <div class="banner-item">④ <strong>THE OUTBREAK ACCELERATED:</strong> DRC reported <strong>+187 cases and +98 deaths</strong> in a single reporting cycle — cumulative <strong>5,208 cases / 2,476 deaths</strong>, 56 of 151 health zones affected.</div>
+    </div>
+  </div>
+
+  <div class="winbanner">
+    <i class="ti ti-circle-check"></i>
+    <div>
+      <strong>🟢 EXECUTED — the Somalia Pandemic Fund article shipped inside 24 hours.</strong>
+      <div style="margin-top:5px">Action Item #4 from 20 August was delivered: the ministerial launch is now a durable, citable article on afenet.net (20 Aug) as well as a tweet (19 Aug). The reverse gap is <strong>closed</strong>. Website cadence also accelerated — 14 articles in 30 days (from 12) and 7 in 14 days (from 5). The content engine is working; everything failing below is failing between the article and the audience.</div>
+    </div>
+  </div>
+
+  <div class="hero" style="margin-top:14px">
+    <h1>AFENET Communications Intelligence</h1>
+    <p>Daily report · 21 August 2026 · Dominant theme: <strong>One recommendation executed cleanly — the Somalia Pandemic Fund article shipped in under 24 hours and closed the reverse gap. But the DRC laboratory story is now five days unamplified across two ignored action items, the empty 18 August post is still live, and the single new tweet — a well-built polio After-Action Review with three named partners — earned zero likes in 15 hours. Followers: 9,758 X (▲2) · ~10,066 LinkedIn.</strong></p>
+    <div class="pills">
+      <span class="pill" style="background:rgba(29,161,242,.3)"><i class="ti ti-brand-twitter"></i>@AFENETAfrica</span>
+      <span class="pill" style="background:rgba(66,103,178,.3)"><i class="ti ti-brand-facebook"></i>AFENETafrica</span>
+      <span class="pill" style="background:rgba(225,48,108,.3)"><i class="ti ti-brand-instagram"></i>@afenetafrica_official</span>
+      <span class="pill" style="background:rgba(10,102,194,.3)"><i class="ti ti-brand-linkedin"></i>African Field Epidemiology Network</span>
+      <span class="pill" style="background:rgba(0,200,140,.32)"><i class="ti ti-world"></i>afenet.net</span>
+    </div>
+    <button class="refresh-btn" onclick="location.replace(location.pathname+'?t='+Date.now())"><i class="ti ti-refresh"></i> Refresh — load latest update</button>
+    <button class="logout-btn" onclick="sessionStorage.removeItem('afenet_auth');location.reload()"><i class="ti ti-logout"></i> Sign out</button>
+  </div>
+
+  <!-- KPIs -->
+  <div class="sec">
+    <h2><span class="bar"></span>KPI Summary</h2>
+    <div class="kpis">
+      <div class="kpi k1"><div class="orb"></div><i class="ti ti-brand-twitter"></i><div class="lbl">Twitter followers</div><div class="num">9,758</div><div class="note">▲ +2 · Following 3,435 (▲1)</div></div>
+      <div class="kpi k2"><div class="orb"></div><i class="ti ti-brand-linkedin"></i><div class="lbl">LinkedIn followers</div><div class="num">~10,066</div><div class="note">🟠 No new post confirmed since 17 Aug</div></div>
+      <div class="kpi k3"><div class="orb"></div><i class="ti ti-heart"></i><div class="lbl">Likes (7 days)</div><div class="num">18</div><div class="note">🔴 2.6♥/post vs 8.2 prior week</div></div>
+      <div class="kpi k4"><div class="orb"></div><i class="ti ti-repeat"></i><div class="lbl">Retweets (7 days)</div><div class="num">4</div><div class="note">▲ +1 · across 7 posts</div></div>
+      <div class="kpi k5"><div class="orb"></div><i class="ti ti-news"></i><div class="lbl">Website news (14 days)</div><div class="num">7</div><div class="note">🟢 ▲ from 5 · 14 in 30 days · last 20 Aug</div></div>
+      <div class="kpi k6"><div class="orb"></div><i class="ti ti-calendar-event"></i><div class="lbl">Upcoming events</div><div class="num">2</div><div class="note">CPHIA + ESCAIDE (Nov) — neither promoted</div></div>
+      <div class="kpi k7"><div class="orb"></div><i class="ti ti-message-circle"></i><div class="lbl">Days since last tweet</div><div class="num">&lt;1</div><div class="note">🟢 Polio AAR post, ~15h before capture</div></div>
+      <div class="kpi k8"><div class="orb"></div><i class="ti ti-mood-smile"></i><div class="lbl">Sentiment</div><div class="num">72%</div><div class="note">positive; no negative on owned channels</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:11.5px;color:var(--muted)"><i class="ti ti-lock"></i> Login-gated and unretrievable this run: Facebook post-level engagement and last-post date; Instagram follower count, cadence and engagement — 5th consecutive run.</div>
+  </div>
+
+  <!-- Website Analysis -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--teal)"></span>Website — afenet.net</h2>
+    <div class="card web">
+      <div class="cols3">
+        <div class="sub">
+          <h4><i class="ti ti-clock"></i> Content freshness</h4>
+          <div class="big" style="color:var(--green)">1 day 🟢</div>
+          <div style="font-size:12.5px;color:var(--muted)">Two new articles on <strong>20 August</strong>. Well inside the 14-day threshold. The website is the strongest part of the operation this run.</div>
+          <div style="margin-top:10px;font-size:11.5px;background:#e7f6ec;border-radius:8px;padding:8px;color:#166534"><i class="ti ti-trending-up"></i> <strong>Cadence: accelerating.</strong> 14 articles in 30 days (from 12) and 7 in the last 14 (from 5). Bilingual EN/FR publishing continues. The content engine is working.</div>
+          <div style="margin-top:8px;font-size:11.5px;background:#e7f6ec;border-radius:8px;padding:8px;color:#166534"><i class="ti ti-circle-check"></i> <strong>EXECUTED:</strong> the Somalia Pandemic Fund article was published on 20 August — Action #4 from yesterday, delivered inside 24 hours. The reverse gap is closed.</div>
+          <div style="margin-top:8px;font-size:11.5px;background:#fdeaea;border-radius:8px;padding:8px;color:#b91c1c"><i class="ti ti-bug"></i> <strong>5th run, unfixed:</strong> footer "About Us" links still resolve to <code>afenet.net/test/…</code>; events page metadata still reads <em>"Events from January 14, 2022 – June 14, 2022"</em>; footer still reads <strong>"© All right reserved 2023"</strong>; the Instagram icon still routes to a public <strong>hashtag feed</strong>, not the owned account; homepage Impact counters still render <strong>0</strong>.</div>
+        </div>
+        <div class="sub">
+          <h4><i class="ti ti-list"></i> Recent stories (afenet.net)</h4>
+          <ol class="stories">
+            <li>FETP Mozambique 2025 Annual Bulletin <span class="chip">20 Aug</span><span class="chip-warn">NEW · UNPOSTED</span></li>
+            <li>Minister of Health Somalia Launched the Pandemic Fund Project <span class="chip">20 Aug</span><span class="chip-green">✓ GAP CLOSED</span></li>
+            <li>AFENET &amp; Partners Advance Laboratory Preparedness for Viral Haemorrhagic Fevers — DRC <span class="chip">17 Aug</span><span class="chip-red">DAY 5 UNPOSTED</span></li>
+            <li>Kenya Strengthens Intermediate FETP Training via the ECHO Model <span class="chip">17 Aug</span><span class="chip-red">DAY 5 UNPOSTED</span></li>
+            <li>Kenya Integrates PopCAB into Field Epidemiology Training <span class="chip">17 Aug</span><span class="chip-red">DAY 5 UNPOSTED</span></li>
+            <li>STOP 56 Training Opens in Tanzania — 82 professionals <span class="chip">12 Aug</span><span class="chip-green">ALIGNED</span></li>
+          </ol>
+          <div style="margin-top:10px;font-size:11.5px;color:var(--muted)"><strong>Events (2):</strong> CPHIA 2026, 1–5 Nov, Addis Ababa (Africa CDC co-hosted) · ESCAIDE 2026, 18–20 Nov, Stockholm. Neither promoted on social — unchanged for five runs. CPHIA is <strong>10 weeks out</strong>. No AFENET-owned event appears on the calendar at all.</div>
+        </div>
+        <div class="sub">
+          <h4><i class="ti ti-arrows-exchange"></i> Content-social alignment</h4>
+          <ul class="align">
+            <li><span class="yes">✓✓</span> <strong>Somalia Pandemic Fund</strong> — X (19 Aug) <strong>+ website article (20 Aug)</strong>. <strong>Action #4 executed.</strong></li>
+            <li><span class="no">✗</span> <strong>DRC VHF lab preparedness (17 Aug)</strong> — <strong>day 5</strong>. Action #1 on 17 <em>and</em> 20 Aug, unexecuted twice</li>
+            <li><span class="no">✗</span> Kenya ECHO-model FETP training (17 Aug) — day 5, no post</li>
+            <li><span class="no">✗</span> Kenya PopCAB integration (17 Aug) — day 5, no post</li>
+            <li><span class="no">✗</span> <strong>FETP Mozambique 2025 Annual Bulletin (20 Aug)</strong> — a whole year of programme evidence, unposted</li>
+            <li><span class="yes">✓</span> STOP 56 Tanzania (12 Aug) — amplified 13 Aug</li>
+            <li><span class="yes">✓</span> Mali Bulletin N°4 (PVDV2c) — FR post in place</li>
+            <li><span class="no">✗</span> 24th Frontline graduation, Zanzibar (4 Aug) — <strong>17 days, still no post</strong></li>
+            <li><span class="mid">⚠</span> <strong>NEW REVERSE GAP — Polio AAR, Oromia (20 Aug, X)</strong> — U.S. CDC + Oromia RHB partnership on social, <strong>no website article</strong></li>
+            <li><span class="no">✗</span> CPHIA 2026 / ESCAIDE 2026 — no promotional posts</li>
+          </ul>
+          <div style="margin-top:10px;font-size:11.5px;background:#fef9e7;border-radius:8px;padding:8px;color:#92400e"><i class="ti ti-arrows-left-right"></i> The reverse gap closed on Somalia and <strong>immediately reopened on Ethiopia</strong>. The team can clearly convert a tweet into an article in a day — it did so on 20 August. What's missing is a standing rule that every partner-facing activity gets both a post and a page, rather than one editorial rescue per week.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Platform Breakdown -->
+  <div class="sec">
+    <h2><span class="bar"></span>Platform Breakdown</h2>
+    <div class="plats">
+      <div class="plat">
+        <div class="top" style="background:var(--tw)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-twitter" style="color:var(--tw)"></i>Twitter / X</h3>
+          <div class="handle">@AFENETAfrica</div>
+          <div class="row"><span>Followers</span><span>9,758 ▲2</span></div>
+          <div class="row"><span>Following</span><span>3,435 ▲1</span></div>
+          <div class="row"><span>Posts (7 days)</span><span>7 — 5 / 1 / 1 across 18–20 Aug</span></div>
+          <div class="row"><span>Last post</span><span>~15h (polio AAR)</span></div>
+          <div class="row"><span>Engagement</span><span>18♥ / 4 RT · 2.6♥/post</span></div>
+          <div class="row"><span>Content mix</span><span>5× ACoDD Ebola, 1× Somalia, 1× Ethiopia polio</span></div>
+          <span class="badge" style="background:#fdf0e1;color:#92400e">🟠 Publishing consistently, reaching no one</span>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:var(--ln)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-linkedin" style="color:var(--ln)"></i>LinkedIn</h3>
+          <div class="handle">African Field Epidemiology Network</div>
+          <div class="row"><span>Followers</span><span>~10,066</span></div>
+          <div class="row"><span>Last confirmed post</span><span>17 Aug (4 days)</span></div>
+          <div class="row"><span>18–21 Aug</span><span>Nothing confirmed</span></div>
+          <div class="row"><span>Engagement</span><span>N/A (gated)</span></div>
+          <div class="row"><span>Opportunity</span><span>Infodemic bulletin + DRC lab story</span></div>
+          <span class="badge" style="background:#fdf0e1;color:#92400e">🟠 Relapsed — one good week, then quiet</span>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:var(--fb)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-facebook" style="color:var(--fb)"></i>Facebook</h3>
+          <div class="handle">AFENETafrica</div>
+          <div class="row"><span>Page likes</span><span>~17,267</span></div>
+          <div class="row"><span>Newest surfaced post</span><span>21–25 Jul workshop (~4 wks)</span></div>
+          <div class="row"><span>That post</span><span>Ethiopia FELTP scientific writing · U.S. CDC</span></div>
+          <div class="row"><span>Engagement</span><span>N/A (gated)</span></div>
+          <div class="row"><span>Data freshness</span><span>5th run carried forward</span></div>
+          <span class="badge" style="background:#fdeaea;color:#b91c1c">🔴 ~4-week gap — verify by login</span>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:var(--ig)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-instagram" style="color:var(--ig)"></i>Instagram</h3>
+          <div class="handle">@afenetafrica_official</div>
+          <div class="row"><span>Followers</span><span>N/A (gated)</span></div>
+          <div class="row"><span>Posts (7 days)</span><span>Est. low</span></div>
+          <div class="row"><span>Engagement</span><span>N/A (gated)</span></div>
+          <div class="row"><span>Unused assets</span><span>4 Somalia + 4 Oromia AAR images</span></div>
+          <div class="row"><span>Site link</span><span>⚠ still points to hashtag feed</span></div>
+          <span class="badge" style="background:#fce7f3;color:#9d174d">🟠 Underutilised — and still mislinked</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:11.5px;background:#fdeaea;border-radius:8px;padding:10px;color:#b91c1c"><i class="ti ti-arrows-split-2"></i> <strong>Alignment note:</strong> X carried the polio AAR; the website carried Mozambique and Somalia; LinkedIn carried nothing; Facebook and Instagram carried nothing. <strong>Four channels, four different stories, no shared editorial spine.</strong></div>
+  </div>
+
+  <!-- Chart + Top Posts -->
+  <div class="sec">
+    <h2><span class="bar"></span>Engagement + Top Posts</h2>
+    <div class="cols2">
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px">Tweet Engagement — visible posts (18–20 Aug)</div>
+        <div class="chartbox"><canvas id="engChart"></canvas></div>
+        <div style="margin-top:10px;font-size:11.5px;background:#fdeaea;border-radius:8px;padding:9px;color:#b91c1c"><i class="ti ti-trending-down"></i> <strong>Seven posts, 18 likes — and the newest, best-written one has none.</strong> The polio AAR (20 Aug) is the strongest-constructed item of the week and sits at zero. The only post to <em>gain</em> engagement overnight was Somalia (2♥ → 4♥) — the one now backed by a durable article. Content that has somewhere permanent to point keeps compounding.</div>
+      </div>
+      <div>
+        <div class="posts" style="grid-template-columns:1fr;gap:12px">
+          <div class="post">
+            <div style="display:flex;align-items:center;gap:10px"><div class="rank gold">1</div><div class="post meta" style="font-size:11px;color:var(--muted)">Twitter · 18 Aug 2026</div></div>
+            <span class="tag-top">Top performer</span>
+            <div class="txt">Strengthening Surveillance and Health Safety in Haut-Uélé — a joint team from the surveillance, IPC and laboratory pillars, with support from the security team, conducted the interception, pre-listing and swab collection from a deceased person being transported…</div>
+            <div class="stats"><span><i class="ti ti-heart"></i> 5</span><span><i class="ti ti-repeat"></i> 1</span></div>
+            <div style="font-size:11.5px;color:var(--muted);margin-top:6px">Why it still leads three days on: the only post in the window describing genuine operational difficulty — multi-pillar team, security escort, a safe-and-dignified-burial interception. Friction reads as real work.</div>
+          </div>
+          <div class="post">
+            <div style="display:flex;align-items:center;gap:10px"><div class="rank silver">2</div><div class="post meta" style="font-size:11px;color:var(--muted)">Twitter · 18 Aug 2026</div></div>
+            <span class="tag-dup">Still live · day 4</span>
+            <div class="txt">#EbolaResponse #FieldEpidemiology #PublicHealth #HealthSecurity #DiseaseSurveillance #AFENET<br><em style="color:var(--muted)">— one image, six hashtags, no body copy at all.</em></div>
+            <div class="stats"><span><i class="ti ti-heart"></i> 4</span><span><i class="ti ti-repeat"></i> 1</span></div>
+            <div style="font-size:11.5px;color:var(--muted);margin-top:6px"><strong>Why it matters more today than yesterday:</strong> it was recommended for deletion on 20 August and is still published — now four days on the timeline of an organisation responding to a PHEIC with 2,476 deaths. It <em>still</em> outranks every written field report in the window.</div>
+          </div>
+          <div class="post">
+            <div style="display:flex;align-items:center;gap:10px"><div class="rank bronze">2=</div><div class="post meta" style="font-size:11px;color:var(--muted)">Twitter · 19 Aug 2026</div></div>
+            <span class="tag-win">Gap closed</span>
+            <div class="txt">The Minister of Health and Social Services of the Federal Government of Somalia, H.E. Dr. Ali Haji Adam, today officially launched the Pandemic Fund Project…</div>
+            <div class="stats"><span><i class="ti ti-heart"></i> 4</span><span><i class="ti ti-repeat"></i> 0</span><span><i class="ti ti-message-circle"></i> 1</span></div>
+            <div style="font-size:11.5px;color:var(--muted);margin-top:6px">Doubled from 2♥ to 4♥ overnight — the only post in the window that <em>gained</em> engagement, and the one now backed by a durable website article. Ministerial content compounds when it has somewhere permanent to point.</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:11.5px;background:#fdeaea;border-radius:8px;padding:10px;color:#b91c1c"><i class="ti ti-alert-circle"></i> <strong>The most significant data point this run:</strong> the <strong>polio After-Action Review post (20 Aug)</strong> — <em>"Every Lesson Counts: Strengthening Polio Outbreak Response Through After-Action Review"</em>, co-convened with the <strong>U.S. CDC</strong> and the <strong>Oromia Regional Health Bureau</strong>, four images — sits at <strong>0 likes / 1 RT after ~15 hours</strong>. Clear headline, named partners, image-led: everything the account has been told to do. Zero engagement on a well-made post is not a content problem. An account following <strong>3,435</strong> while holding <strong>9,758</strong> followers, publishing in bursts, with no partner co-amplification, is being algorithmically discounted.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stakeholders -->
+  <div class="sec">
+    <h2><span class="bar"></span>Stakeholder Mentions</h2>
+    <div class="card">
+      <div class="stk">
+        <div class="av" style="background:#16a34a"><i class="ti ti-building-bank"></i></div>
+        <div class="d"><strong>Somalia Ministry of Health</strong><br><span style="font-size:12px;color:var(--muted)">H.E. Dr. Ali Haji Adam launched the Pandemic Fund Project — now on X (19 Aug) <strong>and</strong> written up on afenet.net (20 Aug). Durable and citable.</span></div>
+        <span class="t-green">Positive · Gap closed</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#16a34a"><i class="ti ti-vaccine"></i></div>
+        <div class="d"><strong>U.S. CDC</strong><br><span style="font-size:12px;color:var(--muted)">Named partner on the Oromia polio After-Action Review, STOP 56, DRC border health, and the Ethiopia FELTP scientific-writing workshop.</span></div>
+        <span class="t-green">Positive</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#d97706"><i class="ti ti-file-off"></i></div>
+        <div class="d"><strong>Oromia Regional Health Bureau</strong><br><span style="font-size:12px;color:var(--muted)">Co-convened the polio outbreak-response After-Action Review with AFENET and the U.S. CDC — posted on X only, with no website article. New reverse gap.</span></div>
+        <span class="t-amber">Gap · New</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#d97706"><i class="ti ti-cash-off"></i></div>
+        <div class="d"><strong>Pandemic Fund</strong><br><span style="font-size:12px;color:var(--muted)">Somalia launch now durable on both channels — but the Zanzibar Frontline graduation milestone is <strong>17 days</strong> unamplified.</span></div>
+        <span class="t-amber">Partial</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#d97706"><i class="ti ti-shield-off"></i></div>
+        <div class="d"><strong>DRC MoH — Haut-Uélé, Tshopo, Beni</strong><br><span style="font-size:12px;color:var(--muted)">ACoDD deployed across surveillance, IPC, triage and contact tracing — but no new field post in three days while the outbreak added 187 cases and 98 deaths in a cycle.</span></div>
+        <span class="t-amber">Cooling</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#dc2626"><i class="ti ti-flask-off"></i></div>
+        <div class="d"><strong>DRC laboratory partners</strong><br><span style="font-size:12px;color:var(--muted)">Viral haemorrhagic fever laboratory preparedness — website only, <strong>day 5</strong>, no social post. Action Item #1 on two separate runs, unexecuted both times.</span></div>
+        <span class="t-red">Gap · Day 5</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#d97706"><i class="ti ti-school"></i></div>
+        <div class="d"><strong>Kenya FELTP · Project ECHO · Nairobi &amp; Kajiado Counties</strong><br><span style="font-size:12px;color:var(--muted)">ECHO-model mentorship and PopCAB cross-border surveillance — website only, day 5, neither posted.</span></div>
+        <span class="t-amber">Gap</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#d97706"><i class="ti ti-report-off"></i></div>
+        <div class="d"><strong>FETP Mozambique</strong><br><span style="font-size:12px;color:var(--muted)">Full 2025 Annual Bulletin published 20 August — a year of programme evidence with no social presence at all.</span></div>
+        <span class="t-amber">Gap · New</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#d97706"><i class="ti ti-broadcast-off"></i></div>
+        <div class="d"><strong>Africa CDC</strong><br><span style="font-size:12px;color:var(--muted)">CPHIA 2026 co-host and leading the Ebola community-trust push — no visible reciprocal amplification in either direction, 10 weeks out.</span></div>
+        <span class="t-amber">Gap</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#d97706"><i class="ti ti-link-off"></i></div>
+        <div class="d"><strong>WHO AFRO</strong><br><span style="font-size:12px;color:var(--muted)">Weekly Bundibugyo situation reports (Report 14, data to 16 Aug); no cross-referencing with AFENET's field data or infodemic bulletins despite clear complementarity.</span></div>
+        <span class="t-amber">Gap</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sentiment -->
+  <div class="sec">
+    <h2><span class="bar"></span>Sentiment Snapshot</h2>
+    <div class="card">
+      <div class="sentbar">
+        <div style="width:72%;background:#16a34a">72% Positive</div>
+        <div style="width:23%;background:#9ca3af">23% Neutral</div>
+        <div style="width:5%;background:#dc2626">5% Risk</div>
+      </div>
+      <div class="callout">
+        <strong><i class="ti ti-info-circle"></i> No negative sentiment on owned channels.</strong> Positive sentiment is driven by the Somalia launch now landing on two channels, the polio AAR partnership framing, the Mozambique annual bulletin and the residual ACoDD field series. All observed replies and retweets were supportive. Neutral covers the still-live hashtag-only post and the repetitive remainder of the 18 August batch. <strong>External risk (5%, up from 4%):</strong> the DRC's 19 August update (data to 18 August) reports <strong>5,208 confirmed cases and 2,476 deaths</strong> — an increase of <strong>187 cases and 98 deaths in a single reporting cycle</strong>. <strong>730 patients are hospitalised in isolation</strong>; 1,115 have recovered. <strong>56 of 151 health zones across six provinces</strong> are affected and 84% of identified contacts are under follow-up. Uganda holds at 20 confirmed cases and 2 deaths (as of 28 July). The outbreak has been a <strong>PHEIC since 16 May 2026</strong>. <strong>The strategic point, restated because it got worse: a case fatality ratio near 48% and 98 deaths added in one day means the information environment is not a secondary concern. AFENET's infodemic bulletin — the single product addressing community trust directly — has now been dormant nine days, since 12 August, while the epidemic curve steepened.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Watchlist -->
+  <div class="sec">
+    <h2><span class="bar"></span>Issues Watchlist</h2>
+    <div class="watch">
+      <div class="wl hi">
+        <span class="p hi">HIGH</span>
+        <h4>DRC Laboratory Story Unamplified on Day Five — Action Item Twice Ignored</h4>
+        <p>The viral-haemorrhagic-fever laboratory-preparedness article has been the single highest-value unamplified asset on afenet.net since 17 August. It was Action Item #1 on 17 August and Action Item #1 again on 20 August. The account has published seven times since. This is not a bandwidth failure; it is an absent editorial rule. Nominate one person to own the amplification queue and give them authority to displace field posts.</p>
+      </div>
+      <div class="wl hi">
+        <span class="p hi">HIGH</span>
+        <h4>A Well-Made Post Earned Zero Engagement</h4>
+        <p>The polio After-Action Review post is the best-constructed item on the account this week — clear headline, three named partners, four images — and it has 0 likes after 15 hours. When good content earns nothing, the problem has moved from craft to distribution. The account follows 3,435 accounts against 9,758 followers, publishes in bursts, and has no partner co-amplification. That combination reads as low-signal to the ranking system.</p>
+      </div>
+      <div class="wl hi">
+        <span class="p hi">HIGH</span>
+        <h4>The Empty Post Is Still Published</h4>
+        <p>Recommended for deletion on 20 August; still live on 21 August, now four days old. It remains the second-highest-engagement item in the window, which makes it doubly instructive and doubly embarrassing. Removing it takes thirty seconds and nobody has done it — which tells you no one currently owns the account's published state.</p>
+      </div>
+      <div class="wl me">
+        <span class="p me">MEDIUM</span>
+        <h4>LinkedIn Relapsed After One Good Week</h4>
+        <p>Two confirmed posts on 14 and 17 August, then nothing on 18–21 August. The largest audience AFENET has (~10,066) received one week of the ACoDD series and then silence. The pattern across five runs is activation-then-dormancy, not a sustained programme.</p>
+      </div>
+      <div class="wl me">
+        <span class="p me">MEDIUM</span>
+        <h4>Website Defects Unfixed for a Fifth Run</h4>
+        <p>Four site-wide footer links still resolve into <code>afenet.net/test/…</code>; the events page metadata still advertises a 2022 date range; the footer still reads "© All right reserved 2023"; the Instagram icon still routes visitors to an unmoderated public hashtag feed; the homepage Impact counters still render 0. Flagged 12, 15, 17, 20 and now 21 August with no fix and no acknowledgement — five runs of mentions is evidence the reporting channel itself is broken.</p>
+      </div>
+      <div class="wl lo">
+        <span class="p lo">LOW</span>
+        <h4>Facebook Unverified for a Fifth Consecutive Run</h4>
+        <p>The newest Facebook activity surfaced publicly covers a 21–25 July scientific-writing workshop with the U.S. CDC and the Ethiopia Ministry of Health — roughly four weeks old. The ~17,267 page-likes figure has now been carried forward five times without verification. This needs a five-minute login, not a sixth carried-forward number.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Plan -->
+  <div class="sec">
+    <h2><span class="bar"></span>Action Plan — Next 24–48 Hours</h2>
+    <div class="acts">
+      <div class="act">
+        <div class="an r">1</div>
+        <div>
+          <h4>Post the DRC Laboratory-Preparedness Article Before Anything Else</h4>
+          <p>Five days, two ignored action items, and it sits directly on the outbreak that added 98 deaths yesterday. Post it to X and LinkedIn simultaneously, lead with what the labs can now <em>do</em> rather than the meeting that produced it, and tag the DRC MoH and the laboratory partners by name.</p>
+          <span class="urg">⏰ Today</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an r">2</div>
+        <div>
+          <h4>Delete the Hashtag-Only Post — Today, Before It Turns Five Days Old</h4>
+          <p>It was recommended for removal yesterday and it is still up. Delete it, then write one line into the posting workflow: no post publishes without at least one sentence of body copy. Assign the account's published state to a named owner.</p>
+          <span class="urg">⏰ Today</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an r">3</div>
+        <div>
+          <h4>Ask Three Partners to Amplify the Polio AAR Post</h4>
+          <p>A zero-engagement post with the U.S. CDC and the Oromia Regional Health Bureau in it is a wasted asset that can still be recovered. Send the link to both partners and to Ethiopia FELTP with a one-line request to repost. Partner amplification is the fastest available fix for a reach problem.</p>
+          <span class="urg">⏰ Today</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an a">4</div>
+        <div>
+          <h4>Publish the Ethiopia Polio AAR as a Website Article</h4>
+          <p>The reverse gap you closed on Somalia has already reopened on Ethiopia. Use the same turnaround you just demonstrated — the four images exist, the partners are named, and after-action learning is exactly the durable, citable content donors look for.</p>
+          <span class="urg">📅 Tomorrow</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an a">5</div>
+        <div>
+          <h4>Post the FETP Mozambique 2025 Annual Bulletin — as a Thread, Not a Link</h4>
+          <p>A full year of programme evidence went up on 20 August and has no social presence at all. Pull three or four concrete numbers from it into a short thread; annual bulletins are the most under-used donor-facing asset AFENET publishes.</p>
+          <span class="urg">📅 Tomorrow</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an a">6</div>
+        <div>
+          <h4>Revive the Ebola Infodemic Bulletin on LinkedIn</h4>
+          <p>Nine days dormant while the outbreak added 187 cases in a day and response leadership continues to name community trust as the binding constraint. LinkedIn's ~10,066 followers are the right audience, and it would also break the platform's four-day silence.</p>
+          <span class="urg">📅 Tomorrow</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an a">7</div>
+        <div>
+          <h4>Escalate the Five Site Defects to a Single Named Owner with a Deadline</h4>
+          <p>Bundle the <code>/test/</code> footer links, the events-page metadata and slugs, the "© 2023" footer, the mislinked Instagram icon and the zeroed Impact counters into one ticket with URLs attached. Five runs of mentions have produced nothing, so send it to a person with a date rather than to a queue.</p>
+          <span class="urg">📅 48 hrs</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an a">8</div>
+        <div>
+          <h4>Verify Facebook and Instagram Directly — and Clear the Zanzibar Backlog</h4>
+          <p>Log in, replace the carried-forward Facebook figure with a real last-post date and page-likes count, and confirm Instagram's follower count and cadence. In the same session, post the 17-day-old Pandemic Fund graduation milestone and an Instagram carousel from the Somalia launch and Oromia AAR photographs.</p>
+          <span class="urg">📅 48 hrs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <strong>Sources:</strong>
+    <a href="https://afenet.net/" target="_blank">afenet.net</a> ·
+    <a href="https://afenet.net/news/" target="_blank">afenet.net/news/</a> ·
+    <a href="https://afenet.net/events/" target="_blank">afenet.net/events/</a> ·
+    <a href="https://x.com/AFENETAfrica" target="_blank">x.com/AFENETAfrica</a> ·
+    <a href="https://www.linkedin.com/company/african-field-epidemiology-network-for-a-healthier-continent" target="_blank">AFENET on LinkedIn</a> ·
+    <a href="https://www.facebook.com/AFENETAfrica/" target="_blank">facebook.com/AFENETAfrica</a> ·
+    <a href="https://www.afro.who.int/countries/democratic-republic-of-congo/publication/ebola-bundibugyo-virus-disease-outbreak-5" target="_blank">WHO AFRO — Bundibugyo Weekly Situation Report 14</a> ·
+    <a href="https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON615" target="_blank">WHO DON615 — Bundibugyo, DRC</a> ·
+    <a href="https://www.who.int/emergencies/situations/ebola-outbreak---drc-2026" target="_blank">WHO — Ebola outbreak DRC 2026</a> ·
+    <a href="https://www.ecdc.europa.eu/en/ebola-outbreak-democratic-republic-congo-and-uganda" target="_blank">ECDC — Ebola DRC &amp; Uganda</a>
+    <br>Methodology: web fetch of the afenet.net homepage (including the embedded @AFENETAfrica feed with live like/RT counts and follower figures), /news/ and /events/, plus public web search for LinkedIn, Facebook and outbreak context. Facebook and Instagram engagement metrics are login-gated and reported as N/A; the Facebook page-likes figure is carried forward and remains unverified for a fifth run. The polio AAR post is timestamped ~15 hours before capture, so it may have been published late on 20 August. Journal/JIEPH content excluded by configuration. Generated 21 August 2026 — automated daily run.
+  </footer>
+
+</div>
+</div>
+
+<script>
+// ── Access gate (client-side; deters casual access — not server-grade security) ──
+(function(){
+  function djb2(s){let x=5381;for(let i=0;i<s.length;i++){x=(((x<<5)+x)+s.charCodeAt(i))>>>0;}return x.toString(16);}
+  const U='f19270d8', P='35ddfaae'; // hashed credentials
+  const gate=document.getElementById('gate'), dash=document.getElementById('dash');
+  function unlock(){gate.style.display='none';dash.style.display='block';window.dispatchEvent(new Event('dash-visible'));}
+  if(sessionStorage.getItem('afenet_auth')==='1'){unlock();}
+  document.getElementById('gateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const u=document.getElementById('gateUser').value.trim(), p=document.getElementById('gatePass').value;
+    if(djb2(u)===U && djb2(p)===P){sessionStorage.setItem('afenet_auth','1');unlock();}
+    else{document.getElementById('gateErr').style.display='block';}
+  });
+})();
+
+let chartsBuilt=false;
+function buildCharts(){
+  if(chartsBuilt || document.getElementById('dash').style.display!=='block') return;
+  chartsBuilt=true;
+  new Chart(document.getElementById('engChart'), {
+    type:'bar',
+    data:{
+      labels:['Haut-Uélé Surveillance\n+ IPC (18 Aug)','Hashtag-only post\n(18 Aug)','Somalia Pandemic Fund\n(19 Aug)','Beni Triage\n(18 Aug)','Haut-Uélé Isiro\n(18 Aug)','Polio AAR Oromia\n(20 Aug)'],
+      datasets:[
+        {label:'Likes',data:[5,4,4,3,1,0],backgroundColor:'#00b389'},
+        {label:'Retweets',data:[1,1,0,1,0,1],backgroundColor:'#1da1f2'}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{ticks:{font:{size:9},maxRotation:45,minRotation:20}},y:{beginAtZero:true,ticks:{precision:0}}},
+      plugins:{legend:{position:'top'},title:{display:true,text:'Tweet engagement · 6 visible posts (18–20 Aug) · 18 likes / 4 RTs over 7 days · 2.6♥ per post (was 8.2)',font:{size:10}}}}
+  });
+}
+window.addEventListener('load', buildCharts);
+window.addEventListener('dash-visible', buildCharts);
+</script>
+</body>
+</html>
