@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFENET Communications Intelligence — 14 August 2026</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --muted:#5b6678; --line:#e4e8f0;
+  --tw:#1da1f2; --fb:#4267b2; --ln:#0a66c2; --ig:#e1306c; --teal:#00b389; --purple:#6d4fe5; --indigo:#4f46e5;
+  --green:#16a34a; --amber:#d97706; --red:#dc2626;
+  --shadow:0 2px 10px rgba(26,34,51,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+a{color:var(--ln);text-decoration:none}
+a:hover{text-decoration:underline}
+.hero{position:relative;overflow:hidden;border-radius:18px;padding:34px 30px;color:#fff;
+  background:radial-gradient(900px 300px at 85% -20%,rgba(0,200,140,.45),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f);
+  box-shadow:var(--shadow)}
+.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
+.hero p{margin:0;color:#cfe0f5;font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.pill i{font-size:15px}
+.sec{margin-top:30px}
+.sec h2{font-size:17px;margin:0 0 14px;display:flex;align-items:center;gap:9px}
+.sec h2 .bar{width:5px;height:20px;border-radius:3px;background:var(--ln)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{position:relative;overflow:hidden;border-radius:14px;padding:16px;color:#fff;box-shadow:var(--shadow)}
+.kpi .orb{position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.16)}
+.kpi i{font-size:20px;opacity:.95}
+.kpi .lbl{font-size:12px;opacity:.92;margin-top:6px}
+.kpi .num{font-size:26px;font-weight:800;line-height:1.1;margin-top:2px}
+.kpi .note{font-size:11px;opacity:.85;margin-top:3px}
+.k1{background:linear-gradient(135deg,#1da1f2,#0d7fd1)}
+.k2{background:linear-gradient(135deg,#0a66c2,#073d77)}
+.k3{background:linear-gradient(135deg,#4267b2,#2c477f)}
+.k4{background:linear-gradient(135deg,#e1306c,#f77737)}
+.k5{background:linear-gradient(135deg,#0d3a2a,#0a5040)}
+.k6{background:linear-gradient(135deg,#1a1040,#2a1a60)}
+.k7{background:linear-gradient(135deg,#7a3ea3,#54287a)}
+.k8{background:linear-gradient(135deg,#15803d,#16a34a)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.web{border-top:4px solid var(--teal)}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:18px}
+.sub h4{margin:0 0 8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.big{font-size:22px;font-weight:800}
+.chip{display:inline-block;font-size:11px;background:#eef2f9;color:var(--muted);border-radius:6px;padding:2px 7px;margin-left:6px}
+.chip-new{display:inline-block;font-size:11px;background:#dcfce7;color:#166534;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-warn{display:inline-block;font-size:11px;background:#fef9e7;color:#92400e;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-red{display:inline-block;font-size:11px;background:#fdeaea;color:#b91c1c;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-green{display:inline-block;font-size:11px;background:#dcfce7;color:#166534;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+ol.stories{margin:0;padding-left:18px}
+ol.stories li{margin-bottom:7px;font-size:13px}
+.align li{list-style:none;font-size:13px;margin-bottom:6px;display:flex;gap:7px;align-items:flex-start}
+.align{padding:0;margin:0}
+.yes{color:var(--green);font-weight:800}
+.no{color:var(--red);font-weight:800}
+.mid{color:var(--amber);font-weight:800}
+.plats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.plat{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.plat .top{height:5px}
+.plat .body{padding:15px}
+.plat h3{margin:0 0 2px;font-size:14px;display:flex;align-items:center;gap:7px}
+.plat .handle{font-size:12px;color:var(--muted);margin-bottom:10px}
+.row{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-top:1px dashed var(--line)}
+.row span:last-child{font-weight:700}
+.badge{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:#eef2f9;color:var(--ink)}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:relative}
+.rank{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px}
+.gold{background:#d4af37}.silver{background:#9aa3ad}.bronze{background:#b87333}
+.post .txt{font-size:13px;margin:10px 0}
+.post .meta{font-size:11px;color:var(--muted)}
+.post .stats{display:flex;gap:14px;margin-top:8px;font-size:12.5px;font-weight:700}
+.tag-top{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#fff7e6;color:#b45309;border:1px solid #f0d9a8;border-radius:999px;padding:2px 8px}
+.stk{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:13px}
+.stk:first-child{border-top:none}
+.av{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+.stk .d{flex:1}
+.t-green{background:#e7f6ec;color:var(--green);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
+.t-amber{background:#fdf0e1;color:var(--amber);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
+.t-red{background:#fdeaea;color:var(--red);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
+.t-blue{background:#e7f0fd;color:var(--ln);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
+.sentbar{display:flex;height:30px;border-radius:8px;overflow:hidden;font-size:12px;font-weight:700;color:#fff}
+.sentbar div{display:flex;align-items:center;justify-content:center}
+.callout{margin-top:12px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:12px;font-size:13px;color:#065f46}
+.watch{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wl{background:var(--card);border:1px solid var(--line);border-left-width:5px;border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.wl.hi{border-left-color:var(--red)}.wl.me{border-left-color:var(--amber)}.wl.lo{border-left-color:var(--green)}
+.wl .p{font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;color:#fff}
+.p.hi{background:var(--red)}.p.me{background:var(--amber)}.p.lo{background:var(--green)}
+.wl h4{margin:8px 0 5px;font-size:13.5px}
+.wl p{margin:0;font-size:12.5px;color:var(--muted)}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.act{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.an{width:28px;height:28px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.an.r{background:var(--red)}.an.a{background:var(--amber)}
+.act h4{margin:0 0 4px;font-size:13.5px}
+.act p{margin:0;font-size:12.5px;color:var(--muted)}
+.urg{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-top:5px;display:inline-block}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.chartbox{position:relative;height:260px}
+footer{margin-top:34px;padding:18px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.banner{background:linear-gradient(90deg,#065f46,#16a34a);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;margin-top:0;font-size:13.5px}
+.banner i{font-size:22px;flex-shrink:0;margin-top:2px}
+.banner strong{font-size:15px}
+.banner-item{margin-bottom:6px}
+.banner-item:last-child{margin-bottom:0}
+#gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(900px 400px at 70% 10%,rgba(0,200,140,.25),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f)}
+.gatebox{background:#fff;border-radius:16px;padding:34px 30px;width:340px;max-width:90vw;box-shadow:0 14px 50px rgba(0,0,0,.35);text-align:center}
+.gatebox .logo{width:52px;height:52px;border-radius:14px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;background:linear-gradient(135deg,#0f2547,#1d4e8f)}
+.gatebox h2{margin:0 0 4px;font-size:17px;color:var(--ink)}
+.gatebox p{margin:0 0 18px;font-size:12.5px;color:var(--muted)}
+.gatebox input{width:100%;padding:11px 13px;margin-bottom:11px;border:1px solid var(--line);border-radius:9px;font-size:14px;background:#f8fafd}
+.gatebox input:focus{outline:2px solid #1d4e8f33;border-color:#1d4e8f}
+.gatebox button{width:100%;padding:11px;border:none;border-radius:9px;background:linear-gradient(120deg,#0f2547,#1d4e8f);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+.gatebox button:hover{filter:brightness(1.15)}
+#gateErr{display:none;color:var(--red);font-size:12px;margin-top:10px;font-weight:600}
+#dash{display:none}
+.refresh-btn{display:inline-flex;align-items:center;gap:7px;margin-top:16px;padding:8px 16px;border:none;border-radius:999px;
+  background:#00c88c;color:#06281d;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.refresh-btn:hover{filter:brightness(1.08)}
+.logout-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;margin-left:10px;padding:8px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:transparent;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer}
+@media(max-width:860px){.kpis,.plats{grid-template-columns:repeat(2,1fr)}.cols3,.cols2,.posts,.watch,.acts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Login gate -->
+<div id="gate">
+  <div class="gatebox">
+    <div class="logo"><i class="ti ti-shield-lock"></i></div>
+    <h2>AFENET Comms Intelligence</h2>
+    <p>Restricted dashboard — sign in to continue</p>
+    <form id="gateForm">
+      <input type="text" id="gateUser" placeholder="Username" autocomplete="username" required>
+      <input type="password" id="gatePass" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit">Sign in</button>
+    </form>
+    <div id="gateErr">Incorrect username or password.</div>
+  </div>
+</div>
+
+<div id="dash">
+<div class="wrap">
+
+  <!-- Status banner -->
+  <div class="banner">
+    <i class="ti ti-broadcast"></i>
+    <div>
+      <strong>🟢 STOP 56 GOES FROM LAUNCH TO "TRAINING IN ACTION" · EBOLA DATA + INFODEMIC BULLETINS RUN ALONGSIDE — 14 August 2026</strong>
+      <div class="banner-item" style="margin-top:8px">① <strong>FLAGSHIP IN MOTION:</strong> the STOP 56 Tanzania course (82 professionals, 22 countries) is now visibly underway — the multi-image "training in action" series is the week's strongest engagement line (7 likes / 2 RTs on the lead post) and mirrors the 12 Aug website article.</div>
+      <div class="banner-item">② <strong>OUTBREAK VOICE:</strong> AFENET is running a differentiated Ebola line — the "What Is the Data Telling Us?" bulletin (13 Aug) and the Ebola Infodemic Bulletin, 27–31 July (6 likes / 1 RT) — positioning AFENET as a data/intelligence voice on the DRC Bundibugyo outbreak.</div>
+      <div class="banner-item">③ <strong>STILL OPEN:</strong> the 24th Frontline (Zanzibar) graduation still has no social post; the events-page caching bug persists; and both the STOP 56 flagship and the infodemic work remain Twitter-heavy — untapped on LinkedIn/Instagram.</div>
+    </div>
+  </div>
+
+  <div class="hero" style="margin-top:14px">
+    <h1>AFENET Communications Intelligence</h1>
+    <p>Daily report · 14 August 2026 · Dominant theme: <strong>STOP 56 moves from launch to "training in action" (82 professionals, 22 countries) as the week's strongest engagement line, running alongside AFENET's Ebola data + infodemic bulletins on the DRC Bundibugyo outbreak. Twitter followers tick up to 3,424; the events-page bug and the un-amplified Zanzibar graduation stay open.</strong></p>
+    <div class="pills">
+      <span class="pill" style="background:rgba(29,161,242,.3)"><i class="ti ti-brand-twitter"></i>@AFENETAfrica</span>
+      <span class="pill" style="background:rgba(66,103,178,.3)"><i class="ti ti-brand-facebook"></i>AFENETafrica</span>
+      <span class="pill" style="background:rgba(225,48,108,.3)"><i class="ti ti-brand-instagram"></i>@afenetafrica_official</span>
+      <span class="pill" style="background:rgba(10,102,194,.3)"><i class="ti ti-brand-linkedin"></i>African Field Epidemiology Network</span>
+      <span class="pill" style="background:rgba(0,200,140,.32)"><i class="ti ti-world"></i>afenet.net</span>
+    </div>
+    <button class="refresh-btn" onclick="location.replace(location.pathname+'?t='+Date.now())"><i class="ti ti-refresh"></i> Refresh — load latest update</button>
+    <button class="logout-btn" onclick="sessionStorage.removeItem('afenet_auth');location.reload()"><i class="ti ti-logout"></i> Sign out</button>
+  </div>
+
+  <!-- KPIs -->
+  <div class="sec">
+    <h2><span class="bar"></span>KPI Summary</h2>
+    <div class="kpis">
+      <div class="kpi k1"><div class="orb"></div><i class="ti ti-brand-twitter"></i><div class="lbl">Twitter followers</div><div class="num">3,424</div><div class="note">↑6 vs 12 Aug · Following 9,753</div></div>
+      <div class="kpi k2"><div class="orb"></div><i class="ti ti-brand-linkedin"></i><div class="lbl">LinkedIn followers</div><div class="num">~10,066</div><div class="note">Public search today</div></div>
+      <div class="kpi k3"><div class="orb"></div><i class="ti ti-heart"></i><div class="lbl">Likes (7 days)</div><div class="num">~21</div><div class="note">STOP 56 "in action" + Ebola bulletins</div></div>
+      <div class="kpi k4"><div class="orb"></div><i class="ti ti-repeat"></i><div class="lbl">Retweets (7 days)</div><div class="num">3</div><div class="note">STOP 56 series drove the window</div></div>
+      <div class="kpi k5"><div class="orb"></div><i class="ti ti-news"></i><div class="lbl">Website news (14 days)</div><div class="num">5</div><div class="note">3 Aug – 12 Aug · latest article 2 days ago</div></div>
+      <div class="kpi k6"><div class="orb"></div><i class="ti ti-calendar-event"></i><div class="lbl">Upcoming events</div><div class="num">2</div><div class="note">CPHIA (Nov), ESCAIDE (Nov) — events page bug persists</div></div>
+      <div class="kpi k7"><div class="orb"></div><i class="ti ti-message-2"></i><div class="lbl">Tweets (7 days)</div><div class="num">~9</div><div class="note">STOP 56 series + Ebola data/infodemic bulletins</div></div>
+      <div class="kpi k8"><div class="orb"></div><i class="ti ti-mood-smile"></i><div class="lbl">Sentiment</div><div class="num">75%</div><div class="note">positive; up on the STOP 56 "in action" run</div></div>
+    </div>
+  </div>
+
+  <!-- Website Analysis -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--teal)"></span>Website — afenet.net</h2>
+    <div class="card web">
+      <div class="cols3">
+        <div class="sub">
+          <h4><i class="ti ti-clock"></i> Content freshness</h4>
+          <div class="big" style="color:var(--green)">2 days 🟢</div>
+          <div style="font-size:12.5px;color:var(--muted)">Most recent article published <strong>12 Aug</strong> (STOP 56 Training Opens in Tanzania) — well inside the 14-day freshness threshold.</div>
+          <div style="margin-top:10px;font-size:11.5px;background:#e7f6ec;border-radius:8px;padding:8px;color:#166534"><i class="ti ti-info-circle"></i> <strong>Cadence check:</strong> 5 articles inside the rolling 14-day window (3 Aug–12 Aug) — steady, consistent bilingual (EN/FR) publishing.</div>
+        </div>
+        <div class="sub">
+          <h4><i class="ti ti-list"></i> Recent stories (afenet.net)</h4>
+          <ol class="stories">
+            <li>STOP 56 Training Opens in Tanzania — 82 pros, 22 countries <span class="chip">12 Aug</span><span class="chip-green">ALIGNED</span></li>
+            <li>Bulletin N°4 – Mali FETP redeployed for PVDV2c <span class="chip">8 Aug</span><span class="chip-green">ALIGNED</span></li>
+            <li>24th Frontline FETP cohort graduated, Zanzibar <span class="chip">4 Aug</span><span class="chip-red">NO SOCIAL</span></li>
+            <li>Côte d'Ivoire — 17e cohorte + 2nd regional Advanced FETP <span class="chip">3 Aug</span><span class="chip-green">ALIGNED</span></li>
+            <li>Sierra Leone Launches First In-Country Advanced FETP <span class="chip">3 Aug</span><span class="chip-green">ALIGNED</span></li>
+          </ol>
+        </div>
+        <div class="sub">
+          <h4><i class="ti ti-arrows-exchange"></i> Content-social alignment</h4>
+          <ul class="align">
+            <li><span class="yes">✓</span> STOP 56 Tanzania — website (12 Aug) mirrored by the multi-tweet "training in action" series (13–14 Aug)</li>
+            <li><span class="yes">✓</span> Mali Bulletin N°4 (PVDV2c) — link-preview tweet in place</li>
+            <li><span class="yes">✓</span> Côte d'Ivoire dual-cohort milestone — FR tweet in place</li>
+            <li><span class="yes">✓</span> Sierra Leone Advanced FETP launch — aligned</li>
+            <li><span class="yes">✓</span> Ebola in the DRC — data + infodemic bulletins amplified on Twitter</li>
+            <li><span class="no">✗</span> 24th Frontline FETP graduation, Zanzibar (4 Aug) — no matching tweet; milestone unamplified</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Platform Breakdown -->
+  <div class="sec">
+    <h2><span class="bar"></span>Platform Breakdown</h2>
+    <div class="plats">
+      <div class="plat">
+        <div class="top" style="background:var(--tw)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-twitter" style="color:var(--tw)"></i>Twitter / X</h3>
+          <div class="handle">@AFENETAfrica</div>
+          <div class="row"><span>Followers</span><span>3,424</span></div>
+          <div class="row"><span>Following</span><span>9,753</span></div>
+          <div class="row"><span>Posts (7 days)</span><span>~9 (STOP 56 + Ebola bulletins)</span></div>
+          <div class="row"><span>Top like count</span><span>7 (STOP 56 in action)</span></div>
+          <div class="row"><span>Content mix</span><span>STOP/polio, CDC/UNICEF, Ebola data + infodemic, graduations</span></div>
+          <span class="badge" style="background:#e7f6ec;color:var(--green)">🟢 Best reach — flagship + outbreak data</span>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:var(--ln)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-linkedin" style="color:var(--ln)"></i>LinkedIn</h3>
+          <div class="handle">African Field Epidemiology Network</div>
+          <div class="row"><span>Followers</span><span>~10,066</span></div>
+          <div class="row"><span>Posts (confirmed)</span><span>No new post confirmed today</span></div>
+          <div class="row"><span>Engagement</span><span>N/A (gated)</span></div>
+          <div class="row"><span>Opportunity</span><span>STOP 56 + infodemic bulletin ideal cross-posts</span></div>
+          <span class="badge" style="background:#fdf0e1;color:#92400e">🟡 Underused for flagship + outbreak content</span>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:var(--fb)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-facebook" style="color:var(--fb)"></i>Facebook</h3>
+          <div class="handle">AFENETafrica</div>
+          <div class="row"><span>Page likes</span><span>~17,267</span></div>
+          <div class="row"><span>Last confirmed post</span><span>Carried forward</span></div>
+          <div class="row"><span>Engagement</span><span>N/A (gated)</span></div>
+          <div class="row"><span>Data freshness</span><span>Not reconfirmed today</span></div>
+          <span class="badge" style="background:#fdf0e1;color:#92400e">🟡 Broadcast mode; stale</span>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:var(--ig)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-instagram" style="color:var(--ig)"></i>Instagram</h3>
+          <div class="handle">@afenetafrica_official</div>
+          <div class="row"><span>Followers</span><span>N/A (gated)</span></div>
+          <div class="row"><span>Posts (7 days)</span><span>Est. low</span></div>
+          <div class="row"><span>Engagement</span><span>N/A (gated)</span></div>
+          <div class="row"><span>Content style</span><span>Visual/field photos</span></div>
+          <span class="badge" style="background:#fce7f3;color:#9d174d">🟠 Underutilised — STOP 56 group photos unused</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart + Top Posts -->
+  <div class="sec">
+    <h2><span class="bar"></span>Engagement + Top Posts</h2>
+    <div class="cols2">
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px">Tweet Engagement — currently visible posts (12–14 Aug)</div>
+        <div class="chartbox"><canvas id="engChart"></canvas></div>
+      </div>
+      <div>
+        <div class="posts" style="grid-template-columns:1fr;gap:12px">
+          <div class="post">
+            <div style="display:flex;align-items:center;gap:10px"><div class="rank gold">1</div><div class="post meta" style="font-size:11px;color:var(--muted)">Twitter · 13–14 Aug 2026</div></div>
+            <span class="tag-top">Top performer</span>
+            <div class="txt">🌍 STOP 56 Training in Action — the training in Tanzania is underway, with public health professionals from 22 countries strengthening practical skills in immunization, surveillance, data management and social and behaviour change...</div>
+            <div class="stats"><span><i class="ti ti-heart"></i> 7</span><span><i class="ti ti-repeat"></i> 2</span><span style="font-size:11px;color:var(--muted)">Highest engagement of the window</span></div>
+            <div style="font-size:11.5px;color:var(--muted);margin-top:6px">Why: the flagship story shown "in motion" — concrete scale (22 countries), strong multi-image field content, clear mission relevance.</div>
+          </div>
+          <div class="post">
+            <div style="display:flex;align-items:center;gap:10px"><div class="rank silver">2</div><div class="post meta" style="font-size:11px;color:var(--muted)">Twitter · 12 Aug 2026</div></div>
+            <div class="txt">AFENET Ebola Infodemic Bulletin | 27–31 July 2026 — as the Bundibugyo virus outbreak continues to evolve in the DRC, the information environment is becoming a critical part of the response. AFENET's analysis highlights five key signals...</div>
+            <div class="stats"><span><i class="ti ti-heart"></i> 6</span><span><i class="ti ti-repeat"></i> 1</span><span style="font-size:11px;color:var(--muted)">Differentiated infodemic framing</span></div>
+            <div style="font-size:11.5px;color:var(--muted);margin-top:6px">Why: an analytical "information environment" angle that positions AFENET as a data/intelligence voice on the outbreak.</div>
+          </div>
+          <div class="post">
+            <div style="display:flex;align-items:center;gap:10px"><div class="rank bronze">3</div><div class="post meta" style="font-size:11px;color:var(--muted)">Twitter · 13 Aug 2026</div></div>
+            <div class="txt">🦠 Ebola in the DRC: What Is the Data Telling Us? Behind every Ebola outbreak dataset is a story about where transmission is moving, who is being reached, and where the response needs to move faster...</div>
+            <div class="stats"><span><i class="ti ti-heart"></i> 3</span><span><i class="ti ti-repeat"></i> 0</span><span style="font-size:11px;color:var(--muted)">Signals-based read on transmission</span></div>
+            <div style="font-size:11.5px;color:var(--muted);margin-top:6px">Why: reinforces AFENET's data-led outbreak voice; solid but lower engagement than the flagship series.</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:11.5px;background:#e7f0fd;border-radius:8px;padding:10px;color:#0a3d77"><i class="ti ti-first-aid-kit"></i> <strong>Also notable:</strong> AFENET is running <strong>two parallel narratives</strong> this week — the STOP 56 flagship (workforce/training) and a data-led Ebola line (infodemic + transmission signals). Both are strong content but <strong>largely confined to Twitter</strong>; LinkedIn and Instagram are the main untapped channels.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stakeholders -->
+  <div class="sec">
+    <h2><span class="bar"></span>Stakeholder Mentions</h2>
+    <div class="card">
+      <div class="stk">
+        <div class="av" style="background:#16a34a"><i class="ti ti-vaccine"></i></div>
+        <div class="d"><strong>U.S. CDC / UNICEF</strong><br><span style="font-size:12px;color:var(--muted)">STOP 56 program partners — preparing, deploying and supporting the 82 consultants convened in Tanzania for the polio/VPD fight.</span></div>
+        <span class="t-green">Positive</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#0a5040"><i class="ti ti-users"></i></div>
+        <div class="d"><strong>22 partner countries (STOP 56)</strong><br><span style="font-size:12px;color:var(--muted)">82 public-health professionals convened in Tanzania — the week's flagship multilateral training story, now "in action."</span></div>
+        <span class="t-green">Positive</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#16a34a"><i class="ti ti-cash"></i></div>
+        <div class="d"><strong>Pandemic Fund</strong><br><span style="font-size:12px;color:var(--muted)">Funded the 24th Frontline FETP cohort (41 trainees) graduated in Zanzibar, 31 Jul.</span></div>
+        <span class="t-green">Positive</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#0a66c2"><i class="ti ti-vaccine"></i></div>
+        <div class="d"><strong>Mali MoH / FETP graduates</strong><br><span style="font-size:12px;color:var(--muted)">Five FETP graduates redeployed to Gao, Tombouctou, Mopti, Bandiagara & Ménaka for the PVDV2c polio response (Bulletin N°4) — amplified on Twitter.</span></div>
+        <span class="t-green">Positive</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#d97706"><i class="ti ti-broadcast-off"></i></div>
+        <div class="d"><strong>Africa CDC</strong><br><span style="font-size:12px;color:var(--muted)">CPHIA 2026 co-host (Nov) — but not amplifying AFENET's STOP 56 or graduation content; no visible co-posting.</span></div>
+        <span class="t-amber">Gap</span>
+      </div>
+      <div class="stk">
+        <div class="av" style="background:#d97706"><i class="ti ti-school"></i></div>
+        <div class="d"><strong>24th Frontline graduation (Zanzibar)</strong><br><span style="font-size:12px;color:var(--muted)">Pandemic Fund milestone on the website (4 Aug) with no matching social post — an amplification gap.</span></div>
+        <span class="t-amber">Gap</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sentiment -->
+  <div class="sec">
+    <h2><span class="bar"></span>Sentiment Snapshot</h2>
+    <div class="card">
+      <div class="sentbar">
+        <div style="width:75%;background:#16a34a">75% Positive</div>
+        <div style="width:21%;background:#9ca3af">21% Neutral</div>
+        <div style="width:4%;background:#dc2626">4% Risk</div>
+      </div>
+      <div class="callout">
+        <strong><i class="ti ti-info-circle"></i> Sentiment holds at 75%:</strong> No negative reaction was found on owned channels. The level reflects the <strong>STOP 56 "training in action" run</strong> (82 professionals, 22 countries, strong imagery) and AFENET's differentiated, data-led Ebola bulletins. Externally, the 2026 Central Africa Ebola epidemic (Bundibugyo virus disease) remains the dominant regional story — concentrated in eastern DRC (Ituri, North Kivu) with spillover to Uganda, under a WHO/Africa CDC "One Response" plan — keeping the stakes high on AFENET's outbreak and infodemic-monitoring messaging even though no negative sentiment toward AFENET itself was detected.
+      </div>
+    </div>
+  </div>
+
+  <!-- Watchlist -->
+  <div class="sec">
+    <h2><span class="bar"></span>Issues Watchlist</h2>
+    <div class="watch">
+      <div class="wl hi">
+        <span class="p hi">HIGH</span>
+        <h4>Events-Page Caching Bug Persists</h4>
+        <p>Confirmed again today: event entries still carry mismatched legacy slugs (CPHIA under a "breast-cancer-awareness-month" URL, ESCAIDE under a "one-health-summit-lyon" URL) and the listing logic surfaces stale ranges — a code/query-logic defect requiring developer attention, not a content fix.</p>
+      </div>
+      <div class="wl me">
+        <span class="p me">MEDIUM</span>
+        <h4>24th Frontline (Zanzibar) Graduation Not Amplified</h4>
+        <p>A Pandemic Fund–supported graduation milestone (41 trainees) sits on the website (4 Aug) with no matching tweet — a missed amplification of a donor-relevant success story that should be easy to close.</p>
+      </div>
+      <div class="wl me">
+        <span class="p me">MEDIUM</span>
+        <h4>STOP 56 Flagship Confined Mostly to Twitter</h4>
+        <p>The week's strongest story and its group-photo imagery have not been extended to LinkedIn or Instagram, leaving reach on the table on the professional and visual channels while the story is still fresh.</p>
+      </div>
+      <div class="wl me">
+        <span class="p me">MEDIUM</span>
+        <h4>Ebola Infodemic Work Under-Amplified Beyond Twitter</h4>
+        <p>AFENET's differentiated infodemic and transmission-signals bulletins are a reputational asset during the outbreak but are largely confined to Twitter; LinkedIn would carry them to the technical and donor audience.</p>
+      </div>
+      <div class="wl lo">
+        <span class="p lo">LOW</span>
+        <h4>Ebola Intensification Keeps Response-Messaging Stakes High</h4>
+        <p>With the DRC Bundibugyo outbreak still active, elevated public attention means any future response-messaging gap or inaccuracy will be scrutinised more heavily — worth keeping response content accurate and timely.</p>
+      </div>
+      <div class="wl lo">
+        <span class="p lo">LOW</span>
+        <h4>Facebook / Instagram Metrics Not Reconfirmed</h4>
+        <p>Both remain login-gated and carried forward; a direct check is overdue to settle the baselines and confirm posting cadence on the two visual/community channels.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Plan -->
+  <div class="sec">
+    <h2><span class="bar"></span>Action Plan — Next 24–48 Hours</h2>
+    <div class="acts">
+      <div class="act">
+        <div class="an r">1</div>
+        <div>
+          <h4>Cross-Post the STOP 56 "In Action" Series to LinkedIn and Instagram</h4>
+          <p>The week's flagship — 82 professionals, 22 countries — is currently Twitter-heavy. Push the group photos and program framing to the professional and visual channels while the story is fresh and in motion.</p>
+          <span class="urg">⏰ Today</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an r">2</div>
+        <div>
+          <h4>Amplify the 24th Frontline (Zanzibar) Graduation on Social</h4>
+          <p>Publish a short tweet/LinkedIn post linking the 4 Aug article — a Pandemic Fund–supported milestone deserves donor-visible amplification and closes the last website-to-social gap.</p>
+          <span class="urg">⏰ Today</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an r">3</div>
+        <div>
+          <h4>Escalate the Events-Page Caching Bug to Web Development</h4>
+          <p>Reconfirmed again today (mismatched legacy slugs, stale listing ranges) — needs developer attention, not a content edit.</p>
+          <span class="urg">⏰ Today</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an a">4</div>
+        <div>
+          <h4>Repackage the Ebola Infodemic Bulletin for LinkedIn</h4>
+          <p>Turn the "five key signals" analysis into a LinkedIn carousel/post to reach the technical and donor audience with AFENET's differentiated infodemic voice while the outbreak is high-attention.</p>
+          <span class="urg">📅 Tomorrow</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an a">5</div>
+        <div>
+          <h4>Run a STOP 56 "From Training to the Field" Follow-Up</h4>
+          <p>Convert the launch/in-action series into an ongoing thread as the 82 consultants reach their assignments — sustain the week's strongest engagement line.</p>
+          <span class="urg">📅 Tomorrow</span>
+        </div>
+      </div>
+      <div class="act">
+        <div class="an a">6</div>
+        <div>
+          <h4>Reconfirm Facebook, Instagram and LinkedIn Metrics Directly</h4>
+          <p>Carried-forward and search-derived counts make a direct verification overdue — settle the baselines across all gated platforms.</p>
+          <span class="urg">📅 48 hrs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <strong>Sources:</strong>
+    <a href="https://afenet.net/" target="_blank">afenet.net</a> ·
+    <a href="https://afenet.net/news/" target="_blank">afenet.net/news/</a> ·
+    <a href="https://afenet.net/events/" target="_blank">afenet.net/events/</a> ·
+    <a href="https://x.com/AFENETAfrica" target="_blank">x.com/AFENETAfrica</a> ·
+    <a href="https://www.linkedin.com/company/african-field-epidemiology-network-for-a-healthier-continent" target="_blank">AFENET on LinkedIn</a> ·
+    <a href="https://www.who.int/emergencies/situations/ebola-outbreak---drc-2026" target="_blank">2026 Ebola outbreak DRC — WHO / Africa CDC updates</a>
+    <br>Methodology: Web fetch of afenet.net homepage (including embedded @AFENETAfrica Twitter feed), /news/, and /events/, plus public web search. Facebook and Instagram engagement metrics login-gated (N/A); Facebook figure carried forward, not reconfirmed today. Journal/JIEPH content excluded from this run. Generated: 14 August 2026 — automated daily run.
+  </footer>
+
+</div>
+</div>
+
+<script>
+// ── Access gate (client-side; deters casual access — not server-grade security) ──
+(function(){
+  function djb2(s){let x=5381;for(let i=0;i<s.length;i++){x=(((x<<5)+x)+s.charCodeAt(i))>>>0;}return x.toString(16);}
+  const U='f19270d8', P='35ddfaae'; // hashed credentials
+  const gate=document.getElementById('gate'), dash=document.getElementById('dash');
+  function unlock(){gate.style.display='none';dash.style.display='block';window.dispatchEvent(new Event('dash-visible'));}
+  if(sessionStorage.getItem('afenet_auth')==='1'){unlock();}
+  document.getElementById('gateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const u=document.getElementById('gateUser').value.trim(), p=document.getElementById('gatePass').value;
+    if(djb2(u)===U && djb2(p)===P){sessionStorage.setItem('afenet_auth','1');unlock();}
+    else{document.getElementById('gateErr').style.display='block';}
+  });
+})();
+
+let chartsBuilt=false;
+function buildCharts(){
+  if(chartsBuilt || document.getElementById('dash').style.display!=='block') return;
+  chartsBuilt=true;
+  new Chart(document.getElementById('engChart'), {
+    type:'bar',
+    data:{
+      labels:['STOP 56 In Action\n(13–14 Aug)','Ebola Infodemic Bulletin\n(12 Aug)','Ebola DRC Data\n(13 Aug)'],
+      datasets:[
+        {label:'Likes',data:[7,6,3],backgroundColor:'#00b389'},
+        {label:'Retweets',data:[2,1,0],backgroundColor:'#1da1f2'}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{ticks:{font:{size:9},maxRotation:45,minRotation:20}},y:{beginAtZero:true,ticks:{precision:0}}},
+      plugins:{legend:{position:'top'},title:{display:true,text:'Tweet engagement · currently visible posts (12–14 Aug)',font:{size:10}}}}
+  });
+}
+window.addEventListener('load', buildCharts);
+window.addEventListener('dash-visible', buildCharts);
+</script>
+</body>
+</html>
