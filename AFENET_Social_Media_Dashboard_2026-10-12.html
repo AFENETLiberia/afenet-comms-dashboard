@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFENET Communications Intelligence — 12 October 2026 (Run #49)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --muted:#5b6678; --line:#e4e8f0;
+  --tw:#1da1f2; --fb:#4267b2; --ln:#0a66c2; --ig:#e1306c; --teal:#00b389; --purple:#6d4fe5; --indigo:#4f46e5;
+  --green:#16a34a; --amber:#d97706; --red:#dc2626;
+  --shadow:0 2px 10px rgba(26,34,51,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+a{color:var(--ln);text-decoration:none}
+a:hover{text-decoration:underline}
+.hero{position:relative;overflow:hidden;border-radius:18px;padding:34px 30px;color:#fff;
+  background:radial-gradient(900px 300px at 85% -20%,rgba(0,200,140,.45),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f);
+  box-shadow:var(--shadow)}
+.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
+.hero p{margin:0;color:#cfe0f5;font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.pill i{font-size:15px}
+.sec{margin-top:30px}
+.sec h2{font-size:17px;margin:0 0 14px;display:flex;align-items:center;gap:9px}
+.sec h2 .bar{width:5px;height:20px;border-radius:3px;background:var(--ln)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{position:relative;overflow:hidden;border-radius:14px;padding:16px;color:#fff;box-shadow:var(--shadow)}
+.kpi .orb{position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.16)}
+.kpi i{font-size:20px;opacity:.95}
+.kpi .lbl{font-size:12px;opacity:.92;margin-top:6px}
+.kpi .num{font-size:26px;font-weight:800;line-height:1.1;margin-top:2px}
+.kpi .note{font-size:11px;opacity:.85;margin-top:3px}
+.k1{background:linear-gradient(135deg,#16a34a,#15803d)}
+.k2{background:linear-gradient(135deg,#0a66c2,#073d77)}
+.k3{background:linear-gradient(135deg,#b91c1c,#7f1d1d)}
+.k4{background:linear-gradient(135deg,#0f766e,#115e59)}
+.k5{background:linear-gradient(135deg,#0d3a2a,#0a5040)}
+.k6{background:linear-gradient(135deg,#1a1040,#2a1a60)}
+.k7{background:linear-gradient(135deg,#b45309,#92400e)}
+.k8{background:linear-gradient(135deg,#7a3ea3,#54287a)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.web{border-top:4px solid var(--teal)}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:18px}
+.sub h4{margin:0 0 8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.big{font-size:22px;font-weight:800}
+.chip{display:inline-block;font-size:11px;background:#eef2f9;color:var(--muted);border-radius:6px;padding:2px 7px;margin-left:6px}
+.chip-warn{display:inline-block;font-size:11px;background:#fef9e7;color:#92400e;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-red{display:inline-block;font-size:11px;background:#fdeaea;color:#b91c1c;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-green{display:inline-block;font-size:11px;background:#dcfce7;color:#166534;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-blue{display:inline-block;font-size:11px;background:#e7f0fd;color:#1d4ed8;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+ol.stories{margin:0;padding-left:18px}
+ol.stories li{margin-bottom:7px;font-size:13px}
+.align li{list-style:none;font-size:13px;margin-bottom:6px;display:flex;gap:7px;align-items:flex-start}
+.align{padding:0;margin:0}
+.yes{color:var(--green);font-weight:800}
+.no{color:var(--red);font-weight:800}
+.mid{color:var(--amber);font-weight:800}
+.plats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.plat{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.plat .top{height:5px}
+.plat .body{padding:15px}
+.plat h3{margin:0 0 2px;font-size:14px;display:flex;align-items:center;gap:7px}
+.plat .handle{font-size:12px;color:var(--muted);margin-bottom:10px}
+.row{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-top:1px dashed var(--line);gap:10px}
+.row span:last-child{font-weight:700;text-align:right}
+.badge{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:#eef2f9;color:var(--ink)}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:relative}
+.rank{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px}
+.gold{background:#d4af37}.silver{background:#9aa3ad}.bronze{background:#b87333}
+.post .txt{font-size:13px;margin:10px 0}
+.post .meta{font-size:11px;color:var(--muted)}
+.post .stats{display:flex;gap:14px;margin-top:8px;font-size:12.5px;font-weight:700}
+.tag-top{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#fff7e6;color:#b45309;border:1px solid #f0d9a8;border-radius:999px;padding:2px 8px}
+.tag-stale{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#eef2f9;color:#475569;border:1px solid #cbd5e1;border-radius:999px;padding:2px 8px}
+.stk{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:13px}
+.stk:first-child{border-top:none}
+.av{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+.stk .d{flex:1}
+.t-green{background:#e7f6ec;color:var(--green);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-amber{background:#fdf0e1;color:var(--amber);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-red{background:#fdeaea;color:var(--red);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-blue{background:#e7f0fd;color:var(--ln);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-grey{background:#eef2f9;color:var(--muted);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.sentbar{display:flex;height:30px;border-radius:8px;overflow:hidden;font-size:12px;font-weight:700;color:#fff}
+.sentbar div{display:flex;align-items:center;justify-content:center}
+.callout{margin-top:12px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:12px;font-size:13px;color:#065f46}
+.callout.warn{background:#fffbeb;border-color:#fcd34d;color:#78350f}
+.callout.red{background:#fef2f2;border-color:#fecaca;color:#7f1d1d}
+.watch{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wl{background:var(--card);border:1px solid var(--line);border-left-width:5px;border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.wl.hi{border-left-color:var(--red)}.wl.me{border-left-color:var(--amber)}.wl.lo{border-left-color:var(--green)}
+.wl .p{font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;color:#fff}
+.p.hi{background:var(--red)}.p.me{background:var(--amber)}.p.lo{background:var(--green)}
+.wl h4{margin:8px 0 5px;font-size:13.5px}
+.wl p{margin:0;font-size:12.5px;color:var(--muted)}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.act{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.an{width:28px;height:28px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.an.r{background:var(--red)}.an.a{background:var(--amber)}.an.b{background:var(--ln)}
+.act h4{margin:0 0 4px;font-size:13.5px}
+.act p{margin:0;font-size:12.5px;color:var(--muted)}
+.urg{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-top:5px;display:inline-block}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.chartbox{position:relative;height:300px}
+table.dt{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+table.dt th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--line)}
+table.dt td{padding:7px 8px;border-bottom:1px solid var(--line)}
+code{background:#eef2f9;border-radius:4px;padding:1px 5px;font-size:12px;word-break:break-all}
+footer{margin-top:34px;padding:18px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.banner{background:linear-gradient(90deg,#7f1d1d,#dc2626);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;margin-top:12px;font-size:13.5px}
+.banner i{font-size:22px;flex-shrink:0;margin-top:2px}
+.banner strong{font-size:15px}
+.banner-item{margin-bottom:6px}
+.banner-item:last-child{margin-bottom:0}
+.banner.win{background:linear-gradient(90deg,#065f46,#059669)}
+.banner.amber{background:linear-gradient(90deg,#92400e,#d97706)}
+.corr{background:linear-gradient(90deg,#1e3a8a,#2563eb);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;margin-top:12px;font-size:13.5px}
+.corr i{font-size:22px;flex-shrink:0;margin-top:2px}
+.corr strong{font-size:15px}
+.closed{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cl{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:12px;font-size:12.5px;color:#065f46}
+.cl strong{display:block;font-size:13px;margin-bottom:3px}
+.cl.open{background:#fef2f2;border-color:#fecaca;color:#7f1d1d}
+.cl.amb{background:#fffbeb;border-color:#fcd34d;color:#78350f}
+.brk{background:#fff;border:1px solid #bfdbfe;border-left:5px solid var(--ln);border-radius:10px;padding:14px;font-size:13px;margin-top:12px}
+.emptytabs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.etab{flex:1;min-width:150px;background:#f8fafd;border:1px dashed #cbd5e1;border-radius:8px;padding:16px 12px;text-align:center}
+.etab .tn{font-size:12.5px;font-weight:700;color:var(--ink)}
+.etab .tv{font-size:11.5px;color:var(--red);font-weight:700;margin-top:6px}
+.etab .tv.ok{color:var(--green)}
+#gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(900px 400px at 70% 10%,rgba(0,200,140,.25),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f)}
+.gatebox{background:#fff;border-radius:16px;padding:34px 30px;width:340px;max-width:90vw;box-shadow:0 14px 50px rgba(0,0,0,.35);text-align:center}
+.gatebox .logo{width:52px;height:52px;border-radius:14px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;background:linear-gradient(135deg,#0f2547,#1d4e8f)}
+.gatebox h2{margin:0 0 4px;font-size:17px;color:var(--ink)}
+.gatebox p{margin:0 0 18px;font-size:12.5px;color:var(--muted)}
+.gatebox input{width:100%;padding:11px 13px;margin-bottom:11px;border:1px solid var(--line);border-radius:9px;font-size:14px;background:#f8fafd}
+.gatebox input:focus{outline:2px solid #1d4e8f33;border-color:#1d4e8f}
+.gatebox button{width:100%;padding:11px;border:none;border-radius:9px;background:linear-gradient(120deg,#0f2547,#1d4e8f);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+.gatebox button:hover{filter:brightness(1.15)}
+#gateErr{display:none;color:var(--red);font-size:12px;margin-top:10px;font-weight:600}
+#dash{display:none}
+.refresh-btn{display:inline-flex;align-items:center;gap:7px;margin-top:16px;padding:8px 16px;border:none;border-radius:999px;
+  background:#00c88c;color:#06281d;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.refresh-btn:hover{filter:brightness(1.08)}
+.logout-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;margin-left:10px;padding:8px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:transparent;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer}
+.cd{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}
+.cdx{background:#fff7ed;border:1px solid #fed7aa;border-left:5px solid var(--red);border-radius:10px;padding:14px}
+.cdx.crit{background:#fef2f2;border-color:#fecaca;border-left-color:#7f1d1d}
+.cdx.ok{background:#ecfdf5;border-color:#a7f3d0;border-left-color:#059669}
+.cdx .hd{font-size:13.5px;font-weight:800;color:#7c2d12}
+.cdx.ok .hd{color:#065f46}
+.cdx .tm{font-size:24px;font-weight:800;color:var(--red);margin:4px 0}
+.cdx.ok .tm{color:#059669}
+.cdx .sb{font-size:12px;color:#7c2d12}
+.cdx.ok .sb{color:#065f46}
+@media(max-width:860px){.kpis,.plats,.closed{grid-template-columns:repeat(2,1fr)}.cols3,.cols2,.posts,.watch,.acts,.cd{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Login gate -->
+<div id="gate">
+  <div class="gatebox">
+    <div class="logo"><i class="ti ti-shield-lock"></i></div>
+    <h2>AFENET Comms Intelligence</h2>
+    <p>Restricted dashboard — sign in to continue</p>
+    <form id="gateForm">
+      <input type="text" id="gateUser" placeholder="Username" autocomplete="username" required>
+      <input type="password" id="gatePass" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit">Sign in</button>
+    </form>
+    <div id="gateErr">Incorrect username or password.</div>
+  </div>
+</div>
+
+<div id="dash"><div class="wrap">
+
+
+  <!-- Lead banners -->
+  <div class="banner" style="margin-top:0">
+    <i class="ti ti-alert-octagon"></i>
+    <div>
+      <strong>Good news: afenet.net is publishing Ebola field content again. Social media is still silent.</strong>
+      <div class="banner-item" style="margin-top:6px">Three new articles appeared in 48 hours: <strong>"On the Frontlines of Ebola: How AFENET's 359 Disease Detectives Are Strengthening Surveillance Across the DRC"</strong> (10 Oct, nine provinces), the <strong>Beni supervisory mission</strong> article (10 Oct, Uganda Secretariat epidemiologists with the ACoDD team) and <strong>"Beyond the Outbreak: Building a Culture of Prevention in Africa"</strong> (12 Oct; Kinshasa, Kisangani, Beni). The 14-day freshness risk flagged on 10 Oct is cleared. But the AFENET X embed on the homepage still shows 6–7 Sep posts: <strong>35 days without a visible post</strong>, now 11 articles with no visible social amplification.</div>
+    </div>
+  </div>
+
+  <div class="banner amber">
+    <i class="ti ti-calendar-event"></i>
+    <div>
+      <strong>CPHIA is still listed with the wrong dates, 3 days before acceptance notices.</strong>
+      <div class="banner-item" style="margin-top:6px">afenet.net still shows CPHIA 2026 as <strong>1–5 November</strong>, and the three top search results for the event are afenet.net's own pages. Search results elsewhere give <strong>23–27 November</strong>, Addis Ababa. Notices go out on 15 October. The event links also still point to recycled URLs (<code style="background:rgba(255,255,255,.18);color:#fff">/breast-cancer-awareness-month-…</code> and <code style="background:rgba(255,255,255,.18);color:#fff">/one-health-summit-lyon-…</code>). This is day 20 of the error.</div>
+    </div>
+  </div>
+
+  <div class="corr">
+    <i class="ti ti-chart-line"></i>
+    <div>
+      <strong>Outbreak context: latest verified figures remain ECDC, 8 Oct.</strong>
+      <div class="banner-item" style="margin-top:6px">DRC: <strong>8,728 confirmed cases and 4,205 deaths</strong> (data to 6 Oct, ECDC updated 8 Oct), 64 of 167 health zones, seven provinces. Contagion Live (8 Oct) reports deaths above 4,100 across the outbreak and Kenya's first imported Bundibugyo case. No newer official figure was found today, so quote the dated ECDC number and make no trend claim. Hold the Kenya and host-country rules: no comment on which country or border missed a case.</div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero" style="margin-top:18px">
+    <h1>AFENET Communications Intelligence</h1>
+    <p>Monday, 12 October 2026 · Run #49 · 10:10 UTC (13:10 EAT) · vs Run #48 (10 Oct)</p>
+    <div class="pills">
+      <span class="pill"><i class="ti ti-brand-x"></i> @AFENETAfrica</span>
+      <span class="pill"><i class="ti ti-brand-facebook"></i> AFENETafrica</span>
+      <span class="pill"><i class="ti ti-brand-instagram"></i> @afenetafrica_official</span>
+      <span class="pill"><i class="ti ti-brand-linkedin"></i> African Field Epidemiology Network</span>
+      <span class="pill" style="background:rgba(0,200,140,.28);border-color:rgba(0,200,140,.45)"><i class="ti ti-world"></i> afenet.net</span>
+    </div>
+    <div>
+      <button class="refresh-btn" onclick="location.replace(location.pathname+'?t='+Date.now())"><i class="ti ti-refresh"></i> Refresh — load latest update</button>
+      <button class="logout-btn" onclick="sessionStorage.removeItem('afenet_auth');location.reload()"><i class="ti ti-logout"></i> Sign out</button>
+    </div>
+  </div>
+
+  <!-- Ledger -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--green)"></span>Friday's actions (Run #48): what was done</h2>
+    <div class="cd">
+      <div class="cdx">
+        <div class="hd"><i class="ti ti-check"></i> Action #5: publish a new article before 14 Oct</div>
+        <div class="tm">DONE ×3</div>
+        <div class="sb">Two Ebola articles on 10 Oct and one on 12 Oct. Freshness is back to 0 days and the 14-day count rises from 2 to 5.</div>
+      </div>
+      <div class="cdx crit">
+        <div class="hd"><i class="ti ti-eye-off"></i> Action #1: cross-border surveillance post</div>
+        <div class="tm">NOT SEEN</div>
+        <div class="sb">No new post on X, LinkedIn or Facebook. The 359-detectives article is the natural content for it (with the safety rules).</div>
+      </div>
+      <div class="cdx crit">
+        <div class="hd"><i class="ti ti-x"></i> Action #3: website fixes</div>
+        <div class="tm">CPHIA NOT FIXED</div>
+        <div class="sb">CPHIA dates still 1–5 Nov. Careers and the Cabo Verde editing note were not re-checked today.</div>
+      </div>
+      <div class="cdx">
+        <div class="hd"><i class="ti ti-help-circle"></i> Actions #2, #4, #6</div>
+        <div class="tm">CAN'T VERIFY / NOT SEEN</div>
+        <div class="sb">Safety rule is internal. <code>/ebola-updates/</code> was not re-fetched today. No backlog carousel seen on social.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="sec">
+    <h2><span class="bar"></span>KPI Summary: 12 October 2026</h2>
+    <div class="kpis">
+      <div class="kpi k1"><div class="orb"></div><i class="ti ti-article"></i><div class="lbl">Days since last article</div><div class="num">0</div><div class="note">Latest 12 Oct (was 10 days) · Ebola prevention piece</div></div>
+      <div class="kpi k5"><div class="orb"></div><i class="ti ti-news"></i><div class="lbl">Website news · 14 days</div><div class="num">5</div><div class="note">Window 29 Sep–12 Oct (was 2) · 30-day: 10 (was 7)</div></div>
+      <div class="kpi k8"><div class="orb"></div><i class="ti ti-send-off"></i><div class="lbl">Articles with no visible social post</div><div class="num">11</div><div class="note">8 older + 3 new · oldest 35 days</div></div>
+      <div class="kpi k3"><div class="orb"></div><i class="ti ti-player-pause"></i><div class="lbl">Days since visible X post</div><div class="num">35</div><div class="note">31st identical crawl · LinkedIn: 55 days</div></div>
+      <div class="kpi k2"><div class="orb"></div><i class="ti ti-brand-x"></i><div class="lbl">X followers</div><div class="num">~9.8K</div><div class="note">Cached widget (3,498 / 9,791, unlabelled) · LinkedIn unverified</div></div>
+      <div class="kpi k7"><div class="orb"></div><i class="ti ti-users"></i><div class="lbl">Disease detectives deployed</div><div class="num">359</div><div class="note">Nine DRC provinces (AFENET, 10 Oct)</div></div>
+      <div class="kpi k6"><div class="orb"></div><i class="ti ti-calendar-event"></i><div class="lbl">Upcoming events</div><div class="num">2</div><div class="note">CPHIA in 42 days (23–27 Nov); site says 1–5 Nov · day 20</div></div>
+      <div class="kpi k4"><div class="orb"></div><i class="ti ti-bug"></i><div class="lbl">Site defects seen today</div><div class="num">9</div><div class="note">Seen in today's homepage and events fetch · others not re-checked</div></div>
+    </div>
+    <div class="brk">
+      <strong>How the counts were made.</strong> The 14-day window (29 Sep–12 Oct) holds five articles: 12 Oct (1), 10 Oct (2) and 30 Sep (2). The 30-day window (13 Sep–12 Oct) adds 24 Sep (2), 21, 17 and 14 Sep, for <strong>10</strong>. "No visible social post" means none found on X, LinkedIn or Facebook; Facebook and Instagram are behind a login and search engines index social posts slowly, so treat 11 as a minimum.
+    </div>
+  </div>
+
+  <!-- Website analysis -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--teal)"></span>Website: afenet.net</h2>
+    <div class="card web">
+      <div class="cols3">
+        <div class="sub">
+          <h4>Content freshness</h4>
+          <div class="big">0 days</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:4px">Most recent article <strong>12 Oct 2026</strong>. <span class="chip-green">FRESH</span> <span class="chip-green">PIPELINE RESTARTED</span></div>
+          <div style="font-size:12.5px;margin-top:10px;color:var(--muted)"><strong>Cadence is up.</strong> Three articles in the last 3 days after a 10-day gap (30 Sep–10 Oct). Ten in 30 days; the last week of September ran at two per week.</div>
+          <div style="font-size:12.5px;margin-top:8px;color:var(--muted)"><strong>Focus has moved to Ebola.</strong> DRC features in 5 of the 6 latest articles; three are about the outbreak response and prevention.</div>
+        </div>
+        <div class="sub">
+          <h4>Recent stories</h4>
+          <ol class="stories">
+            <li><strong>Beyond the Outbreak: Building a Culture of Prevention in Africa</strong> <span class="chip">12 Oct</span> <span class="chip-blue">NEW</span>: reflections from Kinshasa, Kisangani and Beni</li>
+            <li><strong>On the Frontlines of Ebola: 359 Disease Detectives</strong> <span class="chip">10 Oct</span> <span class="chip-blue">NEW</span>: nine DRC provinces; the strongest post-ready story</li>
+            <li><strong>Frontlines of BVD Response: Beni, DRC</strong> <span class="chip">10 Oct</span> <span class="chip-blue">NEW</span>: Uganda Secretariat mission to ACoDDs in Beni City</li>
+            <li><strong>Cabo Verde Intermediate FETP</strong> <span class="chip">30 Sep</span>: first Intermediate cohort</li>
+            <li><strong>DRC Intermediate Cohort 6</strong> <span class="chip">30 Sep</span>: 14 graduates, 73 in total</li>
+          </ol>
+          <div style="font-size:12.5px;margin-top:10px;padding:10px;background:#f0f9ff;border:1px solid #bfdbfe;border-radius:8px"><strong>Check before amplifying.</strong> Only the opening paragraphs of the three new articles were visible. Review them against the safety rules (no individual responder names without consent, province-level locations only) before posting.</div>
+        </div>
+        <div class="sub">
+          <h4>Content–social alignment</h4>
+          <ul class="align">
+            <li><span class="no">✗</span><span>Beyond the Outbreak: culture of prevention (12 Oct, day 0)</span></li>
+            <li><span class="no">✗</span><span>359 Disease Detectives, DRC (10 Oct, day 2)</span></li>
+            <li><span class="no">✗</span><span>Beni BVD mission (10 Oct, day 2)</span></li>
+            <li><span class="no">✗</span><span>Cabo Verde Intermediate FETP (30 Sep, day 12)</span></li>
+            <li><span class="no">✗</span><span>DRC Intermediate Cohort 6 (30 Sep, day 12)</span></li>
+            <li><span class="no">✗</span><span>Lubumbashi Cohort 31 / Haut-Lomami Cohort 28 (24 Sep, day 18)</span></li>
+            <li><span class="no">✗</span><span>7-1-7 Ethiopia (21 Sep, day 21)</span></li>
+            <li><span class="no">✗</span><span>Kwango RRT / Tanzania 40 (17 / 14 Sep)</span></li>
+            <li><span class="mid">⇄</span><span><strong>Homepage X embed:</strong> still shows 6–7 Sep WFED posts (Mali, Guinea, DRC)</span></li>
+          </ul>
+          <div class="callout red" style="margin-top:10px"><strong>No social post for any article since early September.</strong> The new Ebola stories are timely, but nobody can see them on social media.</div>
+        </div>
+      </div>
+
+      <div class="cols2" style="margin-top:20px">
+        <div>
+          <h4 style="font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin:0 0 6px">Publishing cadence: 10 articles, 13 Sep–12 Oct</h4>
+          <div class="chartbox" style="height:260px"><canvas id="cadChart"></canvas></div>
+        </div>
+        <div>
+          <h4 style="font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin:0 0 6px">Events on afenet.net</h4>
+          <div class="callout warn"><strong>CPHIA 2026</strong> is listed as <strong>1–5 Nov</strong> (Addis Ababa). Other sources give <strong>23–27 Nov</strong>. Day 20. The event page is dated "January 14, 2022 – June 14, 2022" and links to a recycled breast-cancer-awareness URL.</div>
+          <div class="callout" style="margin-top:8px"><strong>European Scientific Conference on Applied Infectious Disease Epidemiology</strong>, 18–20 Nov (ECDC's ESCAIDE). Its link points to <code>one-health-summit-lyon-…</code>. Neither event has a visible social post.</div>
+          <div style="font-size:12.5px;margin-top:10px;color:var(--muted)"><strong>Defects seen today:</strong> placeholder (<code>#</code>) menu items (About, Secretariat Staff, Media, Resources, Opportunities, Reports, Contacts, AFENET Journal) · Procurements link ends in <code>%20</code> · footer links to <code>/test/</code> paths · impact counters showing 0 · copyright "2023" · empty East/Southern Africa menu items · slug typos (marutania, cote-dvoire) · "Lab Heath Workers" typo · CPHIA/ESCAIDE link mismatch.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Platforms -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--tw)"></span>Platform Breakdown</h2>
+    <div class="plats">
+      <div class="plat">
+        <div class="top" style="background:var(--tw)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-x" style="color:var(--tw)"></i> X / Twitter</h3>
+          <div class="handle">@AFENETAfrica</div>
+          <div class="row"><span>Followers</span><span>~9,791 <span class="chip">cached</span></span></div>
+          <div class="row"><span>Total posts</span><span>~3,498 <span class="chip">cached</span></span></div>
+          <div class="row"><span>Last visible post</span><span>7 Sep · 35 days ago</span></div>
+          <div class="row"><span>Likes / RTs (6 posts)</span><span>19 / 0</span></div>
+          <div class="row"><span>Identical crawls</span><span>31 · since ~8 Sep</span></div>
+          <div class="badge" style="background:#fdeaea;color:#b91c1c">Silent 35 days</div>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:var(--ln)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-linkedin" style="color:var(--ln)"></i> LinkedIn</h3>
+          <div class="handle">African Field Epidemiology Network</div>
+          <div class="row"><span>Followers</span><span>8,266–10,066 <span class="chip">figures conflict</span></span></div>
+          <div class="row"><span>Latest indexed post</span><span>18 Aug · 55 days ago</span></div>
+          <div class="row"><span>Best fit now</span><span>Cross-border message</span></div>
+          <div class="row"><span>Tags available</span><span>Africa CDC · Kenya MoH</span></div>
+          <div class="row"><span>Engagement</span><span>Not measurable</span></div>
+          <div class="badge" style="background:#e7f0fd;color:#1d4ed8">Best fit for a cleared statement</div>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:var(--fb)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-facebook" style="color:var(--fb)"></i> Facebook</h3>
+          <div class="handle">AFENETafrica</div>
+          <div class="row"><span>Followers</span><span>N/A <span class="chip">login needed</span></span></div>
+          <div class="row"><span>Last indexed</span><span>WFED 2026 cards</span></div>
+          <div class="row"><span>Style</span><span>Country spotlights</span></div>
+          <div class="row"><span>Engagement</span><span>Behind login</span></div>
+          <div class="row"><span>Languages</span><span>EN / FR (PT for Cabo Verde)</span></div>
+          <div class="badge">Not measurable</div>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:linear-gradient(90deg,#e1306c,#f77737)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-instagram" style="color:var(--ig)"></i> Instagram</h3>
+          <div class="handle">@afenetafrica_official</div>
+          <div class="row"><span>Followers</span><span>N/A <span class="chip">login needed</span></span></div>
+          <div class="row"><span>Cadence</span><span>Unverified</span></div>
+          <div class="row"><span>Style</span><span>Visual field content</span></div>
+          <div class="row"><span>Site link target</span><span>hashtag feed</span></div>
+          <div class="row"><span>Profile linked?</span><span class="no">No</span></div>
+          <div class="badge" style="background:#fdeaea;color:#b91c1c">Linked incorrectly</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Backlog -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--red)"></span>Posting backlog: days each article has waited with no visible social post</h2>
+    <div class="card">
+      <div class="chartbox" style="height:300px"><canvas id="backlogChart"></canvas></div>
+      <ul class="align" style="margin-top:10px">
+        <li><span class="yes">✓</span><span><strong>Post first (today, after a leadership check):</strong> the 359 disease detectives story, in English and French, with "Ebola (MVE)" at first mention and provinces only.</span></li>
+        <li><span class="yes">✓</span><span><strong>Then:</strong> a "September in the field" carousel (Lubumbashi 12, Haut-Lomami 21, 7-1-7 Ethiopia 121, Kwango, Tanzania 40) and DRC Cohort 6 (73 graduates in total).</span></li>
+        <li><span class="mid">!</span><span><strong>Avoid:</strong> naming individual responders without consent, saying which country or border missed a case, claiming a role in Kenya's response, or any trend claim on case numbers.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Engagement -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--teal)"></span>Engagement Leaders <span class="chip-red" style="margin-left:8px">OLD DATA · 31 CRAWLS</span></h2>
+    <div class="chartbox" style="height:340px"><canvas id="engChart"></canvas></div>
+    <div class="posts" style="margin-top:16px">
+      <div class="post">
+        <span class="tag-top">Top performer</span>
+        <div class="rank gold">1</div>
+        <div class="txt">"🇫🇷 FETPs en première ligne — Sensibilisation des passagers en provenance du Kwilu, Kasaï et Mongala sur les mesures de prévention contre la MVE… ACoDD : Christian"</div>
+        <div class="meta">X · 6 Sep 2026 · #WFED</div>
+        <div class="stats"><span><i class="ti ti-heart" style="color:var(--teal)"></i> 7</span><span><i class="ti ti-repeat" style="color:var(--tw)"></i> 0</span></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:8px">Names the responder and provinces, and a specific protective action. <strong>Now the most relevant post for the Kenya story: traveller screening.</strong></div>
+        <div style="margin-top:6px"><span class="t-amber">Safety: names an individual responder</span></div>
+      </div>
+      <div class="post">
+        <div class="rank silver">2</div>
+        <div class="txt">"FETPs en première ligne – Ituri. Le 05 septembre, suite à un cas confirmé de MVE dans l'AS CECA-20, l'équipe a mené une investigation et accompagné la famille…"</div>
+        <div class="meta">X · 6 Sep 2026 · #WFED</div>
+        <div class="stats"><span><i class="ti ti-heart" style="color:var(--teal)"></i> 4</span><span><i class="ti ti-repeat" style="color:var(--tw)"></i> 0</span></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:8px">Takes a case from detection to closure in three sentences.</div>
+        <div style="margin-top:6px"><span class="t-red">Safety: health area of a case's household, in Ituri</span></div>
+      </div>
+      <div class="post">
+        <div class="rank bronze">3</div>
+        <div class="txt">"DPS Tshopo – ZS Makiso | 05/09/2026. Briefing of 22 investigators from Makiso Health Zone… Joint team: U.S. CDC Atlanta • ACoDDs • WHO. ACoDDs: Dadou • Innocent • Suzanne"</div>
+        <div class="meta">X · 6 Sep 2026 · #WFED</div>
+        <div class="stats"><span><i class="ti ti-heart" style="color:var(--teal)"></i> 3</span><span><i class="ti ti-repeat" style="color:var(--tw)"></i> 0</span></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:8px">Names partners and gives a number. A workforce story in one line.</div>
+        <div style="margin-top:6px"><span class="t-amber">Safety: names three responders</span></div>
+      </div>
+    </div>
+    <div class="callout warn" style="margin-top:12px"><strong>The pattern still holds.</strong> Posts that name a place, give a number and name a partner do best; the generic Mali card got no likes, replies or retweets. The two traveller-screening posts (#1 and Kinshasa Bendebende) show AFENET already has real point-of-entry content. Re-use the type of activity, without names or sub-province sites.</div>
+  </div>
+
+
+  <!-- Stakeholders + sentiment -->
+  <div class="sec cols2">
+    <div>
+      <h2><span class="bar" style="background:var(--purple)"></span>Stakeholder Mentions</h2>
+      <div class="card">
+        <div class="stk"><div class="av" style="background:#7a3ea3"><i class="ti ti-building-bank"></i></div><div class="d"><strong>DRC Ministry of Public Health / INSP</strong><div style="font-size:12px;color:var(--muted)">Host of the 359-detective deployment and the ACoDD work in Beni. Reported 8,728 cases / 4,205 deaths (via ECDC, 8 Oct).</div></div><span class="chip-green">Joint operations</span></div>
+        <div class="stk"><div class="av" style="background:var(--ln)"><i class="ti ti-building-hospital"></i></div><div class="d"><strong>AFENET Uganda Secretariat</strong><div style="font-size:12px;color:var(--muted)">Two epidemiologists led the supervisory mission to the ACoDD team in Beni City (10 Oct).</div></div><span class="chip-green">Internal</span></div>
+        <div class="stk"><div class="av" style="background:var(--ln)"><i class="ti ti-building-hospital"></i></div><div class="d"><strong>U.S. CDC</strong><div style="font-size:12px;color:var(--muted)">Partner on Cohort 6, Lubumbashi, 7-1-7 Ethiopia. Described the outbreak as the second-largest on record (7 Oct).</div></div><span class="chip-green">Funder</span></div>
+        <div class="stk"><div class="av" style="background:var(--amber)"><i class="ti ti-flag-3"></i></div><div class="d"><strong>Kenya Ministry of Health</strong><div style="font-size:12px;color:var(--muted)">First imported case 6 Oct. Kenya FELTP is an AFENET founding member, but no AFENET message has been seen.</div></div><span class="chip-warn">Gap</span></div>
+        <div class="stk"><div class="av" style="background:var(--red)"><i class="ti ti-building-community"></i></div><div class="d"><strong>Government of Uganda</strong><div style="font-size:12px;color:var(--muted)">Host country of the secretariat; publicly rejected any link to the Kenya case. Handle with care.</div></div><span class="chip-warn">Sensitive</span></div>
+        <div class="stk"><div class="av" style="background:var(--amber)"><i class="ti ti-users-group"></i></div><div class="d"><strong>Africa CDC</strong><div style="font-size:12px;color:var(--muted)">Hosts CPHIA. AFENET's page still gives the wrong dates. Not tagged in any AFENET post.</div></div><span class="chip-warn">Gap</span></div>
+        <div class="stk"><div class="av" style="background:var(--amber)"><i class="ti ti-world"></i></div><div class="d"><strong>WHO / ECDC</strong><div style="font-size:12px;color:var(--muted)">Source of the dated outbreak figures. Neither has been seen amplifying AFENET.</div></div><span class="chip-warn">Gap</span></div>
+        <div class="stk"><div class="av" style="background:#0f766e"><i class="ti ti-building-community"></i></div><div class="d"><strong>Cabo Verde INSP · ProEpi</strong><div style="font-size:12px;color:var(--muted)">First Intermediate FETP cohort (30 Sep). Still unposted.</div></div><span class="chip-green">Capacity-building</span></div>
+      </div>
+      <div class="callout warn" style="margin-top:10px"><strong>Amplification gap.</strong> No partner was seen sharing an AFENET story, and AFENET has not been seen sharing partner messages. The new Ebola content gives a reason to tag DRC MoH, Africa CDC and U.S. CDC.</div>
+    </div>
+    <div>
+      <h2><span class="bar" style="background:var(--green)"></span>Sentiment Snapshot</h2>
+      <div class="card">
+        <div class="sentbar">
+          <div style="width:62%;background:var(--green)">62% positive</div>
+          <div style="width:22%;background:#9aa3ad">22%</div>
+          <div style="width:16%;background:var(--red)">16%</div>
+        </div>
+        <div style="font-size:12.5px;color:var(--muted);margin-top:12px">
+          <p style="margin:0 0 8px"><strong style="color:var(--green)">Positive 62% (+2).</strong> Three new field-response articles show AFENET's workforce at the centre of the DRC response (359 detectives, nine provinces). The tone is constructive and unopposed.</p>
+          <p style="margin:0 0 8px"><strong>Neutral 22% (−1).</strong> Website hygiene (CPHIA dates, placeholder menus, /test/ links) and a silent X account (35 days) remain.</p>
+          <p style="margin:0"><strong style="color:var(--red)">External risk 16% (−1).</strong> The outbreak is the second-largest on record and has spread to Kenya; host-country sensitivity and funding-cut framing in coverage persist. No new negative item about AFENET was found.</p>
+        </div>
+        <div class="callout red" style="margin-top:12px"><strong>External risk context.</strong> Latest dated figures: ECDC, 8 Oct (DRC data to 6 Oct): <strong>8,728 cases, 4,205 deaths</strong>, 64 of 167 zones. Contagion Live (8 Oct) reports deaths above 4,100 and Kenya's first imported case. No trend claim.</div>
+        <div class="callout" style="margin-top:10px"><strong>No negative sentiment was seen on any owned channel.</strong> The new website content strengthens AFENET's narrative, but without a social post it reaches only people who visit afenet.net.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Watchlist -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--red)"></span>Issues Watchlist</h2>
+    <div class="watch">
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>Social media silent for 35 days while the website leads on Ebola</h4><p>Three strong Ebola articles are live and none has a visible social post. The audience that matters (partners, media, donors) follows X and LinkedIn, not the news page. Silence now undercuts the story AFENET is telling on its own site.</p></div>
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>CPHIA listed with wrong dates; acceptance notices in 3 days</h4><p>afenet.net says 1–5 Nov; other sources say 23–27 Nov. AFENET's pages rank first in search, so delegates and partners may be misled. Day 20 of the error.</p></div>
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>Safety review of the new Ebola articles</h4><p>The Beni mission and "culture of prevention" pieces describe field sites and responders. Check them for individual names without consent and sub-province locations before they are promoted, and before they are quoted by media.</p></div>
+      <div class="wl me"><span class="p me">MEDIUM</span><h4>Kenya and host-country sensitivity</h4><p>Kenya confirmed an imported case; Uganda's government has publicly rejected any link. AFENET is based in Kampala. Do not comment on which country or border missed a case, and do not claim a role in Kenya's response unless Kenya FELTP confirms it.</p></div>
+      <div class="wl me"><span class="p me">MEDIUM</span><h4>Website structure still looks unfinished</h4><p>Eight menu items are placeholders (#), footer links go to /test/ paths, impact counters read 0 and the copyright says 2023. These are visible to every visitor who arrives from the new Ebola stories.</p></div>
+      <div class="wl lo"><span class="p lo">LOW</span><h4>Events promotion</h4><p>Neither CPHIA nor ESCAIDE has a visible social post, and the ESCAIDE and CPHIA links point to recycled URLs. Fix the links before promoting.</p></div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--amber)"></span>Action Plan: next 24–48 hours</h2>
+    <div class="acts">
+      <div class="act"><div class="an r">1</div><div><h4>Post the 359 Disease Detectives story (Today)</h4><p>Publish on X, LinkedIn and Facebook in English and French: "Ebola (MVE) response: 359 AFENET disease detectives are strengthening surveillance across nine DRC provinces." Tag DRC MoH, Africa CDC and U.S. CDC, and link the article. Provinces only, no responder names.</p></div></div>
+      <div class="act"><div class="an r">2</div><div><h4>Fix the CPHIA dates (Today)</h4><p>Change CPHIA to 23–27 November on /events/ and the homepage widget (confirm with Africa CDC's site first), and replace the recycled breast-cancer and Lyon URLs. Acceptance notices go out on 15 October.</p></div></div>
+      <div class="act"><div class="an r">3</div><div><h4>Run a safety check on the three new articles (Today)</h4><p>Check names of ACoDDs and staff, locations below province level and any wording about countries or borders. Correct the articles before they are promoted.</p></div></div>
+      <div class="act"><div class="an a">4</div><div><h4>Update /ebola-updates/ with the new stories (Tomorrow)</h4><p>Link the 359-detectives, Beni and prevention articles, and add the dated ECDC figures (8,728 / 4,205, data to 6 Oct). Confirm the page's current state first, since it was not re-fetched today.</p></div></div>
+      <div class="act"><div class="an a">5</div><div><h4>Clear the September backlog (Tomorrow)</h4><p>One "September in the field" carousel (Lubumbashi, Haut-Lomami, 7-1-7 Ethiopia, Kwango, Tanzania) and a Cabo Verde post in Portuguese and English crediting ProEpi. Fix the Cabo Verde editing note first if it is still live.</p></div></div>
+      <div class="act"><div class="an a">6</div><div><h4>Open a website clean-up ticket and name a social owner (48 hrs)</h4><p>Placeholder menus, /test/ footer links, 0 impact counters, © 2023, Procurements %20 link, Instagram link. Name one person and one daily posting slot so the new article pace reaches social.</p></div></div>
+    </div>
+  </div>
+
+  <footer>
+    <div><strong>Sources —</strong>
+      <a href="https://afenet.net/">afenet.net</a> ·
+      <a href="https://afenet.net/news/">/news/</a> ·
+      <a href="https://afenet.net/events/">/events/</a> ·
+      <a href="https://afenet.net/beyond-the-outbreak-building-a-culture-of-prevention-in-africa/">Culture of Prevention (12 Oct)</a> ·
+      <a href="https://afenet.net/on-the-frontlines-of-ebola-how-afenets-359-disease-detectives-are-strengthening-surveillance-across-the-drc/">359 Disease Detectives (10 Oct)</a> ·
+      <a href="https://afenet.net/on-the-frontlines-of-bundibugyo-virus-disease-bvd-response-afenet-strengthens-surveillance-and-outbreak-control-in-beni-drc/">Beni BVD mission (10 Oct)</a> ·
+      <a href="https://www.ecdc.europa.eu/en/ebola-outbreak-democratic-republic-congo-and-uganda">ECDC: Ebola DRC (8 Oct)</a> ·
+      <a href="https://www.contagionlive.com/view/ebola-deaths-top-4-100-as-kenya-confirms-first-imported-bundibugyo-case">Contagion Live (8 Oct)</a> ·
+      <a href="https://opportunitiesforyouth.org/2026/08/18/cphia-2026-in-addis-ababa/">CPHIA 2026</a> ·
+      <a href="https://x.com/afenetafrica">@AFENETAfrica</a> ·
+      <a href="https://www.facebook.com/AFENETAfrica/">Facebook</a>
+    </div>
+    <div style="margin-top:10px">Generated by the AFENET Communications Intelligence agent · Run #49 · 12 October 2026. Only the opening excerpts of the three new articles were visible. Metrics that could not be checked are marked "cached", "unverified" or N/A; X figures come from the afenet.net embed, which has not changed since about 8 September. Careers, Cabo Verde and /ebola-updates/ were not re-checked in this run. Firestore push skipped by configuration.</div>
+  </footer>
+
+</div></div>
+
+<script>
+// ── Access gate (client-side; deters casual access — not server-grade security) ──
+(function(){
+  function djb2(s){let x=5381;for(let i=0;i<s.length;i++){x=(((x<<5)+x)+s.charCodeAt(i))>>>0;}return x.toString(16);}
+  const U='f19270d8', P='35ddfaae'; // hashed credentials
+  const gate=document.getElementById('gate'), dash=document.getElementById('dash');
+  function unlock(){gate.style.display='none';dash.style.display='block';window.dispatchEvent(new Event('dash-visible'));}
+  if(sessionStorage.getItem('afenet_auth')==='1'){unlock();}
+  document.getElementById('gateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const u=document.getElementById('gateUser').value.trim(), p=document.getElementById('gatePass').value;
+    if(djb2(u)===U && djb2(p)===P){sessionStorage.setItem('afenet_auth','1');unlock();}
+    else{document.getElementById('gateErr').style.display='block';}
+  });
+})();
+let chartsBuilt=false;
+function buildCharts(){
+  if(chartsBuilt || document.getElementById('dash').style.display!=='block') return;
+  if(typeof Chart==='undefined') return;
+  chartsBuilt=true;
+
+  new Chart(document.getElementById('cadChart'), {
+    type:'bar',
+    data:{labels:['9–15 Sep','16–22 Sep','23–29 Sep','30 Sep–6 Oct','7–12 Oct'],
+      datasets:[{label:'Articles published',data:[1,2,2,2,3],backgroundColor:['#94a3b8','#94a3b8','#94a3b8','#94a3b8','#00b389']}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{ticks:{font:{size:10}}},y:{beginAtZero:true,suggestedMax:4,ticks:{precision:0,font:{size:10}}}},
+      plugins:{legend:{display:false},title:{display:true,text:'Pipeline restarted: 3 Ebola articles on 10 and 12 Oct after a 10-day gap.',font:{size:10}}}}
+  });
+
+  new Chart(document.getElementById('backlogChart'), {
+    type:'bar',
+    data:{labels:['Antara WFED (7 Sep)','Tanzania 40 (14 Sep)','Kwango RRT (17 Sep)','7-1-7 Ethiopia (21 Sep)','Haut-Lomami C28 (24 Sep)','Lubumbashi C31 (24 Sep)','DRC Interm. C6 (30 Sep)','Cabo Verde (30 Sep)','Beni BVD mission (10 Oct)','359 Detectives (10 Oct)','Culture of Prevention (12 Oct)'],
+      datasets:[{label:'Days since publication with no visible social post',data:[35,28,25,21,18,18,12,12,2,2,0],backgroundColor:['#7f1d1d','#7f1d1d','#dc2626','#dc2626','#dc2626','#dc2626','#f59e0b','#f59e0b','#16a34a','#16a34a','#16a34a']}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{beginAtZero:true,ticks:{font:{size:10}}},y:{ticks:{font:{size:10}}}},
+      plugins:{legend:{display:false},title:{display:true,text:'11 articles, no visible posts. Green = new Ebola stories, post first. Red = older than two weeks.',font:{size:10}}}}
+  });
+
+  new Chart(document.getElementById('engChart'), {
+    type:'bar',
+    data:{
+      labels:['DRC: MVE awareness, passengers (6 Sep · FR) TOP','DRC: Ituri, CECA-20 confirmed case (6 Sep · FR)','DRC: Tshopo/Makiso, 22 investigators (6 Sep · EN)','Guinea: WFED eve country spotlight (6 Sep · 1 reply)','DRC: Kinshasa PoE Bendebende screening (6 Sep · FR/EN)','Mali: WFED day country card (7 Sep · 0/0/0)'],
+      datasets:[
+        {label:'Likes',data:[7,4,3,3,2,0],backgroundColor:'#00b389'},
+        {label:'Retweets',data:[0,0,0,0,0,0],backgroundColor:'#1da1f2'}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{ticks:{font:{size:9},maxRotation:45,minRotation:20}},y:{beginAtZero:true,ticks:{precision:0}}},
+      plugins:{legend:{position:'top'},title:{display:true,text:'OLD DATA: identical across 31 consecutive crawls (since ~8 Sep). The two traveller-screening posts (9 likes) are AFENET\'s best material for the Kenya story.',font:{size:10}}}}
+  });
+}
+window.addEventListener('load', buildCharts);
+window.addEventListener('dash-visible', buildCharts);
+</script>
+</body>
+</html>
