@@ -1,0 +1,50 @@
+name: Publish comms dashboard
+
+# Pulls the day's dashboard out of the Google Drive folder the Cowork run writes
+# to, and commits it here. The Cowork sandbox never needs push access: the only
+# write credential is this workflow's own GITHUB_TOKEN, scoped to this repo.
+#
+# Runs hourly through the window the daily run lands in, and does nothing when
+# there is nothing new, so extra runs are harmless.
+
+on:
+  schedule:
+    - cron: '25 9-15 * * *'   # 09:25–15:25 UTC, hourly
+  workflow_dispatch:           # Actions tab -> Run workflow, to publish on demand
+
+permissions:
+  contents: write              # the only permission this needs
+
+concurrency:
+  group: publish-dashboard     # never two publishes racing each other
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Drive client
+        run: pip install --quiet google-api-python-client==2.149.0 google-auth==2.35.0
+
+      - name: Pull new dashboards from Drive and commit
+        env:
+          GDRIVE_SA_KEY: ${{ secrets.GDRIVE_SA_KEY }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: python3 scripts/publish_from_drive.py --repo .
+
+      - name: Report what is live
+        if: always()
+        run: |
+          echo "index.html -> $(grep -o 'Run #[0-9]*' index.html | head -1)"
+          echo "dashboards in repo: $(ls AFENET_Social_Media_Dashboard_*.html | wc -l)"
