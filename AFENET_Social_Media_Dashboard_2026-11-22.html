@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFENET Communications Intelligence &mdash; 22 November 2026 (Run #90)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --muted:#5b6678; --line:#e4e8f0;
+  --tw:#1da1f2; --fb:#4267b2; --ln:#0a66c2; --ig:#e1306c; --teal:#00b389; --purple:#6d4fe5; --indigo:#4f46e5;
+  --green:#16a34a; --amber:#d97706; --red:#dc2626;
+  --shadow:0 2px 10px rgba(26,34,51,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+a{color:var(--ln);text-decoration:none}
+a:hover{text-decoration:underline}
+.hero{position:relative;overflow:hidden;border-radius:18px;padding:34px 30px;color:#fff;
+  background:radial-gradient(900px 300px at 85% -20%,rgba(0,200,140,.45),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f);
+  box-shadow:var(--shadow)}
+.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
+.hero p{margin:0;color:#cfe0f5;font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.pill i{font-size:15px}
+.sec{margin-top:30px}
+.sec h2{font-size:17px;margin:0 0 14px;display:flex;align-items:center;gap:9px}
+.sec h2 .bar{width:5px;height:20px;border-radius:3px;background:var(--ln)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{position:relative;overflow:hidden;border-radius:14px;padding:16px;color:#fff;box-shadow:var(--shadow)}
+.kpi .orb{position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.16)}
+.kpi i{font-size:20px;opacity:.95}
+.kpi .lbl{font-size:12px;opacity:.92;margin-top:6px}
+.kpi .num{font-size:26px;font-weight:800;line-height:1.1;margin-top:2px}
+.kpi .note{font-size:11px;opacity:.85;margin-top:3px}
+.k1{background:linear-gradient(135deg,#16a34a,#15803d)}
+.k2{background:linear-gradient(135deg,#0a66c2,#073d77)}
+.k3{background:linear-gradient(135deg,#b91c1c,#7f1d1d)}
+.k4{background:linear-gradient(135deg,#0f766e,#115e59)}
+.k5{background:linear-gradient(135deg,#0d3a2a,#0a5040)}
+.k6{background:linear-gradient(135deg,#1a1040,#2a1a60)}
+.k7{background:linear-gradient(135deg,#b45309,#92400e)}
+.k8{background:linear-gradient(135deg,#7a3ea3,#54287a)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.web{border-top:4px solid var(--teal)}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:18px}
+.sub h4{margin:0 0 8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.big{font-size:22px;font-weight:800}
+.chip{display:inline-block;font-size:11px;background:#eef2f9;color:var(--muted);border-radius:6px;padding:2px 7px;margin-left:6px}
+.chip-warn{display:inline-block;font-size:11px;background:#fef9e7;color:#92400e;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-red{display:inline-block;font-size:11px;background:#fdeaea;color:#b91c1c;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-green{display:inline-block;font-size:11px;background:#dcfce7;color:#166534;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-blue{display:inline-block;font-size:11px;background:#e7f0fd;color:#1d4ed8;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+ol.stories{margin:0;padding-left:18px}
+ol.stories li{margin-bottom:7px;font-size:13px}
+.align li{list-style:none;font-size:13px;margin-bottom:6px;display:flex;gap:7px;align-items:flex-start}
+.align{padding:0;margin:0}
+.yes{color:var(--green);font-weight:800}
+.no{color:var(--red);font-weight:800}
+.mid{color:var(--amber);font-weight:800}
+.plats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.plat{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.plat .top{height:5px}
+.plat .body{padding:15px}
+.plat h3{margin:0 0 2px;font-size:14px;display:flex;align-items:center;gap:7px}
+.plat .handle{font-size:12px;color:var(--muted);margin-bottom:10px}
+.row{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-top:1px dashed var(--line);gap:10px}
+.row span:last-child{font-weight:700;text-align:right}
+.badge{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:#eef2f9;color:var(--ink)}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:relative}
+.rank{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px}
+.gold{background:#d4af37}.silver{background:#9aa3ad}.bronze{background:#b87333}
+.post .txt{font-size:13px;margin:10px 0}
+.post .meta{font-size:11px;color:var(--muted)}
+.post .stats{display:flex;gap:14px;margin-top:8px;font-size:12.5px;font-weight:700}
+.tag-top{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#fff7e6;color:#b45309;border:1px solid #f0d9a8;border-radius:999px;padding:2px 8px}
+.tag-stale{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#eef2f9;color:#475569;border:1px solid #cbd5e1;border-radius:999px;padding:2px 8px}
+.stk{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:13px}
+.stk:first-child{border-top:none}
+.av{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+.stk .d{flex:1}
+.t-green{background:#e7f6ec;color:var(--green);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-amber{background:#fdf0e1;color:var(--amber);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-red{background:#fdeaea;color:var(--red);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-blue{background:#e7f0fd;color:var(--ln);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-grey{background:#eef2f9;color:var(--muted);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.sentbar{display:flex;height:30px;border-radius:8px;overflow:hidden;font-size:12px;font-weight:700;color:#fff}
+.sentbar div{display:flex;align-items:center;justify-content:center}
+.callout{margin-top:12px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:12px;font-size:13px;color:#065f46}
+.callout.warn{background:#fffbeb;border-color:#fcd34d;color:#78350f}
+.callout.red{background:#fef2f2;border-color:#fecaca;color:#7f1d1d}
+.watch{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wl{background:var(--card);border:1px solid var(--line);border-left-width:5px;border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.wl.hi{border-left-color:var(--red)}.wl.me{border-left-color:var(--amber)}.wl.lo{border-left-color:var(--green)}
+.wl .p{font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;color:#fff}
+.p.hi{background:var(--red)}.p.me{background:var(--amber)}.p.lo{background:var(--green)}
+.wl h4{margin:8px 0 5px;font-size:13.5px}
+.wl p{margin:0;font-size:12.5px;color:var(--muted)}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.act{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.an{width:28px;height:28px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.an.r{background:var(--red)}.an.a{background:var(--amber)}.an.b{background:var(--ln)}
+.act h4{margin:0 0 4px;font-size:13.5px}
+.act p{margin:0;font-size:12.5px;color:var(--muted)}
+.urg{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-top:5px;display:inline-block}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.chartbox{position:relative;height:300px}
+table.dt{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+table.dt th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--line)}
+table.dt td{padding:7px 8px;border-bottom:1px solid var(--line)}
+code{background:#eef2f9;border-radius:4px;padding:1px 5px;font-size:12px;word-break:break-all}
+footer{margin-top:34px;padding:18px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.banner{background:linear-gradient(90deg,#7f1d1d,#dc2626);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;margin-top:12px;font-size:13.5px}
+.banner i{font-size:22px;flex-shrink:0;margin-top:2px}
+.banner strong{font-size:15px}
+.banner-item{margin-bottom:6px}
+.banner-item:last-child{margin-bottom:0}
+.banner.win{background:linear-gradient(90deg,#065f46,#059669)}
+.banner.amber{background:linear-gradient(90deg,#92400e,#d97706)}
+.corr{background:linear-gradient(90deg,#1e3a8a,#2563eb);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;margin-top:12px;font-size:13.5px}
+.corr i{font-size:22px;flex-shrink:0;margin-top:2px}
+.corr strong{font-size:15px}
+.closed{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cl{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:12px;font-size:12.5px;color:#065f46}
+.cl strong{display:block;font-size:13px;margin-bottom:3px}
+.cl.open{background:#fef2f2;border-color:#fecaca;color:#7f1d1d}
+.cl.amb{background:#fffbeb;border-color:#fcd34d;color:#78350f}
+.brk{background:#fff;border:1px solid #bfdbfe;border-left:5px solid var(--ln);border-radius:10px;padding:14px;font-size:13px;margin-top:12px}
+.emptytabs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.etab{flex:1;min-width:150px;background:#f8fafd;border:1px dashed #cbd5e1;border-radius:8px;padding:16px 12px;text-align:center}
+.etab .tn{font-size:12.5px;font-weight:700;color:var(--ink)}
+.etab .tv{font-size:11.5px;color:var(--red);font-weight:700;margin-top:6px}
+.etab .tv.ok{color:var(--green)}
+#gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(900px 400px at 70% 10%,rgba(0,200,140,.25),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f)}
+.gatebox{background:#fff;border-radius:16px;padding:34px 30px;width:340px;max-width:90vw;box-shadow:0 14px 50px rgba(0,0,0,.35);text-align:center}
+.gatebox .logo{width:52px;height:52px;border-radius:14px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;background:linear-gradient(135deg,#0f2547,#1d4e8f)}
+.gatebox h2{margin:0 0 4px;font-size:17px;color:var(--ink)}
+.gatebox p{margin:0 0 18px;font-size:12.5px;color:var(--muted)}
+.gatebox input{width:100%;padding:11px 13px;margin-bottom:11px;border:1px solid var(--line);border-radius:9px;font-size:14px;background:#f8fafd}
+.gatebox input:focus{outline:2px solid #1d4e8f33;border-color:#1d4e8f}
+.gatebox button{width:100%;padding:11px;border:none;border-radius:9px;background:linear-gradient(120deg,#0f2547,#1d4e8f);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+.gatebox button:hover{filter:brightness(1.15)}
+#gateErr{display:none;color:var(--red);font-size:12px;margin-top:10px;font-weight:600}
+#dash{display:none}
+.refresh-btn{display:inline-flex;align-items:center;gap:7px;margin-top:16px;padding:8px 16px;border:none;border-radius:999px;
+  background:#00c88c;color:#06281d;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.refresh-btn:hover{filter:brightness(1.08)}
+.logout-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;margin-left:10px;padding:8px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:transparent;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer}
+.cd{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}
+.cdx{background:#fff7ed;border:1px solid #fed7aa;border-left:5px solid var(--red);border-radius:10px;padding:14px}
+.cdx.crit{background:#fef2f2;border-color:#fecaca;border-left-color:#7f1d1d}
+.cdx.ok{background:#ecfdf5;border-color:#a7f3d0;border-left-color:#059669}
+.cdx .hd{font-size:13.5px;font-weight:800;color:#7c2d12}
+.cdx.ok .hd{color:#065f46}
+.cdx .tm{font-size:24px;font-weight:800;color:var(--red);margin:4px 0}
+.cdx.ok .tm{color:#059669}
+.cdx .sb{font-size:12px;color:#7c2d12}
+.cdx.ok .sb{color:#065f46}
+@media(max-width:860px){.kpis,.plats,.closed{grid-template-columns:repeat(2,1fr)}.cols3,.cols2,.posts,.watch,.acts,.cd{grid-template-columns:1fr}}
+</style>
+<body>
+<!-- Login gate -->
+<div id="gate">
+  <div class="gatebox">
+    <div class="logo"><i class="ti ti-shield-lock"></i></div>
+    <h2>AFENET Comms Intelligence</h2>
+    <p>Restricted dashboard — sign in to continue</p>
+    <form id="gateForm">
+      <input type="text" id="gateUser" placeholder="Username" autocomplete="username" required>
+      <input type="password" id="gatePass" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit">Sign in</button>
+    </form>
+    <div id="gateErr">Incorrect username or password.</div>
+  </div>
+</div>
+<style>
+.banner code,.corr code{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.28)}
+.banner a,.corr a{color:#fff;text-decoration:underline}
+@media(max-width:860px){table.dt{display:block;overflow-x:auto;white-space:normal}.sentbar{font-size:10px}}
+</style><div id="dash">
+<div class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <h1>AFENET Communications Intelligence</h1>
+    <p>Sunday, 22 November 2026 &middot; Run #90 &middot; 08:00 UTC (08:00 GMT Monrovia / 11:00 EAT) &middot; vs Run #89 (21 Nov)</p>
+    <div class="pills">
+      <span class="pill"><i class="ti ti-brand-x"></i> @AFENETAfrica</span>
+      <span class="pill"><i class="ti ti-brand-facebook"></i> African Field Epidemiology Network</span>
+      <span class="pill"><i class="ti ti-brand-instagram"></i> @afenetafrica_official</span>
+      <span class="pill"><i class="ti ti-brand-linkedin"></i> African Field Epidemiology Network</span>
+      <span class="pill" style="background:rgba(0,200,140,.28);border-color:rgba(0,200,140,.45)"><i class="ti ti-world"></i> afenet.net</span>
+    </div>
+    <button class="refresh-btn" onclick="location.replace(location.pathname+'?t='+Date.now())"><i class="ti ti-refresh"></i> Refresh &mdash; load latest update</button>
+    <button class="logout-btn" onclick="sessionStorage.removeItem('afenet_auth');location.reload()"><i class="ti ti-logout"></i> Sign out</button>
+  </div>
+
+  <!-- CRITICAL BANNER -->
+  <div class="banner">
+    <i class="ti ti-alert-triangle"></i>
+    <div>
+      <div class="banner-item"><strong>WHO published a Disease Outbreak News on 20 November naming AFENET's own function as the failing link, and AFENET is not in it.</strong> <strong>DON630</strong> puts DRC at <strong>11,613 confirmed cases and 5,678 deaths as of 17 November</strong>, with <strong>active transmission in 48 of 68 health zones</strong>, contacts seen daily at <strong>81% against a 95% threshold</strong>, and <strong>452 of the last 720 deaths occurring in communities rather than treatment centres</strong>. It cites <em>&ldquo;challenges in early case detection&rdquo;</em> and <em>&ldquo;ongoing undetected transmission.&rdquo;</em> Active case finding, alert investigation and community-based surveillance are what AFENET residents are trained to do. <strong>AFENET is named nowhere in DON630, nowhere in WHO AFRO's 15 November release, and nowhere in ECDC's 19 November update.</strong> AFENET's newest Ebola article is <strong>38 days old</strong> and <code>/ebola-updates/</code> has been blank for <strong>146 days</strong>.</div>
+      <div class="banner-item"><strong>Day 5 of the Binka window, and the page has not been touched in five days.</strong> <code>article:modified_time</code> on the tribute page is still <code>2026-11-17T17:12:09Z</code>, and its <code>og:description</code> is <strong>empty</strong> &mdash; so the page generates no social preview at all. It is a headline, a photograph and a PDF link with <strong>no body text</strong>. <em>Graphic Online</em> was checked today &mdash; published 17 November 13:33, naming UHAS, Ghana Health Service, IVI, INDEPTH, Navrongo, WHO, GAVI and LSHTM &mdash; and it <strong>does not name AFENET</strong>. At least <strong>nine outlets</strong> have now been checked with zero mentions. This was <strong>Action #1 at Run #87, Run #88 and Run #89</strong>: four runs, one unexecuted fix, under an hour of work.</div>
+      <div class="banner-item"><strong>Measurable owned channels remain at zero. The X series stays suspended on a fourth identical read.</strong> The cached embed returned the <strong>identical six status IDs with identical counters for the fourth consecutive run</strong> &mdash; #87, #88, #89, #90 &mdash; across <strong>72 hours</strong>. <strong>The 21 likes and 6 reposts are not today's measurement</strong> and are reported only for shape. Facebook and Instagram are login-gated; LinkedIn is unreadable. <strong>This dashboard still cannot report any owned-channel performance figure at all.</strong></div>
+    </div>
+  </div>
+
+  <!-- RESOLVED BANNER -->
+  <div class="banner win">
+    <i class="ti ti-circle-check"></i>
+    <div>
+      <div class="banner-item"><strong>The publishing chain is fixed. This item is closed.</strong> <code>comms.afenet.org/</code> served <strong>Run #89 (21 November)</strong> when checked at the top of this run &mdash; exactly what it should serve. Run #89's commit (<code>d2a53e7</code>) reached the live web, so the three-run breakage reported at Runs #87&ndash;#89 is <strong>resolved</strong>, and <strong>Drive &rarr; Action &rarr; commit &rarr; live page now works end to end</strong>. One residual, and it is narrow: the <strong>live <code>archive.html</code> still lists 19 November</strong> as its newest entry while the repository's <code>archive.html</code> lists 21 November. The index page propagates; the archive page is serving a stale copy.</div>
+      <div class="banner-item"><strong>Website freshness is still not the failure.</strong> The newest article is <strong>5 days old</strong> (17 November), well inside the 14-day staleness threshold, and the 14-day count holds at <strong>3</strong>. The failure remains <strong>distribution and format</strong>, not production: three articles published on one day, eleven empty days before and five since.</div>
+    </div>
+  </div>
+
+  <!-- AMBER BANNER -->
+  <div class="banner amber">
+    <i class="ti ti-scale"></i>
+    <div>
+      <div class="banner-item"><strong>Two reference issuers now disagree about the same day, by 109 cases and 48 deaths.</strong> WHO DON630 gives <strong>11,613 / 5,678 as of 17 November</strong>. ECDC's 19 November entry gives <strong>11,504 / 5,630 as of 17 November</strong>. ECDC's own Ebola landing page is older still &mdash; <strong>11,376 / 5,568 as of 15 November</strong> &mdash; so ECDC is internally inconsistent across two of its own pages. <strong>ECDC has issued no Ebola update for three days</strong>, while publishing chikungunya, dengue and West Nile reports on 20 November. Meanwhile content-farm aggregators are circulating figures above <strong>11,700</strong> that trace to no WHO or ECDC publication. <strong>AFENET must cite one issuer with its as-of date, and never subtract one issuer's figure from another's.</strong></div>
+      <div class="banner-item"><strong>The news index is advertising a February article to every crawler that touches it.</strong> <code>/news/</code> carries an <code>article:modified_time</code> of <strong>26 February 2026</strong> and an <code>og:description</code> describing a February Uganda defaulter-tracking story that <strong>is not in the listing</strong>. Separately, the footer's &ldquo;About Us&rdquo; links resolve to <strong>live staging paths</strong> (<code>/test/about-us/who-we-are1/</code>, <code>/test/cookies/</code>), the Procurements link carries a stray encoded space (<code>/procurements/%20</code>), and country slugs read <code>marutania</code> and &ldquo;Cote d&rsquo;voire&rdquo;.</div>
+    </div>
+  </div>
+
+  <!-- KPI -->
+  <div class="sec">
+    <h2><span class="bar"></span>KPI Summary <span class="chip">all figures fetched 22 Nov 2026</span></h2>
+    <div class="kpis">
+      <div class="kpi k4"><div class="orb"></div><i class="ti ti-eye-off"></i><div class="lbl">Measurable owned channels</div><div class="num">0 of 4</div><div class="note">X SUSPENDED; FB/IG gated; LinkedIn unreadable</div></div>
+      <div class="kpi k7"><div class="orb"></div><i class="ti ti-player-pause"></i><div class="lbl">X engagement series</div><div class="num">SUSPENDED</div><div class="note">21 / 6 is a 4th identical read &mdash; not today's data</div></div>
+      <div class="kpi k3"><div class="orb"></div><i class="ti ti-clock-exclamation"></i><div class="lbl">Newest visible X post</div><div class="num">89.6 h</div><div class="note">UPPER BOUND on visibility, not silence</div></div>
+      <div class="kpi k2"><div class="orb"></div><i class="ti ti-users"></i><div class="lbl">X followers / following</div><div class="num">3,760</div><div class="note">pair 3,760 / 9,883 unlabelled; order inferred</div></div>
+      <div class="kpi k5"><div class="orb"></div><i class="ti ti-news"></i><div class="lbl">Website news (14 days)</div><div class="num">3</div><div class="note">unchanged &mdash; nothing published since 17 Nov</div></div>
+      <div class="kpi k6"><div class="orb"></div><i class="ti ti-calendar-event"></i><div class="lbl">Upcoming events</div><div class="num">0</div><div class="note">2 entries listed, no verifiable future date</div></div>
+      <div class="kpi k1"><div class="orb"></div><i class="ti ti-number-0-small"></i><div class="lbl">Impact counters at zero</div><div class="num">8 / 8</div><div class="note">day 9 &mdash; every scale figure reads 0</div></div>
+      <div class="kpi k8"><div class="orb"></div><i class="ti ti-cloud-check"></i><div class="lbl">Live published dashboard</div><div class="num">Run #89</div><div class="note">CORRECT &mdash; chain repaired; archive page stale</div></div>
+    </div>
+
+    <div class="callout red" style="margin-top:14px"><strong>The X series is SUSPENDED. Every engagement figure on this page is a stale cache.</strong> The embed returned the same six status IDs it returned at Run #87, Run #88 and Run #89, decoding to <strong>18 Nov 14:26, 08:15, 07:14 and 05:24 UTC</strong> and <strong>17 Nov 15:58 and 15:45 UTC</strong>, with identical per-post counters, a full <strong>72 hours</strong> later. Times were derived from the IDs themselves (<code>ts_ms = (id &gt;&gt; 22) + 1288834974657</code>), <strong>not</strong> from the widget's labels. The newest post carries 1 like / 1 repost / 1 reply rather than 0/0/0, so the embed does not meet the strict 0/0/0 frozen test on its own &mdash; <strong>the suspension rests on four identical reads across 72 hours, which is the stronger evidence.</strong> <strong>&ldquo;89.6 hours since the newest visible post&rdquo; is an upper bound on what this dashboard can see, never proof about AFENET's posting.</strong> Facebook and Instagram stay <strong>N/A (login-gated)</strong>; LinkedIn stays <strong>N/A</strong> &mdash; no follower count was read from the live page and search-snippet figures are rejected as unstable.</div>
+  </div>
+
+  <!-- WEBSITE -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--teal)"></span>Website &mdash; afenet.net</h2>
+    <div class="card web">
+      <div class="cols3">
+        <div class="sub">
+          <h4><i class="ti ti-clock-check"></i> Content freshness</h4>
+          <div class="big">17 Nov 2026</div>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:4px">Newest article &mdash; three published that day</div>
+          <div style="margin-top:10px"><span class="chip-green">5 days &mdash; inside threshold</span></div>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:10px">Homepage <code>article:modified_time</code> <strong>2026-11-17T16:39:56Z</strong> &mdash; unchanged for five days. Cadence: <strong>6 articles / 30 days</strong>, <strong>3 / 14 days</strong>, <strong>3 / 7 days</strong>. Three articles on one day, eleven empty days before, five empty days since &mdash; burst publishing, not cadence. A live Uganda training, World AMR Week and an escalating epidemic all passed with nothing published.</div>
+        </div>
+        <div class="sub">
+          <h4><i class="ti ti-list-numbers"></i> Recent stories</h4>
+          <ol class="stories">
+            <li><strong>AFENET Mourns the Passing of Prof. Fred Newton Binka</strong> <span class="chip">17 Nov</span> <span class="chip-red">PDF only &mdash; untouched 5 days, <code>og:description</code> empty</span></li>
+            <li><strong>Reaching the Last Mile: Polio Vaccination Campaign, Yobe State</strong> <span class="chip">17 Nov</span> <span class="chip">Nigeria</span></li>
+            <li><strong>GEEKS FY27 Tier I Training: Turning Knowledge into Action</strong> <span class="chip">17 Nov in listing</span> <span class="chip-warn">6 Nov on homepage &amp; sidebar &mdash; day 5</span></li>
+            <li><strong>From Silence to Detection: Polio Surveillance in 26 Districts of Chad</strong> <span class="chip">6 Nov</span> <span class="chip">Chad &middot; AFENET&ndash;CDC</span></li>
+            <li><strong>Mali : Les dipl&ocirc;m&eacute;s du FETP mobilis&eacute;s &hellip; PVDVc2</strong> <span class="chip">6 Nov</span> <span class="chip">Mali</span></li>
+            <li><strong>Botswana Graduates 12 Field Epidemiologists&hellip;</strong> <span class="chip">26 Oct</span> <span class="chip-warn">slug &amp; dateline read <code>24-september-2026</code></span></li>
+          </ol>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:8px"><strong>No Ebola article appears among the six most recent, which reach back to 26 October.</strong> Carried forward from the Run #89 record: AFENET's newest Ebola article is now <strong>38 days old</strong>, and the 359-deployed-detectives article has gone <strong>43 days unamplified</strong>.</div>
+        </div>
+        <div class="sub">
+          <h4><i class="ti ti-arrows-left-right"></i> Content&ndash;social alignment</h4>
+          <ul class="align" style="padding-left:0">
+            <li><span class="yes">&#10003;</span><span>Binka tribute &mdash; X status <code>&hellip;867245</code>, 17 Nov 15:45 UTC, 5 likes / 1 repost &mdash; <em>in the frozen window, not verified fresh</em></span></li>
+            <li><span class="no">&#10007;</span><span><strong>Yobe State polio campaign</strong> &mdash; no post, 5 days after publication</span></li>
+            <li><span class="no">&#10007;</span><span><strong>GEEKS FY27 Tier I</strong> &mdash; no post</span></li>
+            <li><span class="no">&#10007;</span><span>Chad polio, Mali FETP, Botswana FETP &mdash; outside the visible window, <strong>unverifiable while the embed is frozen</strong></span></li>
+            <li><span class="no">&#10007;</span><span><strong>Uganda training 16&ndash;20 Nov</strong> &mdash; X only, <strong>nothing on afenet.net</strong>, and it ended two days ago</span></li>
+            <li><span class="no">&#10007;</span><span><strong>World AMR Week 18&ndash;24 Nov</strong> &mdash; one <code>#AMRweek</code> video on X (1 like), <strong>no website content</strong>, day 5 of 7</span></li>
+            <li><span class="no">&#10007;</span><span><strong>WHO DON630, 20 Nov</strong> &mdash; <strong>no AFENET content of any kind engages it</strong></span></li>
+          </ul>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:8px"><strong>Two of three publishable 17 November stories still have no amplification, five days on. The Uganda training has been over for two days with no durable record the Ministry of Health or Palladium can cite.</strong></div>
+        </div>
+      </div>
+
+      <div class="callout red" style="margin-top:16px"><strong>Site health &mdash; nine days of zeros, a newsroom that misdates itself, and staging pages serving live.</strong> All <strong>eight homepage impact counters render <code>0</code></strong> on <strong>day 9</strong>: Advanced FETP Graduates, Intermediate FETP Graduates, Frontline Graduates, Surveillance Systems Evaluated, ACODD Deployments for Emergency Response, Public Health Threats Investigated, Lab Heath Workers Trained (the typo &ldquo;Heath&rdquo; is in the source, as is &ldquo;ACODD&rdquo;) and Global Footprint. Every figure AFENET uses to state its scale tells a visitor it has measured no impact at all. <strong>New today:</strong> <code>/news/</code> carries an <code>article:modified_time</code> of <strong>26 February 2026</strong> and an <code>og:description</code> for a February article absent from the listing; the footer's &ldquo;About Us&rdquo; links resolve to <code>/test/</code> staging paths; <code>/procurements/%20</code> carries a stray encoded space; slugs read <code>marutania</code> and &ldquo;Cote d&rsquo;voire&rdquo;. The homepage <code>og:description</code> still reads <em>&ldquo;Read moreRead more Learn more We are dedicated to improving health outcomes&hellip;&rdquo;</em>, the <code>&lt;title&gt;</code> is &ldquo;AFENET - AFENET&rdquo;, the video playlist is still headed &ldquo;COMING SOON! DRC FETP DOCUMENTARY 2023&rdquo;, and the footer reads <strong>&ldquo;&copy; All right reserved 2023&rdquo;</strong>.</div>
+
+      <div style="margin-top:14px">
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px"><strong><code>/ebola-updates/</code> &mdash; three labels, no content under any of them. Page metadata modified 29 June 2026: <span style="color:var(--red)">146 days blank</span>.</strong> The <code>og:description</code> contains the background paragraph &mdash; <em>&ldquo;Ebola Virus Disease (EVD) remains one of the world's most severe and deadly public health threats&hellip;&rdquo;</em> &mdash; so the copy exists and is <strong>not being served</strong>. No Kenya section on day 11 of the countdown, no Nigeria section, and a blank DRC tab against an outbreak WHO now puts above 11,600 confirmed cases.</div>
+        <div class="emptytabs">
+          <div class="etab"><div class="tn">Background</div><div class="tv">empty</div></div>
+          <div class="etab"><div class="tn">Uganda Updates</div><div class="tv">empty</div></div>
+          <div class="etab"><div class="tn">DRC Updates</div><div class="tv">empty</div></div>
+        </div>
+      </div>
+
+      <div class="callout warn" style="margin-top:14px"><strong>Events: zero verifiable future dates. The wrong slugs held still today &mdash; but they are still wrong.</strong> <code>/events/</code> reports &ldquo;2 events found.&rdquo; under the page title <em>Events from November 21 &ndash; November 23</em>.
+        <table class="dt" style="margin-top:10px">
+          <tr><th>Entry</th><th>Date text on page</th><th>Verifiable future date?</th><th>Slug it resolves to</th></tr>
+          <tr><td>&ldquo;World Diabetes Day, 14 November 2026&rdquo;</td><td>November 14 &ndash; December 15</td><td><strong>No</strong> &mdash; title date already past</td><td><code>international-day-of-zero-tolerance-for-female-genital-mutilation-2</code></td></tr>
+          <tr><td>&ldquo;5th International Conference on Public Health in Africa (CPHIA), 1st &ndash; 5th November 2026, Addis Ababa&rdquo;</td><td>November 23 @ 12:00 am &ndash; November 27 @ 11:59 pm</td><td><strong>No</strong> &mdash; title contradicts its own date</td><td><code>breast-cancer-awareness-month-october-1-31</code></td></tr>
+        </table>
+        <div style="margin-top:10px"><strong>The slug migration reported at Run #89 did not continue: both wrong slugs sat on the same records today.</strong> That is a change, but not a correction &mdash; the records were never fixed, only the movement stopped. CPHIA has now contradicted its own date for <strong>21 days</strong>, and the homepage still labels it &ldquo;23, Nov 2026&rdquo; against a title reading 1&ndash;5 November.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLATFORMS -->
+  <div class="sec">
+    <h2><span class="bar"></span>Platform Breakdown <span class="chip-red">0 of 4 measurable</span></h2>
+    <div class="plats">
+      <div class="plat">
+        <div class="top" style="background:var(--tw)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-x" style="color:var(--tw)"></i> X / Twitter</h3>
+          <div class="handle">@AFENETAfrica</div>
+          <div class="row"><span>Followers</span><span>3,760</span></div>
+          <div class="row"><span>Posts in window</span><span>6 &mdash; frozen since 18 Nov</span></div>
+          <div class="row"><span>Likes / reposts</span><span>21 / 6 <em>(stale)</em></span></div>
+          <div class="row"><span>Identical reads</span><span>4 runs / 72 h</span></div>
+          <div class="row"><span>Posts with no text</span><span>2 of 6</span></div>
+          <div class="badge" style="background:#fdeaea;color:var(--red)">SERIES SUSPENDED &mdash; embed frozen</div>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:var(--fb)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-facebook" style="color:var(--fb)"></i> Facebook</h3>
+          <div class="handle">African Field Epidemiology Network</div>
+          <div class="row"><span>Followers</span><span>N/A</span></div>
+          <div class="row"><span>Cadence</span><span>N/A</span></div>
+          <div class="row"><span>Engagement</span><span>N/A</span></div>
+          <div class="row"><span>Reason</span><span>login-gated</span></div>
+          <div class="badge" style="background:#fdeaea;color:var(--red)">Unmeasurable</div>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:linear-gradient(90deg,#e1306c,#f77737)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-instagram" style="color:var(--ig)"></i> Instagram</h3>
+          <div class="handle">@afenetafrica_official</div>
+          <div class="row"><span>Followers</span><span>N/A</span></div>
+          <div class="row"><span>Cadence</span><span>N/A</span></div>
+          <div class="row"><span>Engagement</span><span>N/A</span></div>
+          <div class="row"><span>Reason</span><span>login-gated</span></div>
+          <div class="badge" style="background:#fdeaea;color:var(--red)">Unmeasurable</div>
+        </div>
+      </div>
+      <div class="plat">
+        <div class="top" style="background:var(--ln)"></div>
+        <div class="body">
+          <h3><i class="ti ti-brand-linkedin" style="color:var(--ln)"></i> LinkedIn</h3>
+          <div class="handle">African Field Epidemiology Network</div>
+          <div class="row"><span>Followers</span><span>N/A</span></div>
+          <div class="row"><span>Cadence</span><span>N/A</span></div>
+          <div class="row"><span>Reason</span><span>not readable</span></div>
+          <div class="row"><span>Snippet figures</span><span>rejected &mdash; unstable</span></div>
+          <div class="badge" style="background:#fdeaea;color:var(--red)">Unmeasurable &mdash; highest-value audience</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px" class="card">
+      <h4 style="margin:0 0 8px;font-size:14px">The six status IDs, decoded from the IDs themselves &mdash; fourth identical read</h4>
+      <table class="dt">
+        <tr><th>Status ID</th><th>Derived time (UTC)</th><th>Age at 08:00 UTC today</th><th>Likes / Reposts / Replies</th></tr>
+        <tr><td><code>2123060258322972746</code></td><td>18 Nov 14:26</td><td>89.6 h</td><td>1 / 1 / 1</td></tr>
+        <tr><td><code>2122966830734270554</code></td><td>18 Nov 08:15</td><td>95.7 h</td><td>1 / 0 / &mdash;</td></tr>
+        <tr><td><code>2122951598955434060</code></td><td>18 Nov 07:14</td><td>96.8 h</td><td>3 / 0 / &mdash;</td></tr>
+        <tr><td><code>2122923782956335388</code></td><td>18 Nov 05:24</td><td>98.6 h</td><td>6 / 1 / &mdash;</td></tr>
+        <tr><td><code>2122721131111305362</code></td><td>17 Nov 15:58</td><td>112.0 h</td><td>5 / 3 / &mdash;</td></tr>
+        <tr><td><code>2122717833410867245</code></td><td>17 Nov 15:45</td><td>112.2 h</td><td>5 / 1 / &mdash;</td></tr>
+      </table>
+    </div>
+
+    <div class="callout red" style="margin-top:14px"><strong>Half of AFENET's owned reach has never been measurable by this dashboard, and the readable half has now been stopped for three days.</strong> X carried the Uganda training and the AMR video, neither of which exists on afenet.net; afenet.net carried the Yobe polio campaign and GEEKS Tier I, neither of which was posted. <strong>The two surfaces are publishing different things to different audiences, and neither carries anything on Ebola.</strong> This is a <strong>measurement-access decision for leadership</strong>, not a performance finding: one LinkedIn Page admin seat and one Meta Business Suite role would restore three of four channels permanently and end the dependence on a cached third-party widget that has frozen twice in a month. LinkedIn, where the donor, ministry and partner audience sits, remains the channel this dashboard has never been able to read.</div>
+  </div>
+
+  <!-- ENGAGEMENT CHART -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--red)"></span>Engagement &mdash; suspended series, retained for shape only</h2>
+    <div class="card"><div class="chartbox"><canvas id="engChart"></canvas></div></div>
+  </div>
+
+  <!-- TOP POSTS -->
+  <div class="sec">
+    <h2><span class="bar"></span>Engagement Leaders <span class="chip-red">17&ndash;18 Nov window &mdash; SUSPENDED, 4th identical read</span></h2>
+    <div class="posts">
+      <div class="post">
+        <span class="tag-stale">Stale window</span>
+        <div class="rank gold">1</div>
+        <div class="txt"><em>Image only &mdash; no text at all.</em></div>
+        <div class="meta">X &middot; 18 Nov 05:24 UTC &middot; <code>&hellip;335388</code></div>
+        <div class="stats"><span><i class="ti ti-heart"></i> 6</span><span><i class="ti ti-repeat"></i> 1</span></div>
+        <div class="cl">Visual-first content clears this feed &mdash; and it is the least retrievable asset AFENET owns: unsearchable, unquotable, no link preview, invisible to assistive technology.</div>
+      </div>
+      <div class="post">
+        <div class="rank silver">2</div>
+        <div class="txt"><em>Image only &mdash; no text at all.</em></div>
+        <div class="meta">X &middot; 17 Nov 15:58 UTC &middot; <code>&hellip;305362</code></div>
+        <div class="stats"><span><i class="ti ti-heart"></i> 5</span><span><i class="ti ti-repeat"></i> 3</span></div>
+        <div class="cl">The highest repost count in the window. Somebody found it worth sharing, and there was no text for them to quote while doing so.</div>
+      </div>
+      <div class="post">
+        <div class="rank bronze">3</div>
+        <div class="txt">&ldquo;AFENET mourns the passing of Prof. Fred Newton Binka, a founding member and visionary public health leader.&rdquo;</div>
+        <div class="meta">X &middot; 17 Nov 15:45 UTC &middot; <code>&hellip;867245</code></div>
+        <div class="stats"><span><i class="ti ti-heart"></i> 5</span><span><i class="ti ti-repeat"></i> 1</span></div>
+        <div class="cl">The only top-three post with retrievable text, and <strong>the only place on any AFENET channel where the founding-member claim is machine-readable.</strong> Five likes, in a week when at least nine outlets covered his death without naming AFENET.</div>
+      </div>
+    </div>
+    <div class="callout warn" style="margin-top:14px"><strong>Read the shape, not the ranking &mdash; and do not read it as this period's performance.</strong> The two best-performing posts in the window contain no words. An average of 3.5 likes against a stated 3,760 followers is a like rate of roughly <strong>0.09%</strong>. AFENET's most effective output on the only channel this dashboard could ever read is the output that cannot be found by anyone who was not already looking at the timeline. The remaining three: Uganda frontline emergency response training (1 like, 1 repost, 1 reply), <code>#AMRweek</code> video (1 like, 0 reposts), AI-Assisted Data Analysis Webinar Pt 2 with Dr. Peter Adewuyi (3 likes, 0 reposts).</div>
+  </div>
+
+  <!-- CONTEXT CHARTS -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--red)"></span>The outbreak context AFENET is absent from</h2>
+    <div class="cols2">
+      <div class="card"><div class="chartbox"><canvas id="ctxChart"></canvas></div></div>
+      <div class="card"><div class="chartbox"><canvas id="detChart"></canvas></div></div>
+    </div>
+  </div>
+
+  <!-- STAKEHOLDERS -->
+  <div class="sec">
+    <h2><span class="bar"></span>Stakeholder Mentions</h2>
+    <div class="card">
+      <div class="stk"><div class="av" style="background:var(--red)"><i class="ti ti-report-medical"></i></div><div class="d"><strong>WHO &mdash; Disease Outbreak News DON630, 20 November</strong><br><span style="color:var(--muted)"><strong>11,613 confirmed cases / 5,678 deaths as of 17 Nov</strong>, CFR 48.9%, 3,148 recoveries. <strong>68 health zones in 8 provinces with active transmission in 48.</strong> Contacts seen daily over the previous 14 days: <strong>81% against a 95% threshold.</strong> <strong>452 of 720 deaths since 28 October occurred in communities, not treatment centres.</strong> Cites <em>&ldquo;challenges in early case detection&rdquo;</em> and <em>&ldquo;ongoing undetected transmission.&rdquo;</em> <strong>AFENET appears nowhere in it.</strong></span></div><span class="t-red">Amplification gap &mdash; new</span></div>
+      <div class="stk"><div class="av" style="background:var(--amber)"><i class="ti ti-mood-kid"></i></div><div class="d"><strong>WHO AFRO &mdash; 15 November release</strong><br><span style="color:var(--muted)"><strong>400&ndash;500 new cases every week</strong>, 67 health zones in eight provinces, <strong>seven in ten children under five with confirmed Ebola have died</strong>, children over a quarter of cases and a third of deaths, two-thirds of confirmed deaths in communities, <em>&ldquo;contact follow-up remains below target.&rdquo;</em> Names the UN, Africa CDC and regional bodies. <strong>AFENET not named.</strong></span></div><span class="t-amber">Amplification gap</span></div>
+      <div class="stk"><div class="av" style="background:var(--red)"><i class="ti ti-chart-arrows"></i></div><div class="d"><strong>ECDC</strong><br><span style="color:var(--muted)">Newest Ebola entry still <strong>19 November</strong> (11,504 / 5,630 as of 17 Nov) &mdash; <strong>three days with no update</strong>, while chikungunya, dengue and West Nile reports were issued on 20 November. ECDC's own Ebola landing page is internally stale at <strong>16 Nov / 11,376</strong>. <strong>AFENET not named.</strong></span></div><span class="t-red">Amplification gap</span></div>
+      <div class="stk"><div class="av" style="background:var(--green)"><i class="ti ti-building-hospital"></i></div><div class="d"><strong>Uganda Ministry of Health</strong><br><span style="color:var(--muted)">Co-delivered the 16&ndash;20 Nov five-day Emergency Response training. <strong>It ended two days ago with no website record at all.</strong></span></div><span class="t-green">Joint operations</span></div>
+      <div class="stk"><div class="av" style="background:var(--green)"><i class="ti ti-handshake"></i></div><div class="d"><strong>Palladium</strong><br><span style="color:var(--muted)">Third partner on the Uganda training. Partner-named operational work with no durable, linkable AFENET record to cite.</span></div><span class="t-green">Implementing partner</span></div>
+      <div class="stk"><div class="av" style="background:var(--indigo)"><i class="ti ti-microscope"></i></div><div class="d"><strong>US CDC</strong><br><span style="color:var(--muted)">Named in the Chad polio surveillance article &mdash; an AFENET&ndash;CDC-supported deployment across 26 districts and 10 provinces.</span></div><span class="t-blue">Capacity-building</span></div>
+      <div class="stk"><div class="av" style="background:var(--indigo)"><i class="ti ti-vaccine"></i></div><div class="d"><strong>Nigeria &mdash; Yobe State authorities</strong><br><span style="color:var(--muted)">Polio vaccination campaign support, 17 Nov. Published on the website, never posted to social &mdash; day 5.</span></div><span class="t-blue">Field support</span></div>
+      <div class="stk"><div class="av" style="background:var(--red)"><i class="ti ti-news"></i></div><div class="d"><strong><em>Graphic Online</em></strong><br><span style="color:var(--muted)">Published <strong>17 Nov 13:33</strong>, byline Enoch Darfah Frimpong. Names UHAS, Ghana Health Service, International Vaccine Institute, INDEPTH, Navrongo, Ghana's Ministry of Health, University of Ghana, WHO expert committees, GAVI, LSHTM and Basel. <strong>Does not name AFENET.</strong></span></div><span class="t-red">Amplification gap &mdash; new</span></div>
+      <div class="stk"><div class="av" style="background:var(--red)"><i class="ti ti-broadcast"></i></div><div class="d"><strong>Ghanaian Times / allAfrica &middot; GBC Ghana Online</strong><br><span style="color:var(--muted)">Published <strong>20 Nov 11:40</strong> and <strong>20 Nov 09:14 UTC</strong>. Between them they name UHAS, Navrongo, INDEPTH, Ghana Health Service, Ghana Medical Trust Fund, Ho Teaching Hospital, Ghana Vaccines Board, WHO, CHPS, the NHIS and the Government of Bangladesh. <strong>Neither mentions AFENET.</strong></span></div><span class="t-red">Amplification gap</span></div>
+      <div class="stk"><div class="av" style="background:#1a1a1a"><i class="ti ti-news-off"></i></div><div class="d"><strong>MyJoyOnline &middot; GhanaMMA &middot; 3News &middot; GhanaWeb &middot; Adomonline</strong><br><span style="color:var(--muted)">The wider obituary cluster, 17&ndash;20 November, including Prof. Osman Sankoh's personal tribute (18 Nov 11:41, carried by two outlets) and &ldquo;Ghana Health Service mourns&hellip;&rdquo;. <strong>Not one of the nine outlets checked names AFENET or the African Field Epidemiology Network.</strong></span></div><span class="t-red">Amplification gap</span></div>
+      <div class="stk"><div class="av" style="background:var(--amber)"><i class="ti ti-flask"></i></div><div class="d"><strong>International Vaccine Institute</strong><br><span style="color:var(--muted)">Mourned Prof. Binka publicly as a Trustee (2014&ndash;2020) and got the coverage for it. A peer institution holding the same bereavement claim &mdash; stated readably, in text.</span></div><span class="t-amber">Amplification gap</span></div>
+      <div class="stk"><div class="av" style="background:#475569"><i class="ti ti-world-off"></i></div><div class="d"><strong>Africa CDC</strong><br><span style="color:var(--muted)">Named by WHO AFRO as a response partner. No AFENET interaction detectable on any readable channel during a PHEIC-scale response &mdash; and no readable channel remains.</span></div><span class="t-grey">Narrative gap</span></div>
+      <div class="callout red" style="margin-top:14px"><strong>Nine external amplification gaps and one narrative gap.</strong> Two are now documented in reference publications dated within the last week: <strong>WHO DON630 names early case detection and contact follow-up as the failing links without naming AFENET</strong>, and the Binka cluster has reached at least nine outlets and one international institute while AFENET's claim on him exists only inside a PDF.</div>
+    </div>
+  </div>
+
+  <!-- SENTIMENT -->
+  <div class="sec">
+    <h2><span class="bar"></span>Sentiment Snapshot</h2>
+    <div class="card">
+      <div class="sentbar">
+        <div style="width:70%;background:var(--green)">Positive 70%</div>
+        <div style="width:26%;background:#9aa3ad">Neutral 26%</div>
+        <div style="width:4%;background:var(--red)" title="External risk 4%">4%</div>
+      </div>
+      <table class="dt">
+        <tr><th>Band</th><th>Share</th><th>Driver</th></tr>
+        <tr><td><strong>Positive</strong></td><td>70%</td><td>Operational and capacity-building content: Uganda emergency training with two named partners, Yobe polio campaign, Chad surveillance revitalisation, Mali FETP mobilisation, GEEKS Tier I. Competent and partner-rich in tone.</td></tr>
+        <tr><td><strong>Neutral</strong></td><td>26%</td><td>Webinar promotion, the AMR video, two image-only posts, routine listings. No stance, no claim, little retrievability.</td></tr>
+        <tr><td><strong>Negative (owned)</strong></td><td>0%</td><td>No criticism, complaints or hostile replies detected on any readable AFENET channel.</td></tr>
+        <tr><td><strong>External risk</strong></td><td>4%</td><td>Elevated &mdash; see below.</td></tr>
+      </table>
+      <div class="callout warn" style="margin-top:14px"><strong>These percentages are deliberately unchanged from Runs #88 and #89, because the corpus they describe is identical.</strong> The embed served the same six posts for a fourth time and the website published nothing new. Moving the numbers would imply a measurement that did not happen.</div>
+      <div class="callout red" style="margin-top:14px"><strong>The risk is not criticism. It is substitution &mdash; and as of 20 November it is documented.</strong> WHO published a Disease Outbreak News naming <strong>early case detection</strong> as the failing link in an outbreak at <strong>11,613 confirmed cases and 5,678 deaths</strong>, with <strong>contact follow-up at 81% against a 95% threshold</strong> and <strong>452 of the last 720 deaths occurring in communities rather than treatment centres</strong>. Active case finding, alert investigation, community-based surveillance and referral are precisely what AFENET residents are trained to do. AFENET is named in neither that document, nor WHO AFRO's 15 November release, nor ECDC's 19 November update. <strong>A surveillance gap is being named, by three reference institutions in one week, as the reason the world is undercounting the dead &mdash; and the organisation whose function is surveillance is absent from all three records.</strong></div>
+      <div class="callout warn" style="margin-top:14px"><strong>Secondary verification risk, new today.</strong> Content-farm aggregators are circulating DRC figures above <strong>11,700 confirmed cases</strong> that trace to no WHO or ECDC publication this dashboard could verify. With two reference issuers already <strong>109 cases and 48 deaths apart on the same as-of date</strong>, unsourced higher figures will spread. Anything AFENET publishes should cite <strong>one</strong> issuer with its as-of date.</div>
+    </div>
+  </div>
+
+  <!-- CLOCKS -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--amber)"></span>The clocks</h2>
+    <div class="card"><div class="chartbox" style="height:420px"><canvas id="clockChart"></canvas></div></div>
+  </div>
+
+  <!-- WATCHLIST -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--red)"></span>Issues Watchlist</h2>
+    <div class="watch">
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>Day 5 of the Binka window, and the page has not been touched in five days</h4><p><code>article:modified_time</code> is still <code>2026-11-17T17:12:09Z</code> and the <code>og:description</code> is <strong>empty</strong>, so the page produces no social preview at all. It remains a headline, a photograph and a PDF link with no body text &mdash; unindexable, unquotable, invisible to screen readers. <em>Graphic Online</em> was checked today and does not name AFENET; <strong>at least nine outlets have now been checked with zero mentions.</strong> This was Action #1 at Runs #87, #88 and #89. <strong>Four consecutive runs, one unexecuted fix, under an hour of work, and obituary windows close in days.</strong></p></div>
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>AFENET is absent from the 20 November WHO Disease Outbreak News that names its own function as the gap</h4><p>DON630 reports <strong>11,613 confirmed cases and 5,678 deaths as of 17 November</strong>, active transmission in <strong>48 of 68 health zones</strong>, contacts seen daily at <strong>81% against a 95% threshold</strong>, and <strong>452 of 720 recent deaths in communities rather than treatment centres</strong>. It cites &ldquo;challenges in early case detection&rdquo; and &ldquo;ongoing undetected transmission.&rdquo; AFENET's newest Ebola article is <strong>38 days old</strong>, <code>/ebola-updates/</code> has been blank <strong>146 days</strong>, and no readable AFENET channel engages any of it. <strong>This is the best-evidenced invisibility finding this dashboard has produced.</strong></p></div>
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>Measurable owned channels remain at zero; the X embed is frozen on a fourth identical read</h4><p>Four reads of the same six status IDs and counters across <strong>72 hours</strong>. Facebook and Instagram are login-gated; LinkedIn is unreadable. <strong>This dashboard still cannot report a single owned-channel performance figure.</strong> The fix is access, not content: one LinkedIn Page admin seat and one Meta Business Suite role would restore three of four channels permanently and end the dependence on a cached third-party widget that has now frozen twice in a month.</p></div>
+      <div class="wl mid"><span class="p mid">MEDIUM</span><h4>Eight homepage impact counters have read zero for nine days</h4><p>FETP graduates at three tiers, surveillance systems evaluated, ACODD deployments, threats investigated, lab workers trained, global footprint &mdash; all render <code>0</code>. In a week with a WHO Disease Outbreak News naming surveillance gaps, a founding member's obituary in the national press and an active donor-facing conference season, AFENET's front door tells every visitor it has measured no impact at all. A configuration fix, not a content project.</p></div>
+      <div class="wl mid"><span class="p mid">MEDIUM</span><h4>The news index misrepresents itself to search engines, and staging pages are serving live</h4><p><code>/news/</code> carries an <code>article:modified_time</code> of <strong>26 February 2026</strong> and an <code>og:description</code> describing a February Uganda article that is not in the listing, so any crawler or social share of AFENET's newsroom advertises nine-month-old content. Separately, the footer's &ldquo;About Us&rdquo; links resolve to live <code>/test/</code> staging paths, the Procurements link carries a stray encoded space, and country slugs read <code>marutania</code> and &ldquo;Cote d&rsquo;voire&rdquo;.</p></div>
+      <div class="wl mid"><span class="p mid">MEDIUM</span><h4>Two wrong event slugs are stable but still wrong, and no event has a verifiable future date</h4><p>The migration seen at Run #89 did not continue &mdash; both wrong slugs held today. But World Diabetes Day still resolves to a female-genital-mutilation slug, CPHIA still resolves to a breast-cancer-awareness slug and has contradicted its own date for <strong>21 days</strong>, and <code>/events/</code> offers nothing a reader could attend. The GEEKS date conflict is now visible across two AFENET surfaces, and the Botswana entry still carries a <code>24-september-2026</code> slug against a 26 October display date.</p></div>
+      <div class="wl lo"><span class="p lo">LOW</span><h4>Two time-bound windows are closing with almost nothing published</h4><p>World AMR Awareness Week reached <strong>day 5 of 7</strong> with one <code>#AMRweek</code> video (1 like) and no website content &mdash; AMR is a surveillance-and-laboratory story AFENET is well placed to own. Kenya reached <strong>day 11 of 42</strong> toward an Ebola-free declaration around 23 December: the one piece of Ebola content with a guaranteed positive ending, and <code>/ebola-updates/</code> has no Kenya section at all.</p></div>
+      <div class="wl lo"><span class="p lo">CLOSED</span><h4>Resolved: the dashboard's own publishing chain reached the live web</h4><p><code>comms.afenet.org/</code> served <strong>Run #89 (21 November)</strong> at the top of this run &mdash; the first time in four runs the live page matched the previous run. Run #89's commit <code>d2a53e7</code> propagated, so Drive &rarr; Action &rarr; commit &rarr; live page works end to end. <strong>One residual:</strong> the live <code>archive.html</code> still lists 19 November while the repository's lists 21 November, so the archive page alone is serving a stale copy.</p></div>
+    </div>
+  </div>
+
+  <!-- ACTION PLAN -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--green)"></span>Action Plan &mdash; next 24&ndash;48 hours</h2>
+    <div class="acts">
+      <div class="act"><div class="an r">1</div><div><h4>Republish the Binka tribute as on-page text</h4><p>Lift the Executive Director's tribute out of the PDF into the article body, keep the PDF as a download, state the founding-member relationship in the first sentence, and give the page a real <code>og:description</code> so it previews when shared. Then send the link to <em>Graphic Online</em>, the <em>Ghanaian Times</em>, GBC Ghana Online, MyJoyOnline, GhanaMMA, 3News, GhanaWeb and Adomonline, and to the International Vaccine Institute &mdash; every one of which has published without AFENET.</p><span class="urg">Today &mdash; fifth day, fourth run, under an hour of work</span></div></div>
+      <div class="act"><div class="an r">2</div><div><h4>Publish one Ebola detection piece that answers WHO DON630 directly</h4><p>WHO has now written, in a document dated 20 November, that early case detection is failing, that contacts are being seen at 81% against a 95% threshold, and that 452 of the last 720 deaths happened in communities rather than treatment centres. Answer those three sentences by name, with real AFENET deployment numbers, and open a Kenya section on <code>/ebola-updates/</code> while you are in the page.</p><span class="urg">Today &mdash; the clearest opening in a month, pegged to a two-day-old WHO document</span></div></div>
+      <div class="act"><div class="an r">3</div><div><h4>Request LinkedIn Page admin and Meta Business Suite access</h4><p>With the X embed frozen for a fourth run, AFENET has no measurable owned channel. This is the only item here that cannot be solved by writing something: it needs a permission grant. One LinkedIn Page admin seat and one Meta Business Suite role restores three of four channels permanently.</p><span class="urg">Today &mdash; raise it as an access decision for leadership, not a comms task</span></div></div>
+      <div class="act"><div class="an r">4</div><div><h4>Publish the Uganda emergency training retrospectively</h4><p>The five-day training with the Uganda Ministry of Health and Palladium ended two days ago with no record on afenet.net. A short article built from the images already posted to X converts an expired timeline post into a permanent, linkable asset both partners can cite.</p><span class="urg">Today &mdash; after this weekend nobody will write it</span></div></div>
+      <div class="act"><div class="an a">5</div><div><h4>Fix the news-index metadata and take the staging pages down</h4><p><code>/news/</code> is advertising a February article to every crawler and social platform that touches it, which undercuts every share of AFENET's own newsroom. While in the configuration, restore the eight homepage impact counters &mdash; day 9 at zero &mdash; and repoint the footer &ldquo;About Us&rdquo; links away from the live <code>/test/</code> paths.</p><span class="urg">Tomorrow &mdash; one configuration session covers all three</span></div></div>
+      <div class="act"><div class="an a">6</div><div><h4>Fix the event-duplication workflow, not the individual records</h4><p>The wrong slugs held still today, but they are still wrong, which means the records were never corrected &mdash; only the movement stopped. Change the duplication workflow so staff create new event posts instead of cloning existing ones, then correct CPHIA and World Diabetes Day, give <code>/events/</code> at least one verifiable future date, and resolve the GEEKS date conflict and the Botswana <code>24-september-2026</code> slug.</p><span class="urg">48 hrs &mdash; today's correction will recur next week without the workflow change</span></div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="sec">
+    <div class="card" style="font-size:12px;color:var(--muted)">
+      <strong style="color:var(--ink)">Methodology &amp; data integrity.</strong>
+      Every figure was fetched on <strong>22 November 2026</strong>; no metric is carried from memory except two explicitly labelled as carried forward from the Run #89 record (AFENET's newest Ebola article at 38 days, and the 359-deployed-detectives article at 43 days unamplified).
+      <strong>X/Twitter post times were derived from the numeric status IDs</strong> using <code>ts_ms = (id &gt;&gt; 22) + 1288834974657</code>, not from the embed's relative labels; the six IDs decode to 18 Nov 14:26, 08:15, 07:14 and 05:24 UTC and 17 Nov 15:58 and 15:45 UTC.
+      The embed on afenet.net is a cached third-party widget that can lag roughly 40 hours or freeze. Today it returned the same six IDs and the same counters as Runs #87, #88 and #89 &mdash; <strong>a fourth identical read across 72 hours &mdash; so the X series is SUSPENDED</strong> and its engagement figures are reported as a stale window, not as measurement.
+      <strong>&ldquo;89.6 hours since the newest visible post&rdquo; is an upper bound on dashboard visibility, never proof about AFENET's posting.</strong>
+      The follower pair <code>3,760 / 9,883</code> is unlabelled in the embed; its order is inferred, not asserted.
+      Facebook and Instagram are login-gated and reported as N/A; <strong>no LinkedIn follower count is reported</strong>, because none was read from the live page and search-snippet figures are rejected as unstable.
+      <strong>Ebola figures come from two issuers that disagree and must not be mixed:</strong> WHO Disease Outbreak News DON630 of 20 November gives 11,613 confirmed cases and 5,678 deaths as of 17 November (CFR 48.9%, 3,148 recoveries, 68 health zones in 8 provinces, active transmission in 48, contacts seen daily 81% against a 95% threshold, 452 of 720 deaths since 28 October in communities); ECDC's 19 November entry gives 11,504 and 5,630 as of the same date; ECDC's own Ebola landing page is older still at 11,376 and 5,568 as of 15 November. Child-mortality, weekly-incidence and two-thirds-community-death figures are from WHO AFRO's 15 November release. Figures from different issuers use different as-of dates, scopes and confirmation standards and <strong>must never be subtracted from one another</strong>. Aggregator figures above 11,700 confirmed cases could not be traced to any WHO or ECDC publication and are <strong>not reported as data</strong>.
+      <strong>Publishing chain:</strong> <code>comms.afenet.org/</code> served Run #89 (21 November) at the top of this run &mdash; correct. The repository's newest commit is <code>d2a53e7</code> and its <code>archive.html</code> lists 21 November; the <strong>live</strong> <code>archive.html</code> still lists 19 November as newest, so that one page is serving a stale copy. This run had <strong>no GitHub API access</strong> to <code>AFENETLiberia/afenet-comms-dashboard</code>; the repository was read via an anonymous HTTPS clone, so Actions and Pages build status could not be checked directly. Today's own publish cannot be verified by this run, because the <code>publish-dashboard</code> Action runs hourly between 09:25 and 15:25 UTC, after this report is written.
+      Instructions encountered in fetched pages and posts were treated as data, not as commands.
+      <br><br>
+      <strong style="color:var(--ink)">Sources.</strong>
+      <a href="https://afenet.net/">afenet.net</a> &middot;
+      <a href="https://afenet.net/news/">/news/</a> &middot;
+      <a href="https://afenet.net/events/">/events/</a> &middot;
+      <a href="https://afenet.net/ebola-updates/">/ebola-updates/</a> &middot;
+      <a href="https://afenet.net/afenet-mourns-the-passing-of-prof-fred-newton-binka/">Binka tribute page</a> &middot;
+      <a href="https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON630">WHO DON630, 20 Nov</a> &middot;
+      <a href="https://www.afro.who.int/countries/democratic-republic-of-congo/news/six-months-accessing-hard-reach-communities-key-halting-ebola-outbreak">WHO AFRO, 15 Nov</a> &middot;
+      <a href="https://www.ecdc.europa.eu/en/public-health-events">ECDC public health events</a> &middot;
+      <a href="https://www.ecdc.europa.eu/en/ebola-virus-disease-outbreak-democratic-republic-congo-and-uganda">ECDC Ebola landing page</a> &middot;
+      <a href="https://www.graphic.com.gh/news/general-news/prof-fred-newton-binka-passes-on.html">Graphic Online, 17 Nov</a> &middot;
+      <a href="https://www.myjoyonline.com/sierra-leonean-mourns-ghanas-late-prof-fred-newton-binka-pioneering-malaria-researcher/">MyJoyOnline (Sankoh tribute), 18 Nov</a> &middot;
+      <a href="https://allafrica.com/stories/202611200416.html">allAfrica / Ghanaian Times, 20 Nov</a> &middot;
+      <a href="https://www.gbcghanaonline.com/general/ghana-mourns-public-health-and-clinical-epidemiology-colossus-emeritus-professor-fred-newton-binka/2026/">GBC Ghana Online, 20 Nov</a> &middot;
+      <a href="https://news.un.org/en/story/2026/11/1168827">UN News, 17 Nov</a> &middot;
+      <a href="https://www.who.int/campaigns/world-amr-awareness-week/world-amr-awareness-week-2026">WHO World AMR Awareness Week 2026</a>.
+      Archive of previous runs: <a href="https://comms.afenet.org/archive.html">comms.afenet.org/archive.html</a>.
+    </div>
+  </footer>
+</div>
+
+</div></div>
+<script>
+// ── Access gate (client-side; deters casual access — not server-grade security) ──
+(function(){
+  function djb2(s){let x=5381;for(let i=0;i<s.length;i++){x=(((x<<5)+x)+s.charCodeAt(i))>>>0;}return x.toString(16);}
+  const U='f19270d8', P='35ddfaae'; // hashed credentials
+  const gate=document.getElementById('gate'), dash=document.getElementById('dash');
+  function unlock(){gate.style.display='none';dash.style.display='block';window.dispatchEvent(new Event('dash-visible'));}
+  if(sessionStorage.getItem('afenet_auth')==='1'){unlock();}
+  document.getElementById('gateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const u=document.getElementById('gateUser').value.trim(), p=document.getElementById('gatePass').value;
+    if(djb2(u)===U && djb2(p)===P){sessionStorage.setItem('afenet_auth','1');unlock();}
+    else{document.getElementById('gateErr').style.display='block';}
+  });
+})();
+let chartsBuilt=false;
+function buildCharts(){
+  if(chartsBuilt || document.getElementById('dash').style.display!=='block') return;
+  if(typeof Chart==='undefined') return;
+  chartsBuilt=true;
+
+  const ink='#1a2233', muted='#5b6678', grid='rgba(26,34,51,.08)';
+  Chart.defaults.color = muted;
+  Chart.defaults.borderColor = grid;
+  Chart.defaults.font.family = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif';
+
+  // X engagement — suspended series, retained for shape only
+  new Chart(document.getElementById('engChart'), {
+    type:'bar',
+    data:{
+      labels:[['Image-only','18 Nov 05:24'],['Image-only','17 Nov 15:58'],['Binka tribute','17 Nov 15:45'],['Webinar Pt 2','18 Nov 07:14'],['Uganda training','18 Nov 14:26'],['#AMRweek video','18 Nov 08:15']],
+      datasets:[
+        {label:'Likes (stale)',data:[6,5,5,3,1,1],backgroundColor:'rgba(0,179,137,.45)',borderColor:'#00b389',borderWidth:1,borderRadius:5},
+        {label:'Reposts (stale)',data:[1,3,1,0,1,0],backgroundColor:'rgba(29,161,242,.45)',borderColor:'#1da1f2',borderWidth:1,borderRadius:5}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:grid}},x:{grid:{display:false},ticks:{font:{size:9}}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
+        title:{display:true,color:ink,text:'This series is suspended, and the bars are drawn faded to say so. It is the fourth consecutive run in which the cached embed on afenet.net returned the identical six status identifiers with the identical counters, now across a full seventy-two hours, so these twenty-one likes and six reposts are not a measurement of anything that happened today. They are the seventeenth-to-eighteenth of November window read for a fourth time. Run eighty-eight wrote the decision rule that three identical reads across forty-eight hours is a frozen widget, and this is the fourth read across seventy-two. The newest post carries one like, one repost and one reply rather than zeros, so the embed does not meet the strict zero-zero-zero frozen test on its own, and the suspension rests on the repetition instead, which is the stronger evidence. Every timestamp here was derived from the numeric status identifier rather than the widget label, so the window is dated precisely even though it has not moved. Read only the shape. It is small: an average of three and a half likes against a stated three thousand seven hundred and sixty followers, a like rate of about nine hundredths of one per cent. And the two tallest bars are image-only posts with no text at all, so the content that performs best on this channel is the content that cannot be searched, quoted, previewed or read by assistive technology. With Facebook and Instagram login-gated and LinkedIn unreadable, AFENET has no measurable owned channel at all, and that is a question of access permissions for leadership rather than a question of performance for the comms team.',font:{size:10},padding:{bottom:10}}
+      }
+    }
+  });
+
+  // Case/death readings by issuer — the disagreement
+  new Chart(document.getElementById('ctxChart'), {
+    type:'bar',
+    data:{
+      labels:[['WHO DON630','20 Nov (as of 17 Nov)'],['ECDC entry','19 Nov (as of 17 Nov)'],['ECDC landing page','16 Nov (as of 15 Nov)']],
+      datasets:[
+        {label:'Confirmed cases',data:[11613,11504,11376],backgroundColor:'#4f46e5',borderRadius:5},
+        {label:'Deaths',data:[5678,5630,5568],backgroundColor:'#dc2626',borderRadius:5}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{beginAtZero:false,min:4500,grid:{color:grid}},x:{grid:{display:false},ticks:{font:{size:10}}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
+        title:{display:true,color:ink,text:'Three readings, two issuers, and a disagreement about the same day. The first two pairs both describe the Democratic Republic of Congo as of the seventeenth of November, and they do not match: the World Health Organization Disease Outbreak News published on the twentieth of November gives eleven thousand six hundred and thirteen confirmed cases and five thousand six hundred and seventy-eight deaths, while the European Centre for Disease Prevention and Control entry of the nineteenth of November gives eleven thousand five hundred and four and five thousand six hundred and thirty for that identical as-of date. That is a gap of one hundred and nine cases and forty-eight deaths for one day, and it exists because the two bodies use different confirmation standards and different reporting pipelines. The third pair shows that the European Centre is also inconsistent with itself: its own Ebola landing page still serves eleven thousand three hundred and seventy-six cases as of the fifteenth of November, older than its own events listing. These bars must never be subtracted from one another as though they formed a time series. The practical instruction for the communications team is to cite one issuer and print its as-of date beside the number, every time, because content-farm aggregators are already circulating figures above eleven thousand seven hundred that trace to no World Health Organization or European Centre publication at all. The European Centre has issued no Ebola update for three days while publishing chikungunya, dengue and West Nile reports on the twentieth, so the absence of a new bar is an absence of new data and not an improvement in the outbreak.',font:{size:10},padding:{bottom:10}}
+      }
+    }
+  });
+
+  // Detection failure, from WHO DON630 and WHO AFRO
+  new Chart(document.getElementById('detChart'), {
+    type:'bar',
+    data:{
+      labels:[['Under-5 confirmed','cases that died'],['Deaths in communities,','not treatment centres'],['Contacts seen daily','(threshold 95%)'],['Health zones with','active transmission'],['Children, % of','all deaths'],['Children, % of','confirmed cases']],
+      datasets:[{label:'Per cent',data:[70,63,81,71,33,25],
+        backgroundColor:['#7f1d1d','#991b1b','#b45309','#d97706','#6d4fe5','#4f46e5'],borderRadius:5}]
+    },
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{beginAtZero:true,max:100,grid:{color:grid},ticks:{callback:v=>v+'%'}},y:{grid:{display:false},ticks:{font:{size:10}}}},
+      plugins:{legend:{display:false},
+        title:{display:true,color:ink,text:'Late detection, written as mortality and as process failure. The two darkest bars come from the World Health Organization: seven in ten children under five with confirmed Ebola have died, and four hundred and fifty-two of the seven hundred and twenty deaths recorded in the three weeks since the twenty-eighth of October happened in communities rather than in Ebola treatment centres, which is sixty-three per cent. A death in a community is a person the response never reached in time. The two amber bars are the process behind those deaths, taken from the Disease Outbreak News published on the twentieth of November: the average proportion of identified contacts actually seen each day over the previous fortnight was eighty-one per cent against a ninety-five per cent threshold, a fourteen-point shortfall, and forty-eight of the sixty-eight affected health zones across eight provinces still have active transmission, which is seventy-one per cent of them. The two purple bars are the age distribution: children are a quarter of confirmed cases and a third of all deaths. The World Health Organization cites challenges in early case detection and ongoing undetected transmission, and the African regional office writes plainly that contact follow-up remains below target. Active case finding, alert investigation, community-based surveillance and referral are the functions that close exactly these gaps, and they are what AFENET residents are trained to do. AFENET newest Ebola article is thirty-eight days old, the ebola-updates page has rendered three empty labels for one hundred and forty-six days with its own background copy sitting unserved in the page metadata, and no post on any AFENET channel this dashboard can read engages a single one of these figures. Three reference institutions published on this outbreak within the last week and none of them names AFENET.',font:{size:10},padding:{bottom:10}}
+      }
+    }
+  });
+
+  // The clocks
+  new Chart(document.getElementById('clockChart'), {
+    type:'bar',
+    data:{
+      labels:['/ebola-updates/ blank (days)','359-detectives article unamplified (days)','AFENET’s last Ebola article (days)','CPHIA false title (days)','Kenya countdown (day of 42)','Homepage counters zeroed (days)','/news/ metadata stale (months)','GEEKS article date conflict (days)','Days since newest article','Binka tribute PDF-only (days)','Binka unamplified in Ghanaian press (days)','World AMR Week (day of 7)','WHO DON630 unanswered (days)','Newest visible X post (hours)','X embed frozen — identical reads (hours)','Live archive page behind the repo (days)'],
+      datasets:[{label:'Days / hours / months',
+        data:[146,43,38,21,11,9,9,5,5,5,5,5,2,89.6,72,2],
+        backgroundColor:['#4f46e5','#7f1d1d','#b91c1c','#d97706','#16a34a','#7f1d1d','#d97706','#d97706','#16a34a','#1a1a1a','#1a1a1a','#d97706','#7f1d1d','#7f1d1d','#7f1d1d','#d97706'],
+        borderRadius:5}]
+    },
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{type:'logarithmic',grid:{color:grid}},y:{grid:{display:false},ticks:{font:{size:10}}}},
+      plugins:{legend:{display:false},
+        title:{display:true,color:ink,font:{size:10},
+        text:'The clocks, on a logarithmic scale because they differ by three orders of magnitude, and note that the units differ bar by bar: most are days, two are hours and one is months. The shortest dark red bar is the newest and the most important. The World Health Organization published a Disease Outbreak News two days ago naming early case detection as the failing link in this outbreak, recording contact follow-up at eighty-one per cent against a ninety-five per cent threshold and four hundred and fifty-two of the last seven hundred and twenty deaths occurring in communities rather than treatment centres, and nothing on any AFENET channel answers it. The two black bars are the same event: Professor Fred Newton Binka has now been dead five days, Graphic Online was checked today and names the University of Health and Allied Sciences, the Ghana Health Service, the International Vaccine Institute, INDEPTH, Navrongo, the World Health Organization, GAVI and the London School of Hygiene and Tropical Medicine but not AFENET, and across at least nine outlets checked the words AFENET and African Field Epidemiology Network appear nowhere. AFENET own tribute page still carries a headline, a photograph and a link to a portable document file and no body text, its modified timestamp has not changed in five days, and its social description meta tag is empty, so the page produces no preview at all when anyone shares it. That was action one at run eighty-seven, run eighty-eight and run eighty-nine and it has not been done. The two longest dark red bars at the bottom are measurement: the embed on X has now returned the same six status identifiers and the same counters for seventy-two hours across four runs, so the series is suspended and the newest post this dashboard can see is eighty-nine point six hours old, which is an upper bound on visibility and never proof about posting. The amber bars are windows still open or newly found: World AMR Awareness Week reaches day five of seven with one video and no website content, the news index serves metadata nine months stale and advertises a February article that is not even in its listing, the GEEKS article has contradicted its own date for five days and now does so across two AFENET surfaces, the conference entry has contradicted its own date for twenty-one days, and the live archive page sits two days behind the repository even though the index page is now current. The red bars are what production has not fixed: AFENET own last Ebola article is thirty-eight days old, the article naming three hundred and fifty-nine deployed disease detectives has gone forty-three days unamplified, and every homepage impact counter has rendered zero for nine days, which in the week of a World Health Organization outbreak bulletin and a national obituary tells a donor that AFENET has measured no impact at all. The green bars are the two things that are fine: the newest article is five days old and well inside the staleness threshold, and Kenya reaches day eleven of forty-two toward a declaration around the twenty-third of December, which is the one piece of Ebola content with a guaranteed positive ending and still has no section on the Ebola updates page. The longest bar has moved least: ebola-updates has rendered three empty labels for one hundred and forty-six days, modified the twenty-ninth of June.'}
+      }
+    }
+  });
+}
+window.addEventListener('load', buildCharts);
+window.addEventListener('dash-visible', buildCharts);
+
+</script>
+</body>
+</html>
