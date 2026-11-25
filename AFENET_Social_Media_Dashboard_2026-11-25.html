@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFENET Communications Intelligence — 25 November 2026 (Run #93)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --muted:#5b6678; --line:#e4e8f0;
+  --tw:#1da1f2; --fb:#4267b2; --ln:#0a66c2; --ig:#e1306c; --teal:#00b389; --purple:#6d4fe5; --indigo:#4f46e5;
+  --green:#16a34a; --amber:#d97706; --red:#dc2626;
+  --shadow:0 2px 10px rgba(26,34,51,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:24px}
+a{color:var(--ln);text-decoration:none}
+a:hover{text-decoration:underline}
+.hero{position:relative;overflow:hidden;border-radius:18px;padding:34px 30px;color:#fff;
+  background:radial-gradient(900px 300px at 85% -20%,rgba(0,200,140,.45),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f);
+  box-shadow:var(--shadow)}
+.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
+.hero p{margin:0;color:#cfe0f5;font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.pill i{font-size:15px}
+.sec{margin-top:30px}
+.sec h2{font-size:17px;margin:0 0 14px;display:flex;align-items:center;gap:9px}
+.sec h2 .bar{width:5px;height:20px;border-radius:3px;background:var(--ln)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{position:relative;overflow:hidden;border-radius:14px;padding:16px;color:#fff;box-shadow:var(--shadow)}
+.kpi .orb{position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.16)}
+.kpi i{font-size:20px;opacity:.95}
+.kpi .lbl{font-size:12px;opacity:.92;margin-top:6px}
+.kpi .num{font-size:26px;font-weight:800;line-height:1.1;margin-top:2px}
+.kpi .note{font-size:11px;opacity:.85;margin-top:3px}
+.k1{background:linear-gradient(135deg,#16a34a,#15803d)}
+.k2{background:linear-gradient(135deg,#0a66c2,#073d77)}
+.k3{background:linear-gradient(135deg,#b91c1c,#7f1d1d)}
+.k4{background:linear-gradient(135deg,#0f766e,#115e59)}
+.k5{background:linear-gradient(135deg,#0d3a2a,#0a5040)}
+.k6{background:linear-gradient(135deg,#1a1040,#2a1a60)}
+.k7{background:linear-gradient(135deg,#b45309,#92400e)}
+.k8{background:linear-gradient(135deg,#7a3ea3,#54287a)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.web{border-top:4px solid var(--teal)}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:18px}
+.sub h4{margin:0 0 8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.big{font-size:22px;font-weight:800}
+.chip{display:inline-block;font-size:11px;background:#eef2f9;color:var(--muted);border-radius:6px;padding:2px 7px;margin-left:6px}
+.chip-warn{display:inline-block;font-size:11px;background:#fef9e7;color:#92400e;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-red{display:inline-block;font-size:11px;background:#fdeaea;color:#b91c1c;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-green{display:inline-block;font-size:11px;background:#dcfce7;color:#166534;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+.chip-blue{display:inline-block;font-size:11px;background:#e7f0fd;color:#1d4ed8;border-radius:6px;padding:2px 7px;margin-left:6px;font-weight:700}
+ol.stories{margin:0;padding-left:18px}
+ol.stories li{margin-bottom:7px;font-size:13px}
+.align li{list-style:none;font-size:13px;margin-bottom:6px;display:flex;gap:7px;align-items:flex-start}
+.align{padding:0;margin:0}
+.yes{color:var(--green);font-weight:800}
+.no{color:var(--red);font-weight:800}
+.mid{color:var(--amber);font-weight:800}
+.plats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.plat{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.plat .top{height:5px}
+.plat .body{padding:15px}
+.plat h3{margin:0 0 2px;font-size:14px;display:flex;align-items:center;gap:7px}
+.plat .handle{font-size:12px;color:var(--muted);margin-bottom:10px}
+.row{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-top:1px dashed var(--line);gap:10px}
+.row span:last-child{font-weight:700;text-align:right}
+.badge{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:#eef2f9;color:var(--ink)}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);position:relative}
+.rank{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px}
+.gold{background:#d4af37}.silver{background:#9aa3ad}.bronze{background:#b87333}
+.post .txt{font-size:13px;margin:10px 0}
+.post .meta{font-size:11px;color:var(--muted)}
+.post .stats{display:flex;gap:14px;margin-top:8px;font-size:12.5px;font-weight:700}
+.tag-top{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#fff7e6;color:#b45309;border:1px solid #f0d9a8;border-radius:999px;padding:2px 8px}
+.tag-stale{position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;background:#eef2f9;color:#475569;border:1px solid #cbd5e1;border-radius:999px;padding:2px 8px}
+.stk{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:13px}
+.stk:first-child{border-top:none}
+.av{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+.stk .d{flex:1}
+.t-green{background:#e7f6ec;color:var(--green);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-amber{background:#fdf0e1;color:var(--amber);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-red{background:#fdeaea;color:var(--red);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-blue{background:#e7f0fd;color:var(--ln);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-grey{background:#eef2f9;color:var(--muted);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.sentbar{display:flex;height:30px;border-radius:8px;overflow:hidden;font-size:12px;font-weight:700;color:#fff}
+.sentbar div{display:flex;align-items:center;justify-content:center}
+.callout{margin-top:12px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:12px;font-size:13px;color:#065f46}
+.callout.warn{background:#fffbeb;border-color:#fcd34d;color:#78350f}
+.callout.red{background:#fef2f2;border-color:#fecaca;color:#7f1d1d}
+.watch{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wl{background:var(--card);border:1px solid var(--line);border-left-width:5px;border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.wl.hi{border-left-color:var(--red)}.wl.me{border-left-color:var(--amber)}.wl.lo{border-left-color:var(--green)}
+.wl .p{font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;color:#fff}
+.p.hi{background:var(--red)}.p.me{background:var(--amber)}.p.lo{background:var(--green)}
+.wl h4{margin:8px 0 5px;font-size:13.5px}
+.wl p{margin:0;font-size:12.5px;color:var(--muted)}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.act{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px;box-shadow:var(--shadow)}
+.an{width:28px;height:28px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.an.r{background:var(--red)}.an.a{background:var(--amber)}.an.b{background:var(--ln)}
+.act h4{margin:0 0 4px;font-size:13.5px}
+.act p{margin:0;font-size:12.5px;color:var(--muted)}
+.urg{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-top:5px;display:inline-block}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.chartbox{position:relative;height:300px}
+table.dt{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+table.dt th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--line)}
+table.dt td{padding:7px 8px;border-bottom:1px solid var(--line)}
+code{background:#eef2f9;border-radius:4px;padding:1px 5px;font-size:12px;word-break:break-all}
+footer{margin-top:34px;padding:18px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.banner{background:linear-gradient(90deg,#7f1d1d,#dc2626);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;margin-top:12px;font-size:13.5px}
+.banner i{font-size:22px;flex-shrink:0;margin-top:2px}
+.banner strong{font-size:15px}
+.banner-item{margin-bottom:6px}
+.banner-item:last-child{margin-bottom:0}
+.banner.win{background:linear-gradient(90deg,#065f46,#059669)}
+.banner.amber{background:linear-gradient(90deg,#92400e,#d97706)}
+.corr{background:linear-gradient(90deg,#1e3a8a,#2563eb);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;margin-top:12px;font-size:13.5px}
+.corr i{font-size:22px;flex-shrink:0;margin-top:2px}
+.corr strong{font-size:15px}
+.closed{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cl{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:12px;font-size:12.5px;color:#065f46}
+.cl strong{display:block;font-size:13px;margin-bottom:3px}
+.cl.open{background:#fef2f2;border-color:#fecaca;color:#7f1d1d}
+.cl.amb{background:#fffbeb;border-color:#fcd34d;color:#78350f}
+.brk{background:#fff;border:1px solid #bfdbfe;border-left:5px solid var(--ln);border-radius:10px;padding:14px;font-size:13px;margin-top:12px}
+.emptytabs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.etab{flex:1;min-width:150px;background:#f8fafd;border:1px dashed #cbd5e1;border-radius:8px;padding:16px 12px;text-align:center}
+.etab .tn{font-size:12.5px;font-weight:700;color:var(--ink)}
+.etab .tv{font-size:11.5px;color:var(--red);font-weight:700;margin-top:6px}
+.etab .tv.ok{color:var(--green)}
+#gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(900px 400px at 70% 10%,rgba(0,200,140,.25),transparent),linear-gradient(120deg,#0f2547,#163a6b 60%,#1d4e8f)}
+.gatebox{background:#fff;border-radius:16px;padding:34px 30px;width:340px;max-width:90vw;box-shadow:0 14px 50px rgba(0,0,0,.35);text-align:center}
+.gatebox .logo{width:52px;height:52px;border-radius:14px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;background:linear-gradient(135deg,#0f2547,#1d4e8f)}
+.gatebox h2{margin:0 0 4px;font-size:17px;color:var(--ink)}
+.gatebox p{margin:0 0 18px;font-size:12.5px;color:var(--muted)}
+.gatebox input{width:100%;padding:11px 13px;margin-bottom:11px;border:1px solid var(--line);border-radius:9px;font-size:14px;background:#f8fafd}
+.gatebox input:focus{outline:2px solid #1d4e8f33;border-color:#1d4e8f}
+.gatebox button{width:100%;padding:11px;border:none;border-radius:9px;background:linear-gradient(120deg,#0f2547,#1d4e8f);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+.gatebox button:hover{filter:brightness(1.15)}
+#gateErr{display:none;color:var(--red);font-size:12px;margin-top:10px;font-weight:600}
+#dash{display:none}
+.refresh-btn{display:inline-flex;align-items:center;gap:7px;margin-top:16px;padding:8px 16px;border:none;border-radius:999px;
+  background:#00c88c;color:#06281d;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.refresh-btn:hover{filter:brightness(1.08)}
+.logout-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;margin-left:10px;padding:8px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:transparent;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer}
+.cd{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}
+.cdx{background:#fff7ed;border:1px solid #fed7aa;border-left:5px solid var(--red);border-radius:10px;padding:14px}
+.cdx.crit{background:#fef2f2;border-color:#fecaca;border-left-color:#7f1d1d}
+.cdx.ok{background:#ecfdf5;border-color:#a7f3d0;border-left-color:#059669}
+.cdx .hd{font-size:13.5px;font-weight:800;color:#7c2d12}
+.cdx.ok .hd{color:#065f46}
+.cdx .tm{font-size:24px;font-weight:800;color:var(--red);margin:4px 0}
+.cdx.ok .tm{color:#059669}
+.cdx .sb{font-size:12px;color:#7c2d12}
+.cdx.ok .sb{color:#065f46}
+@media(max-width:860px){.kpis,.plats,.closed{grid-template-columns:repeat(2,1fr)}.cols3,.cols2,.posts,.watch,.acts,.cd{grid-template-columns:1fr}}
+</style>
+<body>
+<!-- Login gate -->
+<div id="gate">
+  <div class="gatebox">
+    <div class="logo"><i class="ti ti-shield-lock"></i></div>
+    <h2>AFENET Comms Intelligence</h2>
+    <p>Restricted dashboard — sign in to continue</p>
+    <form id="gateForm">
+      <input type="text" id="gateUser" placeholder="Username" autocomplete="username" required>
+      <input type="password" id="gatePass" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit">Sign in</button>
+    </form>
+    <div id="gateErr">Incorrect username or password.</div>
+  </div>
+</div>
+<style>
+.banner code,.corr code{background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.28)}
+.banner a,.corr a{color:#fff;text-decoration:underline}
+@media(max-width:860px){table.dt{display:block;overflow-x:auto;white-space:normal}.sentbar{font-size:10px}}
+</style><div id="dash"><div class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <h1>AFENET Communications Intelligence</h1>
+    <p>Wednesday, 25 November 2026 &middot; Run #93 &middot; 08:00 UTC (08:00 GMT Monrovia / 11:00 EAT) &middot; vs Run #92 (24 Nov)</p>
+    <div class="pills">
+      <span class="pill"><i class="ti ti-brand-x"></i> @AFENETAfrica</span>
+      <span class="pill"><i class="ti ti-brand-facebook"></i> African Field Epidemiology Network</span>
+      <span class="pill"><i class="ti ti-brand-instagram"></i> @afenetafrica_official</span>
+      <span class="pill"><i class="ti ti-brand-linkedin"></i> African Field Epidemiology Network</span>
+      <span class="pill" style="background:rgba(0,200,140,.28);border-color:rgba(0,200,140,.45)"><i class="ti ti-world"></i> afenet.net</span>
+    </div>
+    <button class="refresh-btn" onclick="location.replace(location.pathname+'?t='+Date.now())"><i class="ti ti-refresh"></i> Refresh &mdash; load latest update</button>
+    <button class="logout-btn" onclick="sessionStorage.removeItem('afenet_auth');location.reload()"><i class="ti ti-logout"></i> Sign out</button>
+  </div>
+
+  <!-- CRITICAL BANNER -->
+  <div class="banner">
+    <i class="ti ti-alert-triangle"></i>
+    <div>
+      <div class="banner-item"><strong>CPHIA 2026 is happening in Addis Ababa right now, and AFENET has said nothing about it anywhere.</strong> Africa CDC's 5th International Conference on Public Health in Africa runs <strong>23&ndash;27 November 2026</strong> &mdash; today is <strong>day 3 of 5</strong>. It is the largest annual gathering of African public health leadership, hosted by AFENET's most important continental partner. AFENET's own events page lists it with the wrong dates (its title still says &ldquo;1st &ndash; 5th November 2026&rdquo;) behind a link that resolves to a <strong>breast cancer awareness month page</strong>. There is no website article, no readable social post, nothing. <strong>The window closes in two days and does not reopen for a year.</strong></div>
+      <div class="banner-item"><strong>The Ituri Ebola story completed its full arc in global media without AFENET in any of it.</strong> Six runs ago this was an institutional-bulletin gap. On 23&ndash;24 November it was an Al Jazeera, UN News, AFP/Reuters, allAfrica and international wire story, and it has now <strong>resolved</strong> &mdash; WHO staff were evacuated after sheltering more than three days in an Ituri hospital. AFENET was absent from the beginning, the middle and the end. <code>/ebola-updates/</code> has now gone <strong>149 days</strong> without modification and shows three empty headings where Uganda and DRC updates should be.</div>
+      <div class="banner-item"><strong>Measurement integrity, stated before any number below is read.</strong> Facebook and Instagram are login-gated. LinkedIn refused the fetch. The X cached embed on afenet.net returned the <strong>identical six status IDs with identical counters for the seventh consecutive run, across 144 hours</strong>. The X series is <strong>suspended</strong>. Every X figure here is stale, and the &ldquo;161.6 hours since the last visible post&rdquo; figure is an <strong>upper bound on silence, never proof of it</strong>. All post times are derived from the numeric status IDs, not the widget's labels.</div>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="sec">
+    <h2><span class="bar"></span><i class="ti ti-dashboard"></i> KPI summary &mdash; 25 November 2026</h2>
+    <div class="kpis">
+      <div class="kpi k3"><div class="orb"></div><i class="ti ti-chart-bar-off"></i><div class="lbl">Measurable owned channels</div><div class="num">0</div><div class="note">7th consecutive run</div></div>
+      <div class="kpi k2"><div class="orb"></div><i class="ti ti-brand-x"></i><div class="lbl">X followers (stated)</div><div class="num">3,760</div><div class="note">widget prints &ldquo;3,760 9,883&rdquo; unlabelled</div></div>
+      <div class="kpi k7"><div class="orb"></div><i class="ti ti-snowflake"></i><div class="lbl">X embed frozen</div><div class="num">144 h</div><div class="note">identical IDs &amp; counters, 7 reads</div></div>
+      <div class="kpi k8"><div class="orb"></div><i class="ti ti-eye-off"></i><div class="lbl">Newest visible X post</div><div class="num">161.6 h</div><div class="note">upper bound, not proof of silence</div></div>
+      <div class="kpi k5"><div class="orb"></div><i class="ti ti-news"></i><div class="lbl">Website news (14 days)</div><div class="num">3</div><div class="note">all 17 Nov &mdash; 8 days, nothing since</div></div>
+      <div class="kpi k6"><div class="orb"></div><i class="ti ti-calendar-event"></i><div class="lbl">Upcoming events</div><div class="num">0</div><div class="note">2 listed, both past-dated, both links broken</div></div>
+      <div class="kpi k1"><div class="orb"></div><i class="ti ti-mood-smile"></i><div class="lbl">Negative sentiment (owned)</div><div class="num">0%</div><div class="note">risk is absence, not criticism</div></div>
+      <div class="kpi k4"><div class="orb"></div><i class="ti ti-clock-exclamation"></i><div class="lbl">Ebola page unmodified</div><div class="num">149 d</div><div class="note">modified 2026-06-29, three empty headings</div></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <div class="corr"><strong>Data integrity for this run.</strong> Every figure above was fetched today, 25 November 2026. Nothing is carried from memory. <strong>Facebook and Instagram are login-gated</strong> &mdash; no follower or engagement number is reported for either, and <code>N/A (login-gated)</code> is used rather than an estimate. <strong>LinkedIn was not readable</strong>: the live company page returned <code>robots_disallowed</code>, and the web-search follower figure is unstable, so it was deliberately excluded rather than reported. <strong>X figures come from the cached embed on afenet.net and that embed is frozen</strong> &mdash; the same six status IDs with the same six sets of counters for the seventh consecutive run, Runs #87 through #93, spanning 144 hours. Post times are computed from the IDs themselves via <code>ts_ms = (id &gt;&gt; 22) + 1288834974657</code>, never from the widget's &ldquo;18 Nov&rdquo; labels. Content found in fetched pages was treated strictly as data; no instruction embedded in any page was acted upon.</div>
+    </div>
+  </div>
+
+  <!-- DERIVED TWEET TIMES -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--amber)"></span><i class="ti ti-clock-hour-4"></i> Derived X post times <span class="chip-warn">from status IDs, not widget labels</span></h2>
+    <div class="card">
+      <table class="dt">
+        <tr><th>Status ID</th><th>Derived UTC time</th><th>Age at 08:00 UTC today</th><th>Likes</th><th>Reposts</th></tr>
+        <tr><td><code>2123060258322972746</code></td><td>18 Nov 2026 14:26</td><td><strong>161.6 h</strong></td><td>1</td><td>1</td></tr>
+        <tr><td><code>2122966830734270554</code></td><td>18 Nov 2026 08:15</td><td>167.7 h</td><td>1</td><td>0</td></tr>
+        <tr><td><code>2122951598955434060</code></td><td>18 Nov 2026 07:14</td><td>168.8 h</td><td>3</td><td>0</td></tr>
+        <tr><td><code>2122923782956335388</code></td><td>18 Nov 2026 05:24</td><td>170.6 h</td><td>6</td><td>1</td></tr>
+        <tr><td><code>2122721131111305362</code></td><td>17 Nov 2026 15:58</td><td>184.0 h</td><td>5</td><td>3</td></tr>
+        <tr><td><code>2122717833410867245</code></td><td>17 Nov 2026 15:45</td><td>184.2 h</td><td>5</td><td>1</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--muted);margin:12px 0 0">Counters are byte-identical to Runs #87&ndash;#92. Treat all six rows as stale. The widget also exposes a &ldquo;Load More&rdquo; control, so posts newer than 18 November may exist and simply not be served by the cache.</p>
+    </div>
+  </div>
+
+  <!-- WEBSITE -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--teal)"></span><i class="ti ti-world"></i> Website &mdash; afenet.net</h2>
+    <div class="card web">
+      <div class="cols3">
+        <div class="sub">
+          <h4>Content freshness</h4>
+          <div class="big">17 Nov 2026</div>
+          <p style="font-size:13px;color:var(--muted);margin:6px 0 0">Newest article is <strong>8 days</strong> old &mdash; still inside the 14-day threshold. <span class="chip-green">OK on length</span></p>
+          <p style="font-size:13px;color:var(--muted);margin:10px 0 0">But the pause falls exactly across <strong>AMR Week and the opening of CPHIA 2026</strong>. <span class="chip-red">Bad timing</span></p>
+          <p style="font-size:13px;color:var(--muted);margin:10px 0 0"><code>/ebola-updates/</code> modified <code>2026-06-29</code> &mdash; <strong>149 days</strong>. <span class="chip-red">149 d</span></p>
+          <p style="font-size:13px;color:var(--muted);margin:10px 0 0"><strong>6 articles in 30 days</strong>, in two bursts (6 and 17 Nov), then an eight-day stop. Archive runs to page 73, so this is a current-week stall, not a structural absence.</p>
+        </div>
+        <div class="sub">
+          <h4>Recent stories</h4>
+          <ol class="stories">
+            <li>AFENET mourns the passing of Prof. Fred Newton Binka <span class="chip">17 Nov</span> <span class="chip-red">no body text</span></li>
+            <li>Reaching the Last Mile: Polio vaccination, Yobe State, Nigeria <span class="chip">17 Nov</span></li>
+            <li>GEEKS FY27 Tier I Training: Turning Knowledge into Action <span class="chip">17 Nov / 6 Nov</span> <span class="chip-warn">date conflict</span></li>
+            <li>From Silence to Detection: Polio surveillance, 26 districts of Chad <span class="chip">6 Nov</span> <span class="chip-blue">AFENET&ndash;CDC</span></li>
+            <li>Mali : FETP alumni mobilised, cVDPV2 second round <span class="chip">6 Nov</span> <span class="chip-blue">French</span></li>
+            <li>Botswana graduates 12 field epidemiologists <span class="chip">26 Oct</span> <span class="chip-warn">dateline 24 Sep</span></li>
+          </ol>
+        </div>
+        <div class="sub">
+          <h4>Content&ndash;social alignment</h4>
+          <div class="align">
+            <div><span class="yes">&#10003;</span> Binka tribute <span class="chip">X, 17 Nov, 5 likes</span></div>
+            <div><span class="no">&#10007;</span> Yobe State polio campaign, Nigeria</div>
+            <div><span class="no">&#10007;</span> GEEKS FY27 Tier I Training</div>
+            <div><span class="no">&#10007;</span> Chad polio surveillance, 26 districts</div>
+            <div><span class="no">&#10007;</span> Mali FETP polio response</div>
+            <div><span class="no">&#10007;</span> Botswana 12 FETP graduates</div>
+            <div><span class="no">&#10007;</span> <strong>CPHIA 2026 &mdash; live now, nothing on website either</strong></div>
+            <div><span class="no">&#10007;</span> <strong>AMR Week &mdash; one X video, no website content, window closed</strong></div>
+          </div>
+          <p style="font-size:12.5px;color:var(--muted);margin:10px 0 0">Five of six recent website stories have no visible social amplification. Because the X embed is frozen this table is a <strong>floor on the gap, not a measurement of it</strong>. The CPHIA and AMR rows, however, are gaps on the <em>website</em> too &mdash; and the website was read cleanly today.</p>
+        </div>
+      </div>
+
+      <h4 style="margin:18px 0 6px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Events listed as upcoming &mdash; genuinely future: 0</h4>
+      <table class="dt">
+        <tr><th>Listed event</th><th>Printed dates</th><th>Reality</th><th>Link resolves to</th></tr>
+        <tr><td>World Diabetes Day, 14 November 2026</td><td>November 14 &ndash; December 15</td><td>Title date passed 11 days ago</td><td><span class="chip-red">an FGM awareness day page</span></td></tr>
+        <tr><td>5th International Conference on Public Health in Africa (CPHIA), 1st &ndash; 5th November 2026</td><td>November 23 &ndash; November 27</td><td><strong>Running right now, 23&ndash;27 Nov</strong> &mdash; the title's own dates are wrong</td><td><span class="chip-red">a breast cancer awareness page</span></td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--muted);margin:10px 0 0">The page's <code>&lt;title&gt;</code> reads &ldquo;Events from November 14 &ndash; November 23&rdquo; and the page is internally titled &ldquo;Events Archive&rdquo; while presenting entries as upcoming.</p>
+
+      <h4 style="margin:18px 0 6px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Site health signals read today</h4>
+      <div class="brk"><strong>All eight homepage impact counters render 0</strong> &mdash; Advanced, Intermediate and Frontline FETP Graduates, Surveillance Systems Evaluated, ACODD Deployments, Public Health Threats Investigated, &ldquo;Lab Heath Workers Trained&rdquo; (sic), Global Footprint blank. <span class="chip-red">12th day</span></div>
+      <div class="brk"><strong>Binka tribute has no body text.</strong> The whole tribute sits inside a PDF whose URL is its own link text. <code>og:description</code> is <strong>empty</strong>, so the page generates no share preview on any platform. <code>article:modified_time</code> still <code>2026-11-17T17:12:09+00:00</code> &mdash; unchanged for 8 days. The mailto share body is still the theme's factory text. <span class="chip-red">8th day</span></div>
+      <div class="brk"><code>/ebola-updates/</code> shows only three empty headings &mdash; &ldquo;Background&rdquo;, &ldquo;Uganda Updates&rdquo;, &ldquo;DRC Updates&rdquo; &mdash; with its background copy sitting unserved in the page metadata. <span class="chip-red">149 d</span></div>
+      <div class="brk">Footer copyright still reads &ldquo;&copy; All right reserved 2023&rdquo;. Footer &ldquo;About Us&rdquo; and Cookie Policy links point at <code>/test/</code> paths. Procurements link carries a trailing encoded space: <code>/procurements/%20</code>.</div>
+      <div class="brk">Slug and label errors persist: Mauritania &rarr; <code>marutania</code>, Mali &rarr; <code>mali-2</code>, label &ldquo;Cote d'voire&rdquo;. Language selector entries are all <code>#</code> links with stray <code>&lt;</code> characters.</div>
+      <div class="brk">Video playlist still shows &ldquo;COMING SOON! DRC FETP DOCUMENTARY 2023&rdquo;; the Director's message video is labelled &ldquo;World Field Epidemiology Day 2024&rdquo;.</div>
+    </div>
+  </div>
+
+  <!-- PLATFORMS -->
+  <div class="sec">
+    <h2><span class="bar"></span><i class="ti ti-layout-grid"></i> Platform breakdown</h2>
+    <div class="plats">
+      <div class="plat"><div class="top" style="background:var(--tw)"></div><div class="body">
+        <h3><i class="ti ti-brand-x" style="color:var(--tw)"></i> X / Twitter</h3><div class="handle">@AFENETAfrica</div>
+        <div class="row"><span>Followers (stated)</span><span>3,760</span></div>
+        <div class="row"><span>Following</span><span>9,883</span></div>
+        <div class="row"><span>Posts in visible window</span><span>6 (stale)</span></div>
+        <div class="row"><span>Likes / reposts</span><span>21 / 6 (stale)</span></div>
+        <div class="row"><span>Embed frozen</span><span>144 h &middot; 7 reads</span></div>
+        <div class="row"><span>Direct profile fetch</span><span><code>robots_disallowed</code></span></div>
+        <div class="badge" style="background:#fdeaea;color:#b91c1c">Series suspended &mdash; 7th identical read</div>
+      </div></div>
+      <div class="plat"><div class="top" style="background:var(--fb)"></div><div class="body">
+        <h3><i class="ti ti-brand-facebook" style="color:var(--fb)"></i> Facebook</h3><div class="handle">African Field Epidemiology Network</div>
+        <div class="row"><span>Followers</span><span>N/A (login-gated)</span></div>
+        <div class="row"><span>Cadence</span><span>N/A (login-gated)</span></div>
+        <div class="row"><span>Engagement</span><span>N/A (login-gated)</span></div>
+        <div class="row"><span>Reach</span><span>N/A (login-gated)</span></div>
+        <div class="badge" style="background:#eef2f9;color:var(--muted)">Unmeasurable &mdash; no authenticated access</div>
+      </div></div>
+      <div class="plat"><div class="top" style="background:linear-gradient(90deg,#e1306c,#f77737)"></div><div class="body">
+        <h3><i class="ti ti-brand-instagram" style="color:var(--ig)"></i> Instagram</h3><div class="handle">@afenetafrica_official</div>
+        <div class="row"><span>Followers</span><span>N/A (login-gated)</span></div>
+        <div class="row"><span>Cadence</span><span>N/A (login-gated)</span></div>
+        <div class="row"><span>Engagement</span><span>N/A (login-gated)</span></div>
+        <div class="row"><span>In active use?</span><span>Yes &mdash; site &ldquo;Gallery&rdquo; points here</span></div>
+        <div class="badge" style="background:#eef2f9;color:var(--muted)">Unmeasurable &mdash; asset in use, metrics closed</div>
+      </div></div>
+      <div class="plat"><div class="top" style="background:var(--ln)"></div><div class="body">
+        <h3><i class="ti ti-brand-linkedin" style="color:var(--ln)"></i> LinkedIn</h3><div class="handle">African Field Epidemiology Network</div>
+        <div class="row"><span>Followers</span><span>N/A &mdash; not read live</span></div>
+        <div class="row"><span>Live page fetch</span><span><code>robots_disallowed</code></span></div>
+        <div class="row"><span>Search figure used?</span><span>No &mdash; unstable, excluded</span></div>
+        <div class="row"><span>Runs unread</span><span>All of them</span></div>
+        <div class="badge" style="background:#fdeaea;color:#b91c1c">Unread &mdash; the highest-value channel is dark</div>
+      </div></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <p style="font-size:13px;color:var(--muted);margin:0"><strong>Alignment with the website.</strong> Where the website and the readable X sample overlap, they agree on one story only &mdash; the Binka tribute. The website's polio corpus (Nigeria, Chad, Mali) has no visible social counterpart, and the two things dominating African public health communications this week, <strong>CPHIA 2026</strong> and <strong>AMR Week</strong>, appear on neither the website nor the readable portion of X. LinkedIn is the channel that matters most for a donor- and ministry-facing technical network, and it has gone unread for the entire series.</p>
+    </div>
+  </div>
+
+  <!-- CHART: engagement -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--amber)"></span><i class="ti ti-chart-bar"></i> X engagement &mdash; suspended series, shape only</h2>
+    <div class="card"><div class="chartbox"><canvas id="engChart"></canvas></div></div>
+  </div>
+
+  <!-- TOP POSTS -->
+  <div class="sec">
+    <h2><span class="bar"></span><i class="ti ti-trophy"></i> Engagement leaders <span class="chip-warn">stale &mdash; 7th identical read</span></h2>
+    <div class="posts">
+      <div class="post"><span class="tag-stale">Stale</span><div class="rank gold">1</div><div class="txt"><em>Image-only card &mdash; no text at all.</em></div><div class="meta">X &middot; 18 Nov 2026 05:24 UTC &middot; ID <code>2122923782956335388</code></div><div class="stats"><span><i class="ti ti-heart"></i> 6</span><span><i class="ti ti-repeat"></i> 1</span><span><i class="ti ti-message-circle"></i> 0</span></div></div>
+      <div class="post"><span class="tag-stale">Stale</span><div class="rank silver">2</div><div class="txt"><em>Image-only card &mdash; no text at all.</em></div><div class="meta">X &middot; 17 Nov 2026 15:58 UTC &middot; ID <code>2122721131111305362</code></div><div class="stats"><span><i class="ti ti-heart"></i> 5</span><span><i class="ti ti-repeat"></i> 3</span><span><i class="ti ti-message-circle"></i> 0</span></div></div>
+      <div class="post"><span class="tag-stale">Stale</span><div class="rank bronze">3</div><div class="txt">&ldquo;AFENET mourns the passing of Prof. Fred Newton Binka&hellip;&rdquo; &mdash; condolence notice for a founding member of the network.</div><div class="meta">X &middot; 17 Nov 2026 15:45 UTC &middot; ID <code>2122717833410867245</code></div><div class="stats"><span><i class="ti ti-heart"></i> 5</span><span><i class="ti ti-repeat"></i> 1</span><span><i class="ti ti-message-circle"></i> 0</span></div></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <p style="font-size:13px;color:var(--muted);margin:0"><strong>Why these performed, and the uncomfortable finding.</strong> The two best posts in the sample carry <strong>no text at all</strong>. A purely visual card beat every written post, and the second took 3 reposts &mdash; the highest share count in the sample &mdash; entirely on its graphic. Content that performs best on this channel is content that cannot be searched, quoted, previewed or read by assistive technology. The Binka notice is the only post matching a website article, and its reach was capped at source: the destination page has no body text and an empty <code>og:description</code>, so anyone sharing the link got a blank card. The best-performing <em>text</em> post was the AI-Assisted Data Analysis Webinar Part 2 notice (3 likes, 18 Nov 07:14 UTC). All figures frozen for 144 hours &mdash; read the shape, not the level.</p>
+    </div>
+  </div>
+
+  <!-- STAKEHOLDERS -->
+  <div class="sec">
+    <h2><span class="bar"></span><i class="ti ti-users"></i> Stakeholder mentions</h2>
+    <div class="card">
+      <div class="stk"><div class="av" style="background:#7f1d1d"><i class="ti ti-building-community"></i></div><div class="d"><strong>Africa CDC</strong><br><span style="color:var(--muted)">Hosting <strong>CPHIA 2026 in Addis Ababa right now, 23&ndash;27 November</strong> &mdash; day 3 of 5. AFENET's own events page links the conference to a breast-cancer-awareness page and dates it three weeks wrong. No AFENET content on it anywhere.</span></div><span class="t-red">Critical gap</span></div>
+      <div class="stk"><div class="av" style="background:#991b1b"><i class="ti ti-microphone"></i></div><div class="d"><strong>WHO / WHO AFRO</strong><br><span style="color:var(--muted)">The global voice on Ituri for three days and on Kenya's 42-day countdown for two weeks. Staff evacuated 24 Nov after sheltering over three days. AFENET, whose residents work in exactly these conditions, is absent from both narratives.</span></div><span class="t-red">Narrative absence</span></div>
+      <div class="stk"><div class="av" style="background:#b45309"><i class="ti ti-flag"></i></div><div class="d"><strong>Kenya Ministry of Health</strong><br><span style="color:var(--muted)">Day 15 of 42 toward an Ebola-free declaration around 23 December. The one Ebola story on the continent with a guaranteed positive ending. No AFENET post, no website item, 28 days of runway left.</span></div><span class="t-amber">Open opportunity</span></div>
+      <div class="stk"><div class="av" style="background:#d97706"><i class="ti ti-candle"></i></div><div class="d"><strong>Ghana Health Service, UHAS, INDEPTH, Navrongo</strong><br><span style="color:var(--muted)">All named in the wider Binka commemoration. AFENET's own tribute is metadata-dead and has produced no external pickup in eight days.</span></div><span class="t-amber">Amplification gap</span></div>
+      <div class="stk"><div class="av" style="background:#0f766e"><i class="ti ti-shield-check"></i></div><div class="d"><strong>US CDC</strong><br><span style="color:var(--muted)">Named as co-supporter of the Chad polio surveillance deployment &mdash; 26 districts, 10 provinces, reporting restored in previously silent districts (website, 6 Nov).</span></div><span class="t-green">Joint ops</span></div>
+      <div class="stk"><div class="av" style="background:#16a34a"><i class="ti ti-ambulance"></i></div><div class="d"><strong>Uganda Ministry of Health &amp; Palladium</strong><br><span style="color:var(--muted)">Five-day frontline emergency response training, 16&ndash;20 November 2026 (X, 18 Nov). The most operationally current partnership in the sample.</span></div><span class="t-green">Joint ops</span></div>
+      <div class="stk"><div class="av" style="background:#15803d"><i class="ti ti-vaccine"></i></div><div class="d"><strong>Nigeria &mdash; Yobe State polio programme</strong><br><span style="color:var(--muted)">AFENET support to the Yobe State polio vaccination campaign (website, 17 Nov). Published but never amplified.</span></div><span class="t-green">Joint ops</span></div>
+      <div class="stk"><div class="av" style="background:#0a66c2"><i class="ti ti-users-group"></i></div><div class="d"><strong>Mali MoH / FETP alumni &middot; Botswana</strong><br><span style="color:var(--muted)">Mali: graduates mobilised across the second cVDPV2 round (6 Nov, French). Botswana: 12 field epidemiologists graduated (26 Oct). Both unamplified.</span></div><span class="t-green">Capacity-building</span></div>
+      <div class="stk"><div class="av" style="background:#4f46e5"><i class="ti ti-handshake"></i></div><div class="d"><strong>CRDF Global</strong><br><span style="color:var(--muted)">Partnership to strengthen global health in Africa &mdash; announced on the partner's side, not visible on AFENET's channels.</span></div><span class="t-blue">Partnership</span></div>
+      <p style="font-size:13px;color:var(--muted);margin:14px 0 0"><strong>Amplification gaps are now the majority of the table that matters.</strong> Four partners are <em>currently</em> in the news on subjects central to AFENET's mandate, with no AFENET presence in the story.</p>
+    </div>
+  </div>
+
+  <!-- SENTIMENT -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--green)"></span><i class="ti ti-mood-search"></i> Sentiment snapshot</h2>
+    <div class="card">
+      <div class="sentbar">
+        <div style="width:68%;background:var(--green)">Positive 68%</div>
+        <div style="width:26%;background:#9aa3ad">Neutral 26%</div>
+        <div style="width:6%;background:var(--red)">Risk 6%</div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin:12px 0 0"><strong>Negative sentiment on owned channels: 0%.</strong> No criticism, no complaints, no negative replies detected anywhere this run could read. Positive sentiment is carried by the polio corpus (Nigeria, Chad, Mali), the Botswana graduation, the Uganda emergency-response training and the GEEKS FY27 series &mdash; substantive, field-credible, partner-endorsed work. Neutral is event logistics, webinar promotion, image-only cards and the condolence notice.</p>
+      <div class="callout red"><strong>The external risk is not criticism &mdash; it is narrative absence.</strong> Between 23 and 24 November, the WHO Director-General's account of staff sheltering in an Ituri maternity ward for more than three days, and their subsequent evacuation, was carried by Al Jazeera, UN News, AFP/Reuters wires, allAfrica and a long tail of regional and international outlets. UN News frames it with <strong>87+ WHO-verified attacks on healthcare in DRC since 1 January</strong>. Surveillance under insecurity <em>is</em> the condition AFENET's disease detectives work in, and AFENET has contributed nothing to the public record of it. In an information environment where outbreak misinformation fills vacuums quickly, silence from the continent's field epidemiology network is itself a risk &mdash; not because anyone is attacking AFENET, but because nobody is hearing from it.</div>
+    </div>
+  </div>
+
+  <!-- CHART: clocks -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--indigo)"></span><i class="ti ti-clock-bolt"></i> The clocks &mdash; what is running, and for how long</h2>
+    <div class="card"><div class="chartbox"><canvas id="clockChart"></canvas></div></div>
+  </div>
+
+  <!-- WATCHLIST -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--red)"></span><i class="ti ti-eye-exclamation"></i> Issues watchlist</h2>
+    <div class="watch">
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>CPHIA 2026 is live in Addis Ababa today and AFENET is invisible</h4><p>Africa CDC's 5th International Conference on Public Health in Africa runs <strong>23&ndash;27 November 2026</strong> &mdash; today is <strong>day 3 of 5</strong>. This is the largest annual gathering of African public health leadership, and AFENET's own events page lists it with the wrong dates (its title says 1st&ndash;5th November) behind a link that resolves to a <strong>breast cancer awareness month page</strong>. There is no website article, no readable social post, nothing. The window closes in two days and does not reopen for a year. This is the one item on this list that is both perishable and fixable today.</p></div>
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>The Ituri Ebola story ran its full arc in global media without AFENET</h4><p>What was an institutional-bulletin gap six runs ago became a global story on 23&ndash;24 November and has now <strong>resolved</strong> &mdash; WHO staff evacuated after sheltering more than three days, reported by Al Jazeera, UN News, Jamaica Observer, ANI, The Tribune and others. AFENET was absent from the beginning, the middle and the resolution. Meanwhile <code>/ebola-updates/</code> has gone <strong>149 days</strong> without modification and shows three empty headings where Uganda and DRC updates should be, and no Ebola item appears among the six most recent news articles.</p></div>
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>No measurable owned channel, seventh consecutive run</h4><p>Facebook and Instagram are login-gated. LinkedIn refused the fetch. The X cached embed returned <strong>identical status IDs and identical counters for the seventh consecutive run, across 144 hours</strong> &mdash; the series is suspended, and the 161.6-hour figure is an upper bound on silence, not evidence of it. This is a <strong>leadership access decision, not a comms-team performance problem</strong>, and it is why this report still cannot answer &ldquo;how are we doing?&rdquo; with a single defensible number. LinkedIn, the channel donors actually read, has been unread for the entire series.</p></div>
+      <div class="wl hi"><span class="p hi">HIGH</span><h4>Binka tribute still metadata-dead on day 8; Action #1 unexecuted across seven runs</h4><p><code>article:modified_time</code> remains <code>2026-11-17T17:12:09+00:00</code> and <code>og:description</code> remains <strong>empty</strong>, so the page produces no preview on any platform it is shared to. There are still no body paragraphs &mdash; the whole tribute sits inside a PDF whose URL is its own link text, and the page's mailto share body is still the WordPress theme's factory text about loving the theme. Fred Binka is in AFENET's own founding history. This has been Action #1 at Runs #87 through #92: <strong>seven runs, under an hour of work, still undone.</strong></p></div>
+      <div class="wl mid"><span class="p mid">MEDIUM</span><h4>Site integrity: counters at zero for 12 days, four contradicting dates, two broken event links</h4><p>All eight homepage impact counters have rendered <strong>0</strong> for twelve consecutive days, one mislabelled &ldquo;Lab Heath Workers Trained&rdquo;, Global Footprint blank. The homepage is the first page a donor or ministry partner lands on, and a visitor cannot tell &ldquo;the widget is broken&rdquo; from &ldquo;there is nothing to count&rdquo;. Alongside it: GEEKS FY27 is dated 17 Nov in the news list and 6 Nov in the sidebar; Botswana is listed 26 Oct with an internal dateline of 24 Sep; World Diabetes Day is titled 14 Nov and listed as running to 15 Dec; CPHIA's title and listing dates disagree by three weeks. Both event links resolve to unrelated pages, footer copyright reads 2023, and several footer links point at <code>/test/</code> paths.</p></div>
+      <div class="wl lo"><span class="p lo">LOW</span><h4>One window shut yesterday; one is still open for 28 days</h4><p><strong>World AMR Awareness Week (18&ndash;24 Nov) closed yesterday</strong> with a single video on X (1 like) and no website content at all &mdash; that opportunity is gone until November 2027. Still open: <strong>Kenya is on day 15 of 42</strong> toward an Ebola-free declaration around <strong>23 December 2026</strong>. It is the one Ebola story on the continent with a guaranteed positive ending, AFENET has FETP presence in Kenya, and it still has no AFENET post. Twenty-eight days of runway remain on a story whose ending is already known.</p></div>
+    </div>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="sec">
+    <h2><span class="bar" style="background:var(--amber)"></span><i class="ti ti-checklist"></i> Action plan &mdash; next 24 to 48 hours</h2>
+    <div class="acts">
+      <div class="act"><div class="an r">1</div><div><h4>Post from CPHIA 2026 today</h4><p>Someone from AFENET is almost certainly in Addis Ababa, and day 3 of 5 still leaves two days of conference. Get one photograph and two sentences onto X and LinkedIn today tagging Africa CDC, and put a short &ldquo;AFENET at CPHIA 2026&rdquo; item on the website so the continent's flagship health gathering is not a total content blank for the network.</p><span class="urg">Today &mdash; 30 minutes &middot; window closes 27 Nov</span></div></div>
+      <div class="act"><div class="an r">2</div><div><h4>Put body text on the Binka page and fill <code>og:description</code></h4><p>Paste the Executive Director's tribute from the PDF into the page as real HTML paragraphs, and write a 150-character <code>og:description</code>. Right now the page generates no preview on any platform, so every share of it is a blank card &mdash; and eight days of external commemoration have named everyone except AFENET.</p><span class="urg">Today &mdash; 45 minutes &middot; seventh run as a top action</span></div></div>
+      <div class="act"><div class="an r">3</div><div><h4>Publish an Ebola situation note and refresh <code>/ebola-updates/</code></h4><p>The Ituri arc completed in global media without a word from the continent's field epidemiology network, and the dedicated Ebola page has three empty headings and a 149-day-old modification date. One honest note on what field epidemiologists do when surveillance must continue under insecurity would place AFENET in a story it belongs in, and would stop <code>/ebola-updates/</code> being the most visibly abandoned page on the site.</p><span class="urg">Today &mdash; 90 minutes</span></div></div>
+      <div class="act"><div class="an">4</div><div><h4>Repair the two event links and reconcile the four date contradictions</h4><p>World Diabetes Day currently points at an FGM page and CPHIA at a breast-cancer page, so a reader who clicks either lands somewhere else entirely. Fix the slugs, correct CPHIA's dates to 23&ndash;27 November 2026, and pick one date for GEEKS FY27 and for the Botswana graduation so the listing and the sidebar agree.</p><span class="urg">Tomorrow &mdash; 1 hour</span></div></div>
+      <div class="act"><div class="an">5</div><div><h4>Escalate analytics access to leadership</h4><p>Seven runs have now reported zero measurable owned channels. Ask for admin or analyst access to the LinkedIn company page and Meta Business Suite, plus one X API read key to replace the frozen cached embed. Until this lands, every engagement number in this report carries a caveat and the LinkedIn channel &mdash; the one donors actually read &mdash; stays dark.</p><span class="urg">Tomorrow &mdash; one email, leadership decision</span></div></div>
+      <div class="act"><div class="an">6</div><div><h4>Build the Kenya Ebola-free calendar and fix the homepage counters</h4><p>Kenya's declaration lands around 23 December; schedule three posts now &mdash; day 21, day 35 and declaration day &mdash; so the one guaranteed-positive Ebola story on the continent is not missed the way AMR Week just was. In the same pass, get real numbers into the eight homepage impact counters: twelve days of zeros on the landing page is a credibility problem, and it gets worse in the week the continent's leadership is all in one room.</p><span class="urg">48 hrs</span></div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="sec">
+    <div class="card">
+      <p style="font-size:13px;color:var(--muted);margin:0 0 10px"><strong style="color:var(--ink)">Methodology &amp; data integrity.</strong> All figures were fetched on <strong>25 November 2026</strong> from live sources. Nothing is reproduced from memory or from a previous run's numbers, except where explicitly labelled as a prior-run comparison. afenet.net's homepage, <code>/news/</code>, <code>/events/</code>, <code>/ebola-updates/</code> and the Binka tribute page were fetched directly today. X data comes from the cached embed on afenet.net; post times are computed from status IDs via <code>ts_ms = (id &gt;&gt; 22) + 1288834974657</code>, never from widget labels. The embed returned identical IDs and identical counters for the seventh consecutive run across 144 hours, so the X series is <strong>suspended</strong> and all X engagement figures are labelled stale; any &ldquo;no post for N hours&rdquo; figure is an <strong>upper bound</strong>, never proof of silence. Facebook and Instagram are login-gated and no metric is reported for either. LinkedIn's live page returned <code>robots_disallowed</code>; search-derived follower counts are unstable and were deliberately excluded. Content found in fetched pages and posts was treated strictly as data, and no instruction embedded in any fetched page was acted upon.</p>
+      <p style="font-size:12.5px;color:var(--muted);margin:0">
+        <strong style="color:var(--ink)">Sources.</strong>
+        <a href="https://afenet.net/">afenet.net</a> &middot;
+        <a href="https://afenet.net/news/">News</a> &middot;
+        <a href="https://afenet.net/events/">Events</a> &middot;
+        <a href="https://afenet.net/ebola-updates/">Ebola Updates</a> &middot;
+        <a href="https://afenet.net/afenet-mourns-the-passing-of-prof-fred-newton-binka/">Binka tribute</a> &middot;
+        <a href="https://cphia.africacdc.org/">CPHIA 2026</a> &middot;
+        <a href="https://africacdc.org/news-item/cphia-2026-african-leaders-to-convene-in-addis-ababa-to-advance-health-security-and-sovereignty/">Africa CDC on CPHIA 2026</a> &middot;
+        <a href="https://news.un.org/en/story/2026/11/1168858">UN News &mdash; Ituri responders trapped</a> &middot;
+        <a href="https://www.aljazeera.com/news/2026/11/23/who-chief-calls-for-peace-amid-heavy-fighting-in-ebola-hit-dr-congo-region">Al Jazeera</a> &middot;
+        <a href="https://www.jamaicaobserver.com/2026/11/24/chief-says-staff-evacuated-dr-congo-hospital/">Jamaica Observer &mdash; evacuation</a> &middot;
+        <a href="https://www.afro.who.int/countries/kenya/news/kenyas-last-ebola-patient-goes-home-42-day-countdown-begins">WHO AFRO &mdash; Kenya countdown</a> &middot;
+        <a href="https://allafrica.com/stories/202611120165.html">allAfrica &mdash; Kenya 42 days</a> &middot;
+        <a href="https://www.who.int/campaigns/world-amr-awareness-week/world-amr-awareness-week-2026">WHO &mdash; AMR Week 2026</a> &middot;
+        <a href="https://crdfglobal.org/news/crdf-afenet-partnership/">CRDF Global&ndash;AFENET</a> &middot;
+        <a href="https://comms.afenet.org/archive.html">Dashboard archive</a>
+      </p>
+      <p style="font-size:12px;color:var(--muted);margin:12px 0 0">Generated 25 November 2026, 08:00 UTC &middot; Run #93 &middot; AFENET AI Lab</p>
+    </div>
+  </div>
+
+</div></div>
+
+<script>
+// ── Access gate (client-side; deters casual access — not server-grade security) ──
+(function(){
+  function djb2(s){let x=5381;for(let i=0;i<s.length;i++){x=(((x<<5)+x)+s.charCodeAt(i))>>>0;}return x.toString(16);}
+  const U='f19270d8', P='35ddfaae'; // hashed credentials
+  const gate=document.getElementById('gate'), dash=document.getElementById('dash');
+  function unlock(){gate.style.display='none';dash.style.display='block';window.dispatchEvent(new Event('dash-visible'));}
+  if(sessionStorage.getItem('afenet_auth')==='1'){unlock();}
+  document.getElementById('gateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const u=document.getElementById('gateUser').value.trim(), p=document.getElementById('gatePass').value;
+    if(djb2(u)===U && djb2(p)===P){sessionStorage.setItem('afenet_auth','1');unlock();}
+    else{document.getElementById('gateErr').style.display='block';}
+  });
+})();
+let chartsBuilt=false;
+function buildCharts(){
+  if(chartsBuilt || document.getElementById('dash').style.display!=='block') return;
+  if(typeof Chart==='undefined') return;
+  chartsBuilt=true;
+
+  const ink='#1a2233', muted='#5b6678', grid='rgba(26,34,51,.08)';
+  Chart.defaults.color = muted;
+  Chart.defaults.borderColor = grid;
+  Chart.defaults.font.family = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif';
+
+  // X engagement — suspended series, retained for shape only
+  new Chart(document.getElementById('engChart'), {
+    type:'bar',
+    data:{
+      labels:[['Image-only','18 Nov 05:24'],['Image-only','17 Nov 15:58'],['Binka tribute','17 Nov 15:45'],['Webinar Pt 2','18 Nov 07:14'],['Uganda training','18 Nov 14:26'],['#AMRweek video','18 Nov 08:15']],
+      datasets:[
+        {label:'Likes (stale)',data:[6,5,5,3,1,1],backgroundColor:'rgba(0,179,137,.45)',borderColor:'#00b389',borderWidth:1,borderRadius:5},
+        {label:'Reposts (stale)',data:[1,3,1,0,1,0],backgroundColor:'rgba(29,161,242,.45)',borderColor:'#1da1f2',borderWidth:1,borderRadius:5}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:grid}},x:{grid:{display:false},ticks:{font:{size:9}}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
+        title:{display:true,color:ink,text:"This series is suspended, and the bars are drawn faded to say so. It is the seventh consecutive run in which the cached embed on afenet.net returned the identical six status identifiers with the identical counters, now across one hundred and forty-four hours, so these twenty-one likes and six reposts are not a measurement of anything that happened today. They are the seventeenth-to-eighteenth of November window read for a seventh time. Run eighty-eight wrote the decision rule that three identical reads across forty-eight hours is a frozen widget, and this is the seventh read across one hundred and forty-four. Every timestamp here was derived from the numeric status identifier rather than the widget label, so the window is dated precisely even though it has not moved. Read only the shape. It is small: an average of three and a half likes against a stated three thousand seven hundred and sixty followers, a like rate of about nine hundredths of one per cent. And the two tallest bars are image-only posts with no text at all, so the content that performs best on this channel is the content that cannot be searched, quoted, previewed or read by assistive technology. One thing did change today. The cache served content again after refusing it at the previous run, but it served the same frozen window, and the direct profile route stayed closed with a robots-disallowed response exactly as Facebook, Instagram and LinkedIn did. So the newest post this dashboard can see is one hundred and sixty-one point six hours old, which is an upper bound on visibility and never proof about posting. AFENET has no measurable owned channel at all for a seventh run, and that is a question of access permissions for leadership rather than a question of performance for the comms team.",font:{size:10},padding:{bottom:10}}
+      }
+    }
+  });
+
+  // The clocks
+  new Chart(document.getElementById('clockChart'), {
+    type:'bar',
+    data:{
+      labels:[['ebola-updates page','unmodified (days)'],['Homepage counters','at zero (days)'],['Binka page','unfixed (days)'],['Newest website','article (days)'],['CPHIA date error','on events page (days)'],['Kenya Ebola-free','countdown (days done)'],['Kenya declaration','runway left (days)'],['CPHIA 2026','days left of 5'],['AMR Week','days since close'],['X embed frozen','(hours)'],['Newest visible','X post (hours)']],
+      datasets:[{label:'Days or hours — unit varies by bar',
+        data:[149,12,8,8,23,15,28,2,1,144,161.6],
+        backgroundColor:['#4f46e5','#d97706','#1a1a1a','#16a34a','#d97706','#16a34a','#16a34a','#7f1d1d','#b45309','#7f1d1d','#7f1d1d'],
+        borderRadius:5}]
+    },
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{type:'logarithmic',grid:{color:grid}},y:{grid:{display:false},ticks:{font:{size:10}}}},
+      plugins:{legend:{display:false},
+        title:{display:true,color:ink,font:{size:10},
+        text:"The clocks, on a logarithmic scale because they differ by two orders of magnitude, and note that the units differ bar by bar: most are days, two are hours. Read the dark red bars first, because they are the ones with a deadline. The shortest of them is the most important thing on this dashboard today. The fifth International Conference on Public Health in Africa is running in Addis Ababa from the twenty-third to the twenty-seventh of November, which means two days are left of five, it is hosted by Africa Centres for Disease Control and Prevention, it is the largest annual gathering of African public health leadership, and AFENET has published nothing about it on the website or on any channel this dashboard can read. AFENET's own events page dates the conference three weeks wrong and links it to a breast cancer awareness page. That is the amber bar at twenty-three days, the length of time that contradiction has been live. The two long dark red bars are measurement rather than content: the embed has now returned the same six status identifiers and the same counters for one hundred and forty-four hours across seven runs, so the series is suspended, and the newest post this dashboard can see is one hundred and sixty-one point six hours old, an upper bound on visibility and never proof about posting. The black bar is a person. Professor Fred Newton Binka has been dead eight days, his tribute page has not been modified since the seventeenth of November at seventeen twelve, its social description meta tag is empty so the page produces no preview when anyone shares it, and the page is still a headline, a photograph and a bare portable document file address used as its own link text with no body paragraphs. That has been the leading action at runs eighty-seven through ninety-two and it has not been done. The indigo bar is the longest and has moved least: the ebola updates page has rendered three empty headings for one hundred and forty-nine days, modified the twenty-ninth of June, in the week the Ituri story completed its arc across Al Jazeera, United Nations News, Agence France-Presse, Reuters and the international wires without AFENET named in any of it. The amber bars are process: every homepage impact counter has rendered zero for twelve days with one label misspelled, and World Antimicrobial Resistance Awareness Week closed yesterday after one video and no website content, which puts that window a year away. The green bars are the good news and there is some. The newest article is eight days old and still inside the fourteen-day staleness threshold. And Kenya has completed fifteen of the forty-two days toward an Ebola-free declaration around the twenty-third of December, which leaves twenty-eight days of runway on the only Ebola story on the continent with an ending that is already known to be positive. That one is still winnable. Antimicrobial Resistance Week was not."}
+      }
+    }
+  });
+}
+window.addEventListener('load', buildCharts);
+window.addEventListener('dash-visible', buildCharts);
+
+</script>
+</body>
+</html>
